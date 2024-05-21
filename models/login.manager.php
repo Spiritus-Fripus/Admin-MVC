@@ -28,7 +28,7 @@ function connect()
                     break;
                 case 3:
                     $type_user = 'student';
-                    header('Location: /user/student/index.php');
+                    header('Location: ?controller=student&action=index');
                     break;
             }
             // debut de session et definition des variables de session
