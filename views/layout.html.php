@@ -59,14 +59,6 @@
 
         <!-- Main -->
         <main class="main-container">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a class="navbar-brand" href="?controller=home&action=index">Index</a>
-                <a class="navbar-brand" href="?controller=home&action=about">About</a>
-                <a class="navbar-brand" href="?controller=home&action=faq">FAQ</a>
-                <a class="navbar-brand" href="?controller=artist&action=index">Artists</a>
-                <a class="navbar-brand" href="?controller=album&action=index">Albums</a>
-                <a class="navbar-brand" href="?controller=login&action=login">login</a>
-            </nav>
             <?php require $template ?>
         </main>
         <!-- Main -->
