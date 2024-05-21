@@ -1,8 +1,18 @@
 <?php
 
-function login()
+function formLogin()
 {
-    $title = "Login Admin MNS";
-    $template = '../views/login/login.html.php';
+    $title = "LOGIN";
+    $template = '../views/login/form-login.html.php';
     require '../views/layout.html.php';
+
+    if (isset($_POST['send'])) {
+
+        if (!empty($_POST['email']) && !empty($_POST['password'])) {
+            require '../models/login.manager.php';
+            connect();
+        } else {
+            echo "Veuillez remplir tous les champs.";
+        }
+    }
 }
