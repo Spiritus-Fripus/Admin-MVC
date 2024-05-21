@@ -1,3 +1,2 @@
 <h1> <?= $title ?> </h1>
-
-<a href="?controller=login&action=login">login</a>
+<a href="login.php">login</a>
