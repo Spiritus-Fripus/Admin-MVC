@@ -1,13 +1,10 @@
-<h1><?= $title ?></h1>
-
-<link rel="stylesheet" href="/css/login-style.css">
+<h1> <?= $title ?> </h1>
 
 <div class="container">
     <div class="header">
-        <h1>ADMIN</h1>
     </div>
     <div class="formulaire">
-        <form action="/login.php" method="POST">
+        <form action="" method="POST">
             <label for="email"></label>
             <input type="email" placeholder="ex : a@a.com" name="email" class="input">
             </br>

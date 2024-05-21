@@ -2,7 +2,9 @@
 
 function index()
 {
-    $title = 'test';
+    require '../models/admin.manager.php';
+    $recordset = showInfo();
+    $title = 'Admin Connected';
     $template = '../views/admin/admin.html.php';
     require '../views/layout.html.php';
 };
