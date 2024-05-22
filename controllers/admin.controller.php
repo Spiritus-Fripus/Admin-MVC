@@ -6,5 +6,5 @@ function index()
     $recordset = showInfo();
     $title = 'Admin Connected';
     $template = '../views/admin/admin.html.php';
-    require '../views/layout.html.php';
+    require '../views/layouts/layout.html.php';
 };

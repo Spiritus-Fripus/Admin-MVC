@@ -6,5 +6,5 @@ function index()
     $recordset = showInfo();
     $title = 'Student Connected';
     $template = '../views/student/index.html.php';
-    require '../views/layout.html.php';
+    require '../views/layouts/layout.html.php';
 }

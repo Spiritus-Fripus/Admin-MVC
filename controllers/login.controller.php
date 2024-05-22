@@ -2,9 +2,8 @@
 
 function formLogin()
 {
-    $title = "LOGIN";
-    $template = '../views/login/form-login.html.php';
-    require '../views/layout.html.php';
+    $title = "LOGIN MNS";
+    require '../views/login/form-login.html.php';
 
     if (isset($_POST['send'])) {
 

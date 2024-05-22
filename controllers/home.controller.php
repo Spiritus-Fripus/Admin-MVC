@@ -2,7 +2,12 @@
 
 function index()
 {
+    require '../views/home/index.html.php';
+}
+
+function home()
+{
     $title = "Bienvenue sur admin mns";
-    $template = '../views/home/index.html.php';
-    require '../views/layout.html.php';
+    $template = '../views/home/home.html.php';
+    require '../views/layouts/layout.html.php';
 }

@@ -1,6 +1,5 @@
 <?php
 
-
 function connect()
 {
     require "../config/connect.php";
