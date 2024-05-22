@@ -1,6 +1,6 @@
 <?php
 
-function formLogin()
+function formLoginAction()
 {
     $title = "LOGIN MNS";
     require '../views/login/form-login.html.php';

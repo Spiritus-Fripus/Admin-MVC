@@ -1,11 +1,11 @@
 <?php
 
-function index()
+function indexAction()
 {
     require '../views/home/index.html.php';
 }
 
-function home()
+function homeAction()
 {
     $title = "Bienvenue sur admin mns";
     $template = '../views/home/home.html.php';
