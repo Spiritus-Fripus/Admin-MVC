@@ -1,6 +1,6 @@
 <?php
 
-function indexAction()
+function index()
 {
     require '../views/home/index.html.php';
 }

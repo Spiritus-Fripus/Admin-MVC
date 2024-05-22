@@ -20,7 +20,7 @@ function addFormationAction()
         exit();
     }
 
-    $template = "../views/admin/formation/addformation.html.php";
+    $template = "../views/admin/formation/formation.html.php";
     require "../views/layouts/layout.html.php";
 }
 
