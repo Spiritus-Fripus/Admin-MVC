@@ -16,31 +16,36 @@
 </head>
 
 <body>
-    <header class="header-container">
-        <div>
-            <nav>
-                <p>Se connecter</p>
-                <a href="?controller=login&action=formLogin">
-                    <span class="material-symbols-rounded">
-                        login
-                    </span>
-                </a>
-
-            </nav>
+    <div class="maincontainer">
+        <div class="container">
+            <div class="leftbox">
+                <div class="box">
+                    <div class="logo"></div>
+                    <form action="" method="POST">
+                        <label for="email">
+                        </label>
+                        <input type="text" placeholder="Votre adresse mail" name="email" class="input">
+                        </br>
+                        <label for="password">
+                        </label>
+                        <input type="text" name="password" placeholder="******" class="input">
+                        </br>
+                        <label for="send"></label>
+                        <button type="submit" value="ok" name="send" id="buttonformu">OK</button>
+                        <a href="">Mot de passe oublié ?</a>
+                    </form>
+                    <span></span>
+                </div>
+            </div>
+            <div class="rightbox">
+                <div class="centerbox" </div>
+                    <p class="welcome">Bienvenue sur notre site <b>ADMIN</b></p>
+                    <p class="welcometext">Connectez vous à votre espace MNS</p>
+                    <p class="welcometext">Vous souhaitez candidater à une de nos formations ? <a href=""> ➡️ Par ici ⬅️</a></p>
+                </div>
+            </div>
         </div>
-    </header>
-
-    <main class="main-container">
-        <div>
-            <h1>Admin MNS</h1>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quaerat quas quos aspernatur ab dolor culpa dolorem commodi molestias provident laudantium harum, tempora, quo repudiandae assumenda, voluptas facere exercitationem. Eos, culpa?</p>
-            <ul>
-                <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. In dolore reprehenderit necessitatibus quos sit laborum quisquam ab temporibus? Ut, delectus molestiae. Nobis modi, aliquid recusandae ab ut voluptate asperiores reiciendis?</li>
-                <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio eos illo aliquam velit necessitatibus perspiciatis tenetur voluptates fugit id porro ex quis temporibus, dicta iusto, dolor quisquam hic eveniet asperiores.</li>
-            </ul>
-        </div>
-    </main>
-
+    </div>
 </body>
 
 </html>
