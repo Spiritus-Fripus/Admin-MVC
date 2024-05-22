@@ -15,7 +15,7 @@ if (file_exists('../controllers/' . $controllerName . '.controller.php')) {
 
     if (!empty($_GET['action'])) {
 
-        $action = $_GET['action'];
+        $action = $_GET['action'] . "Action";
     } else {
 
         $action = 'index'; // Action par défault du contrôleur

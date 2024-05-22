@@ -1,5 +1,5 @@
     <div class="container">
-        <form action="addformation.php" method="post">
+        <form action="?controller=formation&action=addformation" method="post">
             <label for="formation_name">Nom de la formation</label>
             <input type="text" name="formation_name" />
 
