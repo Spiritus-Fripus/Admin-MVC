@@ -49,7 +49,7 @@
                 <h1>Admin MNS</h1>
             </div>
             <ul>
-                <li><a href="?controller=home&action=index">Accueil</a></li>
+                <li><a href="?controller=home&action=home">Accueil</a></li>
                 <li><a href="?controller=login&action=formLogin">login</a></li>
                 <li>Classes</li>
                 <li>Absences</li>
