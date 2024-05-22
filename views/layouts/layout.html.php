@@ -24,7 +24,7 @@
             <div class="header-l">
                 <form action="" class="form-search">
                     <input id="search-bar" type="search" placeholder="Recherche">
-                    <button type="submit">
+                    <button type="button">
                         <span class="material-symbols-rounded">
                             search
                         </span>
@@ -33,14 +33,16 @@
             </div>
             <div class="header-r">
                 <span class="material-symbols-rounded">
+                    shield_person
+                </span>
+                <span class="material-symbols-rounded">
                     notifications
                 </span>
                 <span class="material-symbols-rounded">
-                    shield_person
+                    logout
                 </span>
             </div>
         </header>
-        <!-- Header  -->
 
         <!-- Sidebar -->
         <aside id="sidebar">
@@ -56,13 +58,11 @@
                 <li>Retards</li>
             </ul>
         </aside>
-        <!-- Sidebar -->
 
         <!-- Main -->
         <main class="main-container">
             <?php require $template ?>
         </main>
-        <!-- Main -->
 
     </div>
 </body>
