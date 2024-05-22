@@ -1,6 +1,6 @@
 <?php
 
-function index()
+function indexAction()
 {
     require '../models/student.manager.php';
     $recordset = showInfo();

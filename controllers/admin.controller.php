@@ -1,6 +1,6 @@
 <?php
 
-function index()
+function indexAction()
 {
     require '../models/admin.manager.php';
     $recordset = showInfo();
