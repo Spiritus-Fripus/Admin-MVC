@@ -29,6 +29,7 @@ function createFormation()
 function deleteFormation()
 {
     require '../config/connect.php';
+
     $sql = "DELETE FROM table_formation WHERE formation_id = :formation_id";
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':formation_id', $_POST['formation_id']);
