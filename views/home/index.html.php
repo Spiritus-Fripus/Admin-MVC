@@ -28,7 +28,7 @@
                         </br>
                         <label for="password">
                         </label>
-                        <input type="text" name="password" placeholder="******" class="input">
+                        <input type="password" name="password" placeholder="******" class="input">
                         </br>
                         <label for="send"></label>
                         <button type="submit" value="ok" name="send" id="buttonformu">OK</button>
