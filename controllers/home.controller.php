@@ -1,8 +1,7 @@
 <?php
 
-function index()
+function indexAction()
 {
-    require '../views/home/index.html.php';
 }
 
 function homeAction()

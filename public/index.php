@@ -6,7 +6,7 @@ if (!empty($_GET['controller'])) {
 
     $controllerName = $_GET['controller'];
 } else {
-    $controllerName = 'home';
+    $controllerName = 'login';
 }
 
 if (file_exists('../controllers/' . $controllerName . '.controller.php')) {
@@ -18,7 +18,7 @@ if (file_exists('../controllers/' . $controllerName . '.controller.php')) {
         $action = $_GET['action'] . "Action";
     } else {
 
-        $action = 'index'; // Action par défault du contrôleur
+        $action = 'formLoginAction'; // Action par défault du contrôleur
     }
     if (function_exists($action)) {
         $action(); // Index par défaut

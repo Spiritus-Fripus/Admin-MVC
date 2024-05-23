@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="rightbox">
-                <div class="centerbox" </div>
+                <div class="centerbox">
                     <p class="welcome">Bienvenue sur notre site <b>ADMIN</b></p>
                     <p class="welcometext">Connectez vous à votre espace MNS</p>
                     <p class="welcometext">Vous souhaitez candidater à une de nos formations ? <a href=""> ➡️ Par ici ⬅️</a></p>
