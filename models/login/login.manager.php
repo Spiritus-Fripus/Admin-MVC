@@ -37,3 +37,13 @@ function connect()
         }
     }
 }
+
+function checkSession()
+{
+    var_dump($_SESSION['user_type'], $_SESSION['user_mail']);
+}
+
+function disconnect()
+{
+    require "../config/connect.php";
+}
