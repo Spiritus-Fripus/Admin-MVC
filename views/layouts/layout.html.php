@@ -61,9 +61,7 @@
 
         <!-- Main -->
         <main class="main-container">
-            <?php if (isset($template)) {
-                require $template;
-            } ?>
+            <?php require $template; ?>
         </main>
 
     </div>
