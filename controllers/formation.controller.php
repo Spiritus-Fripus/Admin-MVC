@@ -14,6 +14,7 @@ function viewAndAddFormationAction()
         exit();
     }
 
+    $sidebarTemplate = '../views/admin/sidebar/admin-sidebar.html.php';
     $template = "../views/admin/formation/formation.html.php";
     require "../views/layouts/layout.html.php";
 }
