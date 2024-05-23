@@ -6,7 +6,7 @@ if (!empty($_GET['controller'])) {
 
     $controllerName = $_GET['controller'];
 } else {
-    $controllerName = 'login';
+    $controllerName = 'login'; // controlleur par défault
 }
 
 if (file_exists('../controllers/' . $controllerName . '.controller.php')) {
