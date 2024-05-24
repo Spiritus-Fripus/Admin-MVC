@@ -28,7 +28,8 @@ function formLoginAction()
                     }
                     $_SESSION['user_type'] = $type_user;
                     $_SESSION['user_mail'] = $_POST['email'];
-                    // Clear output buffer and send headers
+                    //ob_end_clean() échouera sans un tampon de sortie actif démarré avec le drapeau PHP_OUTPUT_HANDLER_REMOVABLE.
+                    //ob_end_clean() supprimera le contenu du tampon de sortie actif même s'il a été démarré sans le drapeau PHP_OUTPUT_HANDLER_CLEANABLE.
                     ob_end_clean();
                     header("Location: ?controller=$type_user&action=index");
                     exit();
@@ -36,8 +37,8 @@ function formLoginAction()
             }
         }
     }
-
-    // Send output buffer content if there's any
+    //ob_end_flush() échouera sans un tampon de sortie actif démarré avec le drapeau PHP_OUTPUT_HANDLER_REMOVABLE.
+    //ob_end_flush() videra (enverra) la valeur de retour du gestionnaire de sortie même si le tampon de sortie actif a été démarré sans le drapeau PHP_OUTPUT_HANDLER_FLUSHABLE.
     ob_end_flush();
 }
 
