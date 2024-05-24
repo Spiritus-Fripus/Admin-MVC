@@ -31,7 +31,6 @@ function formLoginAction()
                 }
             }
         } else {
-            echo "Veuillez remplir tous les champs.";
         }
     }
 }
