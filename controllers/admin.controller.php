@@ -1,5 +1,7 @@
 <?php
 
+
+
 function indexAction()
 {
     $title = "Bienvenue sur admin MNS , vous etes connecté en tant qu'administateur";
@@ -10,7 +12,7 @@ function indexAction()
 
 function profilAction()
 {
-    require '../models/admin.manager.php';
+    require '../models/admin/admin.manager.php';
     $recordset = showInfo();
     $title = 'Admin Connected';
     $sidebarTemplate = '../views/admin/sidebar/admin-sidebar.html.php';
