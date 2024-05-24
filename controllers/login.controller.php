@@ -2,13 +2,16 @@
 
 function formLoginAction()
 {
+    // Start output buffering
+    ob_start();
+
     $title = "LOGIN MNS";
-    require '../views/home/login/index-login.html.php';
+    require '../views/home/index-login.html.php';
     $type_user = '';
-    require '../models/login/login.manager.php';
 
     if (isset($_POST['send'])) {
         if (!empty($_POST['email']) && !empty($_POST['password'])) {
+            require '../models/login/login.manager.php';
             $response = connect($_POST['email']);
             if ($response) {
                 if (password_verify($_POST['password'], $response['user_password'])) {
@@ -25,12 +28,17 @@ function formLoginAction()
                     }
                     $_SESSION['user_type'] = $type_user;
                     $_SESSION['user_mail'] = $_POST['email'];
+                    // Clear output buffer and send headers
+                    ob_end_clean();
                     header("Location: ?controller=$type_user&action=index");
                     exit();
                 }
             }
         }
     }
+
+    // Send output buffer content if there's any
+    ob_end_flush();
 }
 
 function logoutAction()

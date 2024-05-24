@@ -18,7 +18,6 @@
 
 <body>
     <div class="grid-container">
-
         <!-- Header  -->
         <header class="header">
             <div class="header-l">
@@ -30,7 +29,6 @@
                         </span>
                     </button>
                 </form>
-
             </div>
             <h1>ADMIN MNS</h1>
             <p>user type : <?= $_SESSION['user_type'] ?></p>
