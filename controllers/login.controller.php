@@ -9,16 +9,15 @@ function formLoginAction()
 
         if (!empty($_POST['email']) && !empty($_POST['password'])) {
             require '../models/login/login.manager.php';
-            connect();
+            connect($_POST['email'], $_POST['password']);
         } else {
             echo "Veuillez remplir tous les champs.";
         }
     }
 }
 
-function logout()
+function logoutAction()
 {
-    $_SESSION['user_connecter'] = "";
-    session_destroy();
-    header('../login.php');
+    require '../models/login/login.manager.php';
+    disconnect();
 }

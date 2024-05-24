@@ -29,6 +29,8 @@
                             search
                         </span>
                     </button>
+                    <p>user type : <?= $_SESSION['user_type'] ?></p>
+                    <p>user mail : <?= $_SESSION['user_mail'] ?></p>
                 </form>
             </div>
             <div class="header-r">
@@ -38,9 +40,11 @@
                 <span class="material-symbols-rounded">
                     notifications
                 </span>
-                <span class="material-symbols-rounded">
-                    logout
-                </span>
+                <a href="?controller=login&action=logout">
+                    <span class="material-symbols-rounded">
+                        logout
+                    </span>
+                </a>
             </div>
         </header>
 

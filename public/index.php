@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 // On inclut dynamiquement le fichier de contrôleur
 
 if (!empty($_GET['controller'])) {
