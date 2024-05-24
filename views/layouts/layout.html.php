@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Layout</title>
     <!-- CSS -->
-    <link rel="stylesheet" href="/css/index-style.css">
+    <link rel="stylesheet" href="/css/layout-style.css">
     <!-- Ubuntu font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,50 +18,45 @@
 
 <body>
     <div class="grid-container">
-
         <!-- Header  -->
         <header class="header">
             <div class="header-l">
                 <form action="" class="form-search">
                     <input id="search-bar" type="search" placeholder="Recherche">
-                    <button type="submit">
+                    <button type="button">
                         <span class="material-symbols-rounded">
                             search
                         </span>
                     </button>
                 </form>
             </div>
+            <h1>ADMIN MNS</h1>
+            <p>user type : <?= $_SESSION['user_type'] ?></p>
+            <p>user mail : <?= $_SESSION['user_mail'] ?></p>
             <div class="header-r">
-                <span class="material-symbols-rounded">
-                    notifications
-                </span>
                 <span class="material-symbols-rounded">
                     shield_person
                 </span>
+                <span class="material-symbols-rounded">
+                    notifications
+                </span>
+                <a href="?controller=login&action=logout">
+                    <span class="material-symbols-rounded">
+                        logout
+                    </span>
+                </a>
             </div>
         </header>
-        <!-- Header  -->
 
         <!-- Sidebar -->
         <aside id="sidebar">
-            <div class="logo">
-                <img src="/img/carlos.png" alt="logo">
-                <h1>Admin MNS</h1>
-            </div>
-            <ul>
-                <li>Accueil</li>
-                <li>Classes</li>
-                <li>Absences</li>
-                <li>Retards</li>
-            </ul>
+            <?php require $sidebarTemplate ?>
         </aside>
-        <!-- Sidebar -->
 
         <!-- Main -->
         <main class="main-container">
-            <?php require $template ?>
+            <?php require $template; ?>
         </main>
-        <!-- Main -->
 
     </div>
 </body>

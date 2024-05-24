@@ -1,12 +1,13 @@
 <?php
 
+session_start();
 // On inclut dynamiquement le fichier de contrôleur
 
 if (!empty($_GET['controller'])) {
 
     $controllerName = $_GET['controller'];
 } else {
-    $controllerName = 'home';
+    $controllerName = 'login'; // controlleur par défault
 }
 
 if (file_exists('../controllers/' . $controllerName . '.controller.php')) {
@@ -15,10 +16,10 @@ if (file_exists('../controllers/' . $controllerName . '.controller.php')) {
 
     if (!empty($_GET['action'])) {
 
-        $action = $_GET['action'];
+        $action = $_GET['action'] . "Action";
     } else {
 
-        $action = 'index'; // Action par défault du contrôleur
+        $action = 'formLoginAction'; // Action par défault du contrôleur
     }
     if (function_exists($action)) {
         $action(); // Index par défaut

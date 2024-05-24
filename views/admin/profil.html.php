@@ -1,3 +1,4 @@
+<h1><?= $title ?> </h1>
 <?php foreach ($recordset as $row) { ?>
     <div class="welcome">
         <h1>Bonjour , <?= $row['user_name'] ?> </h1>
