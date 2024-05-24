@@ -42,8 +42,8 @@
             </div>
             <div class="rightbox">
                 <div class="centerbox">
-                    <p class="welcome">Bienvenue sur notre site <b>ADMIN</b></p>
-                    <p class="welcometext connect">Connectez vous à votre espace MNS</p>
+                    <p class="welcome">Bienvenue sur <b>ADMIN MNS.</b></p>
+                    <p class="welcometext connect">Connectez vous à votre espace.</p>
                     <p class="welcometext candidate">Vous souhaitez candidater à une de nos formations ?
                     <div class="lien">
                         <svg xmlns="http://www.w3.org/2000/svg" height="35px" viewBox="0 -960 960 960" width="35px" fill="#0581ff">
