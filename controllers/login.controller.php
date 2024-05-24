@@ -11,7 +11,6 @@ function formLoginAction()
             require '../models/login/login.manager.php';
             connect($_POST['email'], $_POST['password']);
         } else {
-            echo "Veuillez remplir tous les champs.";
         }
     }
 }

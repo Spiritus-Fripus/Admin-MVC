@@ -22,6 +22,11 @@ a {
   color: #ffffff;
   font-weight: 600;
 }
+
+.material-symbols-rounded {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
 .maincontainer {
   height: 100%;
 }
@@ -31,7 +36,6 @@ a {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border: 1px solid #293f57;
   border-radius: 15px;
 }
 .leftbox {
@@ -60,43 +64,19 @@ a {
   height: 100%;
   width: 100%;
 }
-.box input {
-  width: 65%;
+.box .input {
+  width: 70%;
   height: 12%;
   border: 1px solid white;
   text-align: center;
   /*border-radius: 5px;*/
+  margin-bottom: 10px;
   border-bottom: 1px solid #3f4e69;
   color: #3f4e69;
   font-size: 20px;
   transition: color 0.5s, border-bottom-color 0.3s;
 }
-input:hover {
-  animation: borderAnimation 2s linear;
-}
 
-@keyframes borderAnimation {
-  0% {
-    transform: scale(1.3);
-    border-bottom-color: #366eb3;
-  }
-  25% {
-    transform: scale(1.6);
-    border-bottom-color: #256fc9;
-  }
-  50% {
-    transform: scale(2);
-    border-bottom-color: #055af7;
-  }
-  75% {
-    transform: scale(1.6);
-    border-bottom-color: #2b6ab7;
-  }
-  100% {
-    transform: scale(1.3);
-    border-bottom-color: #366eb3;
-  }
-}
 .box input[type="text"],
 textarea {
   background: white;
@@ -104,20 +84,36 @@ textarea {
 }
 form a {
   text-decoration: none;
-  color: #3f4e69;
+  color: #0462f9;
+  width: 160px;
+  height: 25px;
   font-size: 15px;
-  margin-top: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+form a:hover {
+  background-color: #6363f011;
 }
 .box button {
-  width: 24%;
-  height: 12%;
+  width: 72%;
+  height: 9%;
   background-color: #516986;
   border: 1px solid #243b55;
-  border-radius: 15px;
-  font-size: 12px;
+  border-radius: 4px;
+  font-size: 14px;
   color: white;
+  margin: 5px 0px 5px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
+.box button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px #4769ce7d;
+}
 .rightbox {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 8px, rgba(0, 0, 0, 0.23) 0px 5px 8px;
   border-radius: 5px;
@@ -128,10 +124,11 @@ form a {
   width: 45%;
   background-color: #2e445e;
   border-radius: 2px;
+  font-family: "rubik";
 }
 
 .rightbox .centerbox {
-  width: 65%;
+  width: 75%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -139,24 +136,47 @@ form a {
 }
 
 .rightbox .welcome {
-  text-align: center;
+  width: 100%;
   margin: 0px;
   font-size: 40px;
-  margin-bottom: 10px;
   color: rgb(255, 255, 255);
 }
 
 .rightbox .welcome b {
-  font-size: 45px;
+  font-size: 48px;
   font-weight: 700;
 }
 
 .rightbox .welcometext {
   text-align: start;
   margin: 0px;
-  font-size: 20px;
+  font-size: 28px;
   color: rgb(255, 255, 255);
   width: 100%;
   font-weight: 200;
   text-decoration: none;
+}
+p .welcometext .connect {
+  text-align: center;
+}
+p.welcometext.candidate {
+  font-size: 20px;
+  margin-top: 25px;
+}
+.lien {
+  margin: 0px 0px 0px -5px;
+  height: 30px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: auto;
+}
+.lien:hover a {
+  color: #0462f9;
+  text-decoration: underline;
+}
+
+.lien a {
+  color: #0281ff;
 }
