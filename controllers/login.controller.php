@@ -2,9 +2,10 @@
 
 function formLoginAction()
 {
-    // Start output buffering
+    // Commence la mise en mémoire tampon de sortie
     ob_start();
 
+    // Définition du titre et inclusion du fichier de vue
     $title = "LOGIN MNS";
     require '../views/home/index-login.html.php';
     $type_user = '';
@@ -26,19 +27,21 @@ function formLoginAction()
                             $type_user = 'student';
                             break;
                     }
+                    // Stocke le type d'utilisateur et l'email dans la session
                     $_SESSION['user_type'] = $type_user;
                     $_SESSION['user_mail'] = $_POST['email'];
-                    //ob_end_clean() échouera sans un tampon de sortie actif démarré avec le drapeau PHP_OUTPUT_HANDLER_REMOVABLE.
-                    //ob_end_clean() supprimera le contenu du tampon de sortie actif même s'il a été démarré sans le drapeau PHP_OUTPUT_HANDLER_CLEANABLE.
+
+                    // Termine la mise en mémoire tampon de sortie et nettoie le tampon
                     ob_end_clean();
+
+                    // Redirige vers l'index de l'utilisateur connecté
                     header("Location: ?controller=$type_user&action=index");
                     exit();
                 }
             }
         }
     }
-    //ob_end_flush() échouera sans un tampon de sortie actif démarré avec le drapeau PHP_OUTPUT_HANDLER_REMOVABLE.
-    //ob_end_flush() videra (enverra) la valeur de retour du gestionnaire de sortie même si le tampon de sortie actif a été démarré sans le drapeau PHP_OUTPUT_HANDLER_FLUSHABLE.
+    // Termine la mise en mémoire tampon de sortie et envoie le contenu du tampon
     ob_end_flush();
 }
 
