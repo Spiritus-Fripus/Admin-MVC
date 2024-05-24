@@ -1,7 +1,5 @@
 <?php
 
-
-
 function indexAction()
 {
     $title = "Bienvenue sur admin MNS , vous etes connecté en tant qu'administateur";

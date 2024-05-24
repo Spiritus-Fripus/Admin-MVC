@@ -8,7 +8,6 @@ function formLoginAction()
     require '../models/login/login.manager.php';
 
     if (isset($_POST['send'])) {
-
         if (!empty($_POST['email']) && !empty($_POST['password'])) {
             $response = connect($_POST['email']);
             if ($response) {
@@ -30,7 +29,6 @@ function formLoginAction()
                     exit();
                 }
             }
-        } else {
         }
     }
 }
