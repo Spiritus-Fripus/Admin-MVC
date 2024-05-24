@@ -29,10 +29,12 @@
                             search
                         </span>
                     </button>
-                    <p>user type : <?= $_SESSION['user_type'] ?></p>
-                    <p>user mail : <?= $_SESSION['user_mail'] ?></p>
                 </form>
+
             </div>
+            <h1>ADMIN MNS</h1>
+            <p>user type : <?= $_SESSION['user_type'] ?></p>
+            <p>user mail : <?= $_SESSION['user_mail'] ?></p>
             <div class="header-r">
                 <span class="material-symbols-rounded">
                     shield_person
@@ -50,10 +52,6 @@
 
         <!-- Sidebar -->
         <aside id="sidebar">
-            <div class="logo">
-                <img src="/img/carlos.png" alt="logo">
-                <h1>Admin MNS</h1>
-            </div>
             <?php require $sidebarTemplate ?>
         </aside>
 
