@@ -3,7 +3,6 @@ body {
     padding: 0;
     font-family: "Ubuntu", sans-serif;
 }
-
 a {
     text-decoration: none;
     color: whitesmoke;
@@ -26,12 +25,13 @@ a {
 /* ========== HEADER ========== */
 
 .header {
+    position: relative;
     color: whitesmoke;
-    height: 8vh;
+    height: 100px;
     grid-area: header;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: 0 40px;
     background: #141e30; /* fallback for old browsers */
     background: -webkit-linear-gradient(
@@ -70,6 +70,9 @@ a {
 }
 
 .header-r {
+    position: absolute;
+    top: 35px;
+    right: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -79,11 +82,12 @@ a {
 /* ========== SIDEBAR ========== */
 
 #sidebar {
+    position: relative;
+    grid-area: sidebar;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: whitesmoke;
-    grid-area: sidebar;
     height: 100%;
     background: #141e30; /* fallback for old browsers */
     background: -webkit-linear-gradient(
@@ -98,29 +102,25 @@ a {
     ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-#logo {
-    margin-top: 20px; /* Add some space at the top if necessary */
+#sidebar .logo {
+    position: absolute;
+    left: 50px;
+    top: 15px;
 }
 
-#sidebar ul {
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 30px;
-    flex-grow: 1; /* Allow ul to grow and take up available space */
-    justify-content: center; /* Center the list items vertically */
-    width: 100%; /* Ensure the ul takes full width for proper centering */
-    text-align: center; /* Center the text of the list items */
+#sidebar .menu {
+    position: absolute;
+    left: 10px;
+    top: 150px;
 }
-
 #sidebar li {
     font-size: 2rem;
     font-weight: 700;
     list-style: none;
 }
 
-.querie-button {
+.querie-button,
+.burger {
     display: none;
 }
 
@@ -185,19 +185,19 @@ a {
 
     #sidebar {
         flex-direction: row;
-        overflow-x: auto;
         padding: 0 20px;
+        height: 100px;
     }
 
-    #sidebar ul {
-        flex-direction: row;
-        justify-content: center;
-        padding: auto;
+    #sidebar .menu {
+        display: none;
     }
 
-    #sidebar li {
-        font-size: 1.5rem;
-        padding: 10px 20px;
+    #sidebar .burger {
+        display: block;
+        position: absolute;
+        top: 37px;
+        left: 10px;
     }
 
     .header {
@@ -205,39 +205,9 @@ a {
     }
 
     .querie-button {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-    #sidebar {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    #sidebar ul {
-        justify-content: center;
-        align-items: stretch;
-    }
-
-    #sidebar li {
-        font-size: 1rem;
-        text-align: center;
-        justify-content: center;
-    }
-    .logo {
-        text-align: center;
-    }
-    .querie-button {
-        flex-direction: row;
-        justify-content: center;
-        gap: 100px;
-        padding-bottom: 20px;
-    }
-    .main-container {
-        padding: 20px;
+        display: inline;
+        position: absolute;
+        top: 35px;
+        right: 10px;
     }
 }
