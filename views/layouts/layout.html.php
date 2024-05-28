@@ -30,8 +30,6 @@
                     </button>
                 </form>
             </div>
-            <p>user type : <?= $_SESSION['user_type'] ?></p>
-            <p>user mail : <?= $_SESSION['user_mail'] ?></p>
             <div class="header-r">
                 <span class="material-symbols-rounded">
                     shield_person
@@ -39,11 +37,11 @@
                 <span class="material-symbols-rounded">
                     notifications
                 </span>
-                <a href="?controller=login&action=logout">
-                    <span class="material-symbols-rounded">
+                <span class="material-symbols-rounded">
+                    <a href="?controller=login&action=logout">
                         logout
-                    </span>
-                </a>
+                    </a>
+                </span>
             </div>
         </header>
 
@@ -52,7 +50,14 @@
             <div class="logo">
                 <h1>ADMIN MNS</h1>
             </div>
-            <?php require $sidebarTemplate ?>
+            <div class="burger">
+                <span class="material-symbols-rounded">
+                    menu
+                </span>
+            </div>
+            <div class="menu">
+                <?php require $sidebarTemplate ?>
+            </div>
             <div class="querie-button">
                 <span class="material-symbols-rounded">
                     shield_person
@@ -60,11 +65,11 @@
                 <span class="material-symbols-rounded">
                     notifications
                 </span>
-                <a href="?controller=login&action=logout">
-                    <span class="material-symbols-rounded">
+                <span class="material-symbols-rounded">
+                    <a href="?controller=login&action=logout">
                         logout
-                    </span>
-                </a>
+                    </a>
+                </span>
             </div>
         </aside>
 

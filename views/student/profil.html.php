@@ -1,16 +1,30 @@
-<h1><?= $title ?> </h1>
+<link rel="stylesheet" href="/css/profil-style.css">
+
 <?php foreach ($recordset as $row) { ?>
-    <div class="welcome">
-        <h1>Bonjour , <?= $row['user_name'] ?> </h1>
+
+    <div class="profil-container">
+        <div class="profil-header-container">
+            <div class="title">
+                <h1><?= $title ?> </h1>
+            </div>
+            <div class="img-container">
+                <img src="/img/Ilya-Kushinov.jpg" alt="">
+            </div>
+        </div>
+        <div class="profil-main-container">
+            <h3>Information de l'utilisateur:</h3>
+            <ul>
+                <li> id : <?= $row['user_id'] ?></li>
+                <hr>
+                <li> name : <?= $row['user_name'] ?></li>
+                <hr>
+                <li> firstname : <?= $row['user_firstname'] ?></li>
+                <hr>
+                <li> mail : <?= $row['user_mail'] ?></li>
+                <hr>
+                <li> birthday : <?= $row['user_birthday_date'] ?></li>
+                <hr>
+            </ul>
+        </div>
     </div>
-    <h2>Information de l'utilisateur:</h2>
-    <hr>
-    <ul>
-        <li> id : <?= $row['user_id'] ?></li>
-        <li> name : <?= $row['user_name'] ?></li>
-        <li> firstname : <?= $row['user_firstname'] ?></li>
-        <li> mail : <?= $row['user_mail'] ?></li>
-        <li> birthday : <?= $row['user_birthday_date'] ?></li>
-    </ul>
-    <hr>
 <?php } ?>
