@@ -28,7 +28,8 @@ a {
 }
 
 .maincontainer {
-    height: 100%;
+  height: 100%;
+  width: 100%;
 }
 .container {
     height: 100%;
@@ -39,22 +40,22 @@ a {
     border-radius: 15px;
 }
 .leftbox {
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 8px, rgba(0, 0, 0, 0.23) 0px 5px 8px;
-    height: 60%;
-    width: 25%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ffffff;
-    border-radius: 2px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 8px, rgba(0, 0, 0, 0.23) 0px 5px 8px;
+  height: 60%;
+  width: calc(28% + 0.8vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border-radius: 2px;
 }
 .box {
-    border-radius: 2px;
-    height: 60%;
-    width: 70%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  border-radius: 2px;
+  height: 60%;
+  width: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .box form {
     display: flex;
@@ -65,16 +66,16 @@ a {
     width: 100%;
 }
 .box .input {
-    width: 70%;
-    height: 12%;
-    border: 1px solid white;
-    text-align: center;
-    /*border-radius: 5px;*/
-    margin-bottom: 10px;
-    border-bottom: 1px solid #3f4e69;
-    color: #3f4e69;
-    font-size: 20px;
-    transition: color 0.5s, border-bottom-color 0.3s;
+  width: calc(70% + 0.8vw);
+  height: calc(12% + 1vh);
+  border: 1px solid white;
+  text-align: center;
+  /*border-radius: 5px;*/
+  margin-bottom: 10px;
+  border-bottom: 1px solid #3f4e69;
+  color: #3f4e69;
+  font-size: 20px;
+  transition: color 0.5s, border-bottom-color 0.3s;
 }
 
 .box input[type="text"],
@@ -82,32 +83,36 @@ textarea {
     background: white;
     background-image: none;
 }
+.box input[type="text"],
+.box input[type="password"] {
+  font-size: calc(10px + 0.6vw);
+}
 form a {
-    text-decoration: none;
-    color: #0462f9;
-    width: 160px;
-    height: 25px;
-    font-size: 15px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  text-decoration: none;
+  color: #0462f9;
+  width: 160px;
+  height: 25px;
+  font-size: calc(2px + 0.8vw);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 form a:hover {
     background-color: #6363f011;
 }
 .box button {
-    width: 72%;
-    height: 9%;
-    background-color: #516986;
-    border: 1px solid #243b55;
-    border-radius: 4px;
-    font-size: 14px;
-    color: white;
-    margin: 5px 0px 5px 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 75%;
+  height: calc(20px + 1.8vh);
+  background-color: #516986;
+  border: 1px solid #243b55;
+  border-radius: 4px;
+  font-size: 14px;
+  color: white;
+  margin: 5px 0px 5px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .box button:hover {
@@ -115,68 +120,229 @@ form a:hover {
     box-shadow: 0 5px 10px #4769ce7d;
 }
 .rightbox {
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 8px, rgba(0, 0, 0, 0.23) 0px 5px 8px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 60%;
-    width: 45%;
-    background-color: #2e445e;
-    border-radius: 2px;
-    font-family: "rubik";
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 8px, rgba(0, 0, 0, 0.23) 0px 5px 8px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60%;
+  width: 42%;
+  background-color: #2e445e;
+  border-radius: 2px;
+  font-family: "rubik";
 }
 
 .rightbox .centerbox {
-    width: 75%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  width: 82%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .rightbox .welcome {
-    width: 100%;
-    margin: 0px;
-    font-size: 40px;
-    color: rgb(255, 255, 255);
+  width: 100%;
+  margin: 0px;
+  font-size: calc(10px + 1.4vw);
+  color: rgb(255, 255, 255);
+  text-align: center;
 }
 
 .rightbox .welcome b {
-    font-size: 48px;
-    font-weight: 700;
+  font-size: calc(18px + 1.2vw);
+  font-weight: 700;
 }
 
 .rightbox .welcometext {
-    text-align: start;
-    margin: 0px;
-    font-size: 28px;
-    color: rgb(255, 255, 255);
-    width: 100%;
-    font-weight: 200;
-    text-decoration: none;
+  text-align: start;
+  margin: 0px;
+  font-size: calc(10px + 1.2vw);
+  color: rgb(255, 255, 255);
+  width: 100%;
+  font-weight: 200;
+  text-decoration: none;
 }
-p .welcometext .connect {
-    text-align: center;
+p.welcometext.connect {
+  text-align: center;
+  font-size: calc(8px + 1vw);
 }
-p.welcometext.candidate {
-    font-size: 20px;
-    margin-top: 25px;
+.welcometext.candidate {
+  font-size: calc(2px + 1.2vw);
+  padding-top: calc(22px + 1.2vh);
+}
+.welcometext.candidate p {
+  margin: 2px;
+  text-align: center;
+}
+.hidden {
+  display: none;
 }
 .lien {
-    margin: 0px 0px 0px -5px;
-    height: 30px;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: auto;
+  display: flex;
+  justify-content: center;
+  height: calc(8px +1vw);
+  font-size: calc(3px + 1.2vw);
+  width: 100%;
 }
 .lien:hover a {
-    color: #0462f9;
-    text-decoration: underline;
+  color: #0462f9;
 }
 
 .lien a {
     color: #0281ff;
+}
+
+.button {
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: calc(5px + 0.7vw);
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin-top: calc(2px + 0.2vh);
+  width: 55%;
+  min-height: calc(5px + 0.8vw);
+  padding: calc(0.45rem - 1px) calc(0.8rem - 1px);
+  position: relative;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+}
+
+.button:hover,
+.button:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button:active {
+  background-color: #f0f0f1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}
+/* PARTIE POUR LE RESPONSIVE */
+/* PARTIE POUR LE RESPONSIVE */
+/* PARTIE POUR LE RESPONSIVE */
+/* PARTIE POUR LE RESPONSIVE */
+/* PARTIE POUR LE RESPONSIVE */
+@media (max-width: 1024px) {
+  .leftbox {
+  }
+  .rightbox {
+  }
+  .rightbox .welcometext {
+  }
+  .box .input {
+  }
+  .box button {
+  }
+  .box a {
+  }
+}
+
+@media (max-width: 768px) {
+  .maincontainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+  }
+  .leftbox {
+    width: 60%;
+  }
+  .rightbox {
+    width: 40%;
+  }
+}
+
+@media (max-width: 500px) {
+  .hidden {
+    display: block;
+  }
+  .maincontainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .leftbox {
+    width: 90%;
+    font-family: "rubik";
+  }
+  .box {
+    height: 80%;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .rightbox {
+    display: none;
+    width: 90%;
+    font-family: "rubik";
+  }
+  input.input {
+    width: 100%;
+  }
+  p.welcome.hidden {
+    margin: 0px;
+    display: block;
+    color: #3f4e69;
+    font-size: calc(15px + 1.8vw);
+    text-align: center;
+  }
+  .lien {
+    height: 20px;
+  }
+  form a {
+    font-size: 10px;
+  }
+  button.button {
+    width: 35%;
+    height: 100%;
+    padding: 2px;
+    font-size: 10px;
+    color: white;
+  }
+  button.button a {
+    color: white;
+  }
+  .welcometext.candidate.hidden {
+    padding-top: 10px;
+    padding-bottom: 20px;
+    height: 15px;
+    font-size: calc(5px + 1vw);
+    width: 75%;
+  }
+  b {
+    font-size: calc(20px + 1.8vw);
+  }
 }
