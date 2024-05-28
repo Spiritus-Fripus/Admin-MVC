@@ -18,7 +18,6 @@
 
 <body>
     <div class="grid-container">
-
         <!-- Header  -->
         <header class="header">
             <div class="header-l">
@@ -29,10 +28,10 @@
                             search
                         </span>
                     </button>
-                    <p>user type : <?= $_SESSION['user_type'] ?></p>
-                    <p>user mail : <?= $_SESSION['user_mail'] ?></p>
                 </form>
             </div>
+            <p>user type : <?= $_SESSION['user_type'] ?></p>
+            <p>user mail : <?= $_SESSION['user_mail'] ?></p>
             <div class="header-r">
                 <span class="material-symbols-rounded">
                     shield_person
@@ -51,10 +50,22 @@
         <!-- Sidebar -->
         <aside id="sidebar">
             <div class="logo">
-                <img src="/img/carlos.png" alt="logo">
-                <h1>Admin MNS</h1>
+                <h1>ADMIN MNS</h1>
             </div>
             <?php require $sidebarTemplate ?>
+            <div class="querie-button">
+                <span class="material-symbols-rounded">
+                    shield_person
+                </span>
+                <span class="material-symbols-rounded">
+                    notifications
+                </span>
+                <a href="?controller=login&action=logout">
+                    <span class="material-symbols-rounded">
+                        logout
+                    </span>
+                </a>
+            </div>
         </aside>
 
         <!-- Main -->
