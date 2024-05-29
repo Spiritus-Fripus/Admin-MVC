@@ -75,7 +75,9 @@
 
         <!-- Main -->
         <main class="main-container">
-            <?php require $template; ?>
+            <div class="main-body">
+                <?php require $template; ?>
+            </div>
         </main>
 
     </div>

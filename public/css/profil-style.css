@@ -1,3 +1,7 @@
+li {
+    list-style-type: none;
+}
+
 .title {
     text-align: center;
     font-size: 1.5rem;
@@ -5,7 +9,9 @@
 .profil-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     flex-wrap: wrap;
+    padding: 0 20px;
 }
 .profil-header-container {
     display: flex;
