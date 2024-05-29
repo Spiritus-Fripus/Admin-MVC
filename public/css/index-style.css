@@ -1,30 +1,30 @@
 body,
 html {
-  padding: 0px;
-  margin: 0px;
+    padding: 0px;
+    margin: 0px;
 }
 body {
-  height: 100vh;
-  background: #141e30; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to left,
-    #293f57,
-    #243149
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to left,
-    #283e58,
-    #212d45
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    height: 100vh;
+    background: #141e30; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+        to left,
+        #293f57,
+        #243149
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+        to left,
+        #283e58,
+        #212d45
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 a {
-  text-decoration: none;
-  color: #ffffff;
-  font-weight: 600;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
 }
 
 .material-symbols-rounded {
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
 .maincontainer {
@@ -32,12 +32,12 @@ a {
   width: 100%;
 }
 .container {
-  height: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  border-radius: 15px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
 }
 .leftbox {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 8px, rgba(0, 0, 0, 0.23) 0px 5px 8px;
@@ -58,12 +58,12 @@ a {
   justify-content: center;
 }
 .box form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
 }
 .box .input {
   width: calc(70% + 0.8vw);
@@ -80,8 +80,8 @@ a {
 
 .box input[type="text"],
 textarea {
-  background: white;
-  background-image: none;
+    background: white;
+    background-image: none;
 }
 .box input[type="text"],
 .box input[type="password"] {
@@ -99,7 +99,7 @@ form a {
   justify-content: center;
 }
 form a:hover {
-  background-color: #6363f011;
+    background-color: #6363f011;
 }
 .box button {
   width: 75%;
@@ -116,8 +116,8 @@ form a:hover {
 }
 
 .box button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 5px 10px #4769ce7d;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px #4769ce7d;
 }
 .rightbox {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 8px, rgba(0, 0, 0, 0.23) 0px 5px 8px;
@@ -189,7 +189,7 @@ p.welcometext.connect {
 }
 
 .lien a {
-  color: #0281ff;
+    color: #0281ff;
 }
 
 .button {
