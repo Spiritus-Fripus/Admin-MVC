@@ -16,6 +16,7 @@
   padding: 15px;
   border-top: 1px solid #184999;
   width: 100%;
+  height: 60%;
   box-sizing: border-box;
   text-align: center;
 }
@@ -46,9 +47,43 @@
   margin-top: auto;
   width: 100%;
 }
-
+.boutons-modif {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  font-family: "rubik";
+}
 .bouton-suppression {
-  background-color: #b02a2a;
+  background: #ed213a; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    #93291e,
+    #ed213a
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #93291e,
+    #ed213a
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  width: 100%;
+  height: 30px;
+  margin-top: auto;
+}
+.bouton-modification {
+  background: #56ab2f; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #a8e063,
+    #56ab2f
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #a8e063,
+    #56ab2f
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: white;
   border: 1px solid white;
   border-radius: 5px;
@@ -65,7 +100,6 @@
   width: 100%;
   height: 100%;
   max-width: 800px;
-  margin-bottom: 10px;
   display: flex;
   align-items: center;
 }
@@ -76,6 +110,7 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  margin: 2%;
 }
 
 .entree {
