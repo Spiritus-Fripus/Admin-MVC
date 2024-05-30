@@ -8,7 +8,7 @@
                 <h1><?= $title ?> </h1>
             </div>
             <div class="img-container">
-                <img src="/img/Ilya-Kushinov.jpg" alt="">
+                <img src="/img/red-girl" alt="">
             </div>
         </div>
         <div class="profil-main-container">
