@@ -1,12 +1,11 @@
 <?php
-//toutes les verifs dans le controller 
+
+// Fonction pour afficher et ajouter une formation
 function viewAndAddFormationAction()
 {
     require_once '../models/admin/formation.manager.php';
     $formations = getAllFormation();
 
-    require_once '../models/admin/formation.manager.php';
-    //require '../admin/include/verify.php';
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         createFormation();
         // Redirection vers la liste des formations
@@ -19,17 +18,29 @@ function viewAndAddFormationAction()
     require "../views/layouts/layout.html.php";
 }
 
+// Fonction pour ajouter une formation
 function addFormationAction()
 {
+    require_once '../models/admin/formation.manager.php';
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        createFormation();
+        // Redirection vers la liste des formations
+        header("Location: ?controller=formation&action=viewandaddformation");
+        exit();
+    }
+
+    $sidebarTemplate = '../views/admin/sidebar/admin-sidebar.html.php';
+    $template = "../views/admin/formation/add-formation.html.php";
+    require "../views/layouts/layout.html.php";
 }
 
-
+// Fonction pour supprimer une formation
 function deleteFormationAction()
 {
     require '../models/admin/formation.manager.php';
-    //require '../admin/include/verify.php';
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && (isset($_POST['formation_id']))) {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['formation_id'])) {
         deleteFormation();
         // Redirection vers la liste des formations
         header("Location: ?controller=formation&action=viewandaddformation");
@@ -42,7 +53,8 @@ function deleteFormationAction()
     require "../views/layouts/layout.html.php";
 }
 
-
+// Fonction pour modifier une formation
 function modifyFormationAction()
 {
+    // Implémentation à venir
 }
