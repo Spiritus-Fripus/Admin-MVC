@@ -9,7 +9,7 @@ a {
 }
 
 a:hover {
-    color: #ffba08;
+    color: #aea188;
 }
 li {
     list-style: none;
@@ -74,7 +74,7 @@ li {
 }
 
 .header button:hover {
-    color: #ffba08;
+    color: #aea188;
     cursor: pointer;
 }
 
