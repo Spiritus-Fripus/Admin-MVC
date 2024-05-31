@@ -222,6 +222,7 @@ li {
     #sidebar .burger {
         display: flex;
         order: -1;
+        cursor: pointer;
     }
 
     #sidebar .burger:hover {
@@ -247,6 +248,8 @@ li {
         z-index: 2;
         width: 100%;
         height: 100vh;
+        margin-left: -100%;
+        transition: all 0.6s ease;
     }
 
     .burger-menu li a {
@@ -258,5 +261,8 @@ li {
     }
     .burger-menu li a:hover {
         color: #ffba08;
+    }
+    .burger-menu-toggle {
+        margin: 0;
     }
 }
