@@ -1,3 +1,6 @@
+<?php
+$config = loadConfig();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,8 +26,8 @@
 <body>
     <!-- Burger-menu (hidden par défaut) -->
     <div class="burger-menu">
-        <?php if (isset($sidebarTemplate)) { ?>
-            <?php require $sidebarTemplate ?>
+        <?php if (isset($config['sidebarTemplate'])) { ?>
+            <?php require $config['sidebarTemplate'] ?>
         <?php } ?>
     </div>
 
@@ -42,7 +45,9 @@
                 </form>
             </div>
             <div class="header-r">
-                <?php require $icons ?>
+                <?php if (isset($config['icons'])) { ?>
+                    <?php require $config['icons'] ?>
+                <?php } ?>
             </div>
         </header>
 
@@ -57,12 +62,12 @@
                 </span>
             </div>
             <div class="menu">
-                <?php if (isset($sidebarTemplate)) { ?>
-                    <?php require $sidebarTemplate ?>
+                <?php if (isset($config['sidebarTemplate'])) { ?>
+                    <?php require $config['sidebarTemplate'] ?>
                 <?php } ?>
             </div>
             <div class="querie-button">
-                <?php require $icons ?>
+                <?php require $config['icons'] ?>
             </div>
         </aside>
 
