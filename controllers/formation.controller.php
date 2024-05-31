@@ -50,6 +50,7 @@ function deleteFormationAction()
     $cssFile = '/css/admin/formation-style.css';
     $formations = getAllFormation();
     $template = "../views/admin/formation/formation.html.php";
+    $sidebarTemplate = '../views/sidebar/admin-sidebar.html.php';
     require "../views/layouts/layout.html.php";
 }
 
@@ -69,5 +70,6 @@ function modifyFormationAction()
     $cssFile = '/css/admin/formation-style.css';
     $formations = getAllFormation();
     $template = "../views/admin/formation/modifyformation.html.php";
+    $sidebarTemplate = '../views/sidebar/admin-sidebar.html.php';
     require "../views/layouts/layout.html.php";
 }
