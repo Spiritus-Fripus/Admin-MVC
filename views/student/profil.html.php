@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="/css/profil-style.css">
-
 <?php foreach ($recordset as $row) { ?>
 
     <div class="profil-container">
@@ -8,7 +6,7 @@
                 <h1><?= $title ?> </h1>
             </div>
             <div class="img-container">
-                <img src="/img/red-girl" alt="">
+                <img src="/img/space-girl.png" alt="">
             </div>
         </div>
         <div class="profil-main-container">

@@ -49,4 +49,7 @@ li {
         justify-content: center;
         padding-bottom: 20px;
     }
+    .profil-header-container img {
+        z-index: 1;
+    }
 }

@@ -5,8 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Layout</title>
-    <!-- CSS -->
+    <!-- CSS LAYOUT -->
     <link rel="stylesheet" href="/css/layout-style.css">
+    <!-- CSS TEMPLATES -->
+    <?php if (isset($cssFile)) { ?>
+        <link rel="stylesheet" href="<?= $cssFile; ?>">
+    <?php } ?>
     <!-- Ubuntu font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,6 +21,11 @@
 </head>
 
 <body>
+    <div class="burger-menu">
+        <?php if (isset($sidebarTemplate)) { ?>
+            <?php require $sidebarTemplate ?>
+        <?php } ?>
+    </div>
     <div class="grid-container">
         <!-- Header  -->
         <header class="header">
@@ -56,7 +65,9 @@
                 </span>
             </div>
             <div class="menu">
-                <?php require $sidebarTemplate ?>
+                <?php if (isset($sidebarTemplate)) { ?>
+                    <?php require $sidebarTemplate ?>
+                <?php } ?>
             </div>
             <div class="querie-button">
                 <span class="material-symbols-rounded">
@@ -76,11 +87,14 @@
         <!-- Main -->
         <main class="main-container">
             <div class="main-body">
-                <?php require $template; ?>
+                <?php if (isset($template)) { ?>
+                    <?php require $template; ?>
+                <?php } ?>
             </div>
         </main>
 
     </div>
+    <script src="/js/burger-menu.js"></script>
 </body>
 
 </html>
