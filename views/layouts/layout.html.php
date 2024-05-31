@@ -21,11 +21,13 @@
 </head>
 
 <body>
+    <!-- Burger-menu (hidden par défaut) -->
     <div class="burger-menu">
         <?php if (isset($sidebarTemplate)) { ?>
             <?php require $sidebarTemplate ?>
         <?php } ?>
     </div>
+
     <div class="grid-container">
         <!-- Header  -->
         <header class="header">
@@ -40,17 +42,7 @@
                 </form>
             </div>
             <div class="header-r">
-                <span class="material-symbols-rounded">
-                    shield_person
-                </span>
-                <span class="material-symbols-rounded">
-                    notifications
-                </span>
-                <span class="material-symbols-rounded">
-                    <a href="?controller=login&action=logout">
-                        logout
-                    </a>
-                </span>
+                <?php require $icons ?>
             </div>
         </header>
 
@@ -70,17 +62,7 @@
                 <?php } ?>
             </div>
             <div class="querie-button">
-                <span class="material-symbols-rounded">
-                    shield_person
-                </span>
-                <span class="material-symbols-rounded">
-                    notifications
-                </span>
-                <span class="material-symbols-rounded">
-                    <a href="?controller=login&action=logout">
-                        logout
-                    </a>
-                </span>
+                <?php require $icons ?>
             </div>
         </aside>
 
