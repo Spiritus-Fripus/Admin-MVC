@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="/css/profil-style.css">
-
 <?php foreach ($recordset as $row) { ?>
 
     <div class="profil-container">

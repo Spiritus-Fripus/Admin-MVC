@@ -12,7 +12,7 @@ function viewAndAddFormationAction()
         header("Location: ?controller=formation&action=viewandaddformation");
         exit();
     }
-
+    $cssFile = '/css/admin/formation-style.css';
     $sidebarTemplate = '../views/admin/sidebar/admin-sidebar.html.php';
     $template = "../views/admin/formation/formation.html.php";
     require "../views/layouts/layout.html.php";
@@ -29,7 +29,7 @@ function addFormationAction()
         header("Location: ?controller=formation&action=viewandaddformation");
         exit();
     }
-
+    $cssFile = '/css/admin/formation-style.css';
     $sidebarTemplate = '../views/admin/sidebar/admin-sidebar.html.php';
     $template = "../views/admin/formation/add-formation.html.php";
     require "../views/layouts/layout.html.php";
@@ -47,8 +47,8 @@ function deleteFormationAction()
         exit();
     }
 
+    $cssFile = '/css/admin/formation-style.css';
     $formations = getAllFormation();
-
     $template = "../views/admin/formation/formation.html.php";
     require "../views/layouts/layout.html.php";
 }

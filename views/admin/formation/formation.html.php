@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="/css/admin/formation-style.css">
 <div class="content-container">
     <ul class="formations">
         <?php foreach ($formations as $formation) { ?>
