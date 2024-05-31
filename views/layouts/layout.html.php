@@ -42,19 +42,7 @@
                 </form>
             </div>
             <div class="header-r">
-                <a href='?controller=<?= $_SESSION['user_type'] ?>&action=profil'>
-                    <span class="material-symbols-rounded">
-                        shield_person
-                    </span>
-                </a>
-                <span class="material-symbols-rounded">
-                    notifications
-                </span>
-                <span class="material-symbols-rounded">
-                    <a href="?controller=login&action=logout">
-                        logout
-                    </a>
-                </span>
+                <?php require $icons ?>
             </div>
         </header>
 
@@ -74,17 +62,7 @@
                 <?php } ?>
             </div>
             <div class="querie-button">
-                <span class="material-symbols-rounded">
-                    shield_person
-                </span>
-                <span class="material-symbols-rounded">
-                    notifications
-                </span>
-                <span class="material-symbols-rounded">
-                    <a href="?controller=login&action=logout">
-                        logout
-                    </a>
-                </span>
+                <?php require $icons ?>
             </div>
         </aside>
 
