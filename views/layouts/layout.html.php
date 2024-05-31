@@ -21,11 +21,13 @@
 </head>
 
 <body>
+    <!-- Burger-menu (hidden par défaut) -->
     <div class="burger-menu">
         <?php if (isset($sidebarTemplate)) { ?>
             <?php require $sidebarTemplate ?>
         <?php } ?>
     </div>
+
     <div class="grid-container">
         <!-- Header  -->
         <header class="header">
@@ -40,9 +42,11 @@
                 </form>
             </div>
             <div class="header-r">
-                <span class="material-symbols-rounded">
-                    shield_person
-                </span>
+                <a href='?controller=<?= $_SESSION['user_type'] ?>&action=profil'>
+                    <span class="material-symbols-rounded">
+                        shield_person
+                    </span>
+                </a>
                 <span class="material-symbols-rounded">
                     notifications
                 </span>
