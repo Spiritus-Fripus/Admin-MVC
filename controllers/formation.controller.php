@@ -53,26 +53,32 @@ function deleteFormationAction()
     $icons = '../views/icons/icon-header.html.php';
     $formations = getAllFormation();
     $template = "../views/admin/formation/formation.html.php";
-    $sidebarTemplate = '../views/sidebar/admin-sidebar.html.php';
+    $sidebarTemplate = '../views/sidebar/sidebar.html.php';
     require "../views/layouts/layout.html.php";
 }
 
-// Fonction pour modifier une formation
 function modifyFormationAction()
 {
     require '../models/admin/formation.manager.php';
 
-    $formations = getAllFormation();
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['formation_id'])) {
-        updateformation();
-        //redirection vers la liste des formations
+        updateFormation();
+        // Redirection vers la liste des formations
+        header("Location: ?controller=formation&action=viewandaddformation");
+        exit();
+    }
+
+    if (isset($_GET['formation_id'])) {
+        $formation = getFormationById($_GET['formation_id']);
+    } else {
+        // Redirection ou message d'erreur si l'ID de la formation n'est pas fourni
         header("Location: ?controller=formation&action=viewandaddformation");
         exit();
     }
 
     $cssFile = '/css/admin/formation-style.css';
-    $formations = getAllFormation();
     $template = "../views/admin/formation/modifyformation.html.php";
-    $sidebarTemplate = '../views/sidebar/admin-sidebar.html.php';
+    $sidebarTemplate = '../views/sidebar/sidebar.html.php';
+    $icons = '../views/icons/icon-header.html.php';
     require "../views/layouts/layout.html.php";
 }

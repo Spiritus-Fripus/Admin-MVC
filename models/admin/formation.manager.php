@@ -9,6 +9,16 @@ function getAllFormation()
     return $stmt->fetchAll();
 }
 
+function getFormationById($formation_id)
+{
+    require '../config/connect.php';
+    $sql = 'SELECT * FROM table_formation WHERE formation_id = :formation_id';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':formation_id', $formation_id);
+    $stmt->execute();
+    return $stmt->fetch();
+}
+
 function createFormation()
 {
 

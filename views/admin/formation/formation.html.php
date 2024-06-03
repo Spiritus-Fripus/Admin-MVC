@@ -9,7 +9,7 @@
                     <form action="?controller=formation&action=deleteformation" method="post">
                         <button class="bouton-suppression" type="submit" value="<?= $formation['formation_id'] ?>" name="formation_id" id="deleteFormation"> Supprimer</button>
                     </form>
-                    <a href="?controller=formation&action=modifyformation&id=<?= $formation['formation_id'] ?>" class="bouton-modification">Modifier</a>
+                    <a href="?controller=formation&action=modifyFormation&formation_id=<?= $formation['formation_id'] ?>" class="bouton-modification">Modifier</a>
                 </div>
             </ul>
         <?php } ?>
