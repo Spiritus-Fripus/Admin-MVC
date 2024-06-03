@@ -1,5 +1,6 @@
 <?php
 $config = loadConfig();
+/** @var string $cssFile */
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,77 +12,69 @@ $config = loadConfig();
     <!-- CSS LAYOUT -->
     <link rel="stylesheet" href="/css/layout-style.css">
     <!-- CSS TEMPLATES -->
-    <?php if (isset($cssFile)) { ?>
-        <link rel="stylesheet" href="<?= $cssFile; ?>">
-    <?php } ?>
+    <link rel="stylesheet" href="<?= $cssFile; ?>">
     <!-- Ubuntu font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+          rel="stylesheet">
     <!-- Icon -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
 
 </head>
 
 <body>
-    <!-- Burger-menu (hidden par défaut) -->
-    <div class="burger-menu">
-        <?php if (isset($config['sidebarTemplate'])) { ?>
-            <?php require $config['sidebarTemplate'] ?>
-        <?php } ?>
-    </div>
+<!-- Burger-menu (hidden par défaut) -->
+<div class="burger-menu">
+    <?php require $config['sidebarTemplate'] ?>
+</div>
 
-    <div class="grid-container">
-        <!-- Header  -->
-        <header class="header">
-            <div class="header-l">
-                <form action="" class="form-search">
-                    <input id="search-bar" type="search" placeholder="Recherche">
-                    <button type="button">
+<div class="grid-container">
+    <!-- Header  -->
+    <header class="header">
+        <div class="header-l">
+            <form action="" class="form-search">
+                <input id="search-bar" type="search" placeholder="Recherche">
+                <button type="button">
                         <span class="material-symbols-rounded">
                             search
                         </span>
-                    </button>
-                </form>
-            </div>
-            <div class="header-r">
-                <?php if (isset($config['icons'])) { ?>
-                    <?php require $config['icons'] ?>
-                <?php } ?>
-            </div>
-        </header>
+                </button>
+            </form>
+        </div>
+        <div class="header-r">
+            <?php require $config['icons'] ?>
+        </div>
+    </header>
 
-        <!-- Sidebar -->
-        <aside id="sidebar">
-            <div class="logo">
-                <h1>ADMIN MNS</h1>
-            </div>
-            <div class="burger">
+    <!-- Sidebar -->
+    <aside id="sidebar">
+        <div class="logo">
+            <h1>ADMIN MNS</h1>
+        </div>
+        <div class="burger">
                 <span class="material-symbols-rounded">
                     menu
                 </span>
-            </div>
-            <div class="menu">
-                <?php if (isset($config['sidebarTemplate'])) { ?>
-                    <?php require $config['sidebarTemplate'] ?>
-                <?php } ?>
-            </div>
-            <div class="querie-button">
-                <?php require $config['icons'] ?>
-            </div>
-        </aside>
+        </div>
+        <div class="menu">
+            <?php require $config['sidebarTemplate'] ?>
+        </div>
+        <div class="querie-button">
+            <?php require $config['icons'] ?>
+        </div>
+    </aside>
 
-        <!-- Main -->
-        <main class="main-container">
-            <div class="main-body">
-                <?php if (isset($template)) { ?>
-                    <?php require $template; ?>
-                <?php } ?>
-            </div>
-        </main>
+    <!-- Main -->
+    <main class="main-container">
+        <div class="main-body">
+            <?php require $template; ?>
+        </div>
+    </main>
 
-    </div>
-    <script src="/js/burger-menu.js"></script>
+</div>
+<script src="/js/burger-menu.js"></script>
 </body>
 
 </html>
