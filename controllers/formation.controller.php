@@ -10,6 +10,7 @@ function viewAndAddFormationAction()
 {
     require_once '../models/admin/formation.manager.php';
     $formations = getAllFormation();
+    $config = loadConfig();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         createFormation();
@@ -28,6 +29,7 @@ function addFormationAction()
     require_once '../models/admin/formation.manager.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $config = loadConfig();
         createFormation();
         // Redirection vers la liste des formations
         header("Location: ?controller=formation&action=viewandaddformation");
@@ -44,6 +46,7 @@ function deleteFormationAction()
     require '../models/admin/formation.manager.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['formation_id'])) {
+        $config = loadConfig();
         deleteFormation();
         // Redirection vers la liste des formations
         header("Location: ?controller=formation&action=viewandaddformation");
@@ -53,7 +56,6 @@ function deleteFormationAction()
     $cssFile = '/css/admin/formation-style.css';
     $formations = getAllFormation();
     $template = "../views/admin/formation/formation.html.php";
-    $sidebarTemplate = '../views/sidebar/sidebar.html.php';
     require "../views/layouts/layout.html.php";
 }
 
@@ -62,6 +64,7 @@ function modifyFormationAction()
     require '../models/admin/formation.manager.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['formation_id'])) {
+        $config = loadConfig();
         updateFormation();
         // Redirection vers la liste des formations
         header("Location: ?controller=formation&action=viewandaddformation");
@@ -69,6 +72,7 @@ function modifyFormationAction()
     }
 
     if (isset($_GET['formation_id'])) {
+        // Récupérer la formation spécifique
         $formation = getFormationById($_GET['formation_id']);
     } else {
         // Redirection ou message d'erreur si l'ID de la formation n'est pas fourni
@@ -78,7 +82,5 @@ function modifyFormationAction()
 
     $cssFile = '/css/admin/formation-style.css';
     $template = "../views/admin/formation/modifyformation.html.php";
-    $sidebarTemplate = '../views/sidebar/sidebar.html.php';
-    $icons = '../views/icons/icon-header.html.php';
     require "../views/layouts/layout.html.php";
 }
