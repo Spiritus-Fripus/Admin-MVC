@@ -7,7 +7,7 @@ function loadConfig()
 
 function indexAction()
 {
-    $title = "Bienvenue sur admin MNS , vous etes connecté en tant qu'administateur";
+    $title = "Bienvenue sur admin MNS , vous êtes connecté en tant qu'administrateur";
     $config = loadConfig();
     $cssFile = '/css/accueil-style.css';
     $template = '../views/admin/index.html.php';
