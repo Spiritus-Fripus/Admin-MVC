@@ -9,6 +9,15 @@ function getAllAbsence()
     return $stmt->fetchAll();
 }
 
+function getAbsenceById($absence_id)
+{
+    require '../config/connect.php';
+    $sql = 'SELECT * FROM table_absence WHERE absence_id = :absence_id';
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':absence_id', $absence_id);
+    $stmt->execute();
+}
+
 function addAbsence()
 {
     require '../config/connect.php';
@@ -35,5 +44,14 @@ function updateAbsence()
     $stmt->bindValue(':absence_date_end', $_POST['absence_date_end']);
     $stmt->bindValue(':absence_date_declaration', $_POST['absence_date_declaration']);
     $stmt->bindValue(':absence_type_id', $_POST['absence_type_id']);
+    $stmt->execute();
+}
+
+function deleteAbsence()
+{
+    require '../config/connect.php';
+    $sql = "DELETE FROM table_absence WHERE absence_id = :absence_id";
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':absence_id', $_POST['absence_id']);
     $stmt->execute();
 }
