@@ -9,13 +9,14 @@ function getAllAbsence()
     return $stmt->fetchAll();
 }
 
-function getAbsenceById($absence_id)
+function getAllAbsenceByUserId($user_id)
 {
     require '../config/connect.php';
-    $sql = 'SELECT * FROM table_absence WHERE absence_id = :absence_id';
+    $sql = 'SELECT * FROM table_absence WHERE user_id = :user_id';
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':absence_id', $absence_id);
+    $stmt->bindValue(':user_id', $user_id);
     $stmt->execute();
+    return $stmt->fetchAll();
 }
 
 function addAbsence()
