@@ -18,3 +18,22 @@ function addAbsence()
     $stmt = $db->prepare($sql);
     $stmt->execute();
 }
+
+function updateAbsence()
+{
+    require '../config/connect.php';
+    $sql = "UPDATE table_absence 
+    SET 
+    absence_date_start = :absence_date_start,
+    absence_date_end = :absence_date_end,
+    absence_date_declaration = :absence_date_declaration,
+    absence_type_id = :absence_type_id
+    WHERE absence_id = :absence_id";
+
+    $stmt = $db->prepare($sql);
+    $stmt->bindValue(':absence_date_start', $_POST['absence_date_start']);
+    $stmt->bindValue(':absence_date_end', $_POST['absence_date_end']);
+    $stmt->bindValue(':absence_date_declaration', $_POST['absence_date_declaration']);
+    $stmt->bindValue(':absence_type_id', $_POST['absence_type_id']);
+    $stmt->execute();
+}
