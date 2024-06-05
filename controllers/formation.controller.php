@@ -23,23 +23,6 @@ function viewFormationAction()
     require "../views/layouts/layout.html.php";
 }
 
-// Fonction pour ajouter une formation
-function addFormationAction()
-{
-    require_once '../models/admin/formation.manager.php';
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $config = loadConfig();
-        createFormation();
-        // Redirection vers la liste des formations
-        header("Location: ?controller=formation&action=viewformation");
-        exit();
-    }
-    $cssFile = '/css/admin/formation-style.css';
-    $template = "../views/admin/formation/add-formation.html.php";
-    require "../views/layouts/layout.html.php";
-}
-
 // Fonction pour supprimer une formation
 function deleteFormationAction()
 {

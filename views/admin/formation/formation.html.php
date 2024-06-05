@@ -16,7 +16,7 @@
     </ul>
 
     <div class="formation-container">
-        <form action="?controller=formation&action=addformation" method="post">
+        <form action="?controller=formation&action=viewformation" method="post">
             <div class="entree">
                 <label for="formation_name">Nom de la formation</label>
                 <input type="text" name="formation_name" />
