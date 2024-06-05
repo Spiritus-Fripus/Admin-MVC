@@ -26,7 +26,7 @@ function addAbsence()
     (absence_date_start, absence_date_end, absence_date_declaration, absence_type_id, user_id) 
     VALUES (:absence_date_start, :absence_date_end, :absence_date_declaration, :absence_type_id, :user_id)";
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':absence_date_declaration', $_POST['absence_date_declaration']);
+    $stmt->bindValue(':absence_date_declaration', date('Y-m-d'));
     $stmt->bindValue(':user_id', $_SESSION['user_id']);
     $stmt->bindValue(':absence_date_end', $_POST['absence_date_end']);
     $stmt->bindValue(':absence_date_start', $_POST['absence_date_start']);
@@ -57,7 +57,7 @@ function updateAbsence()
 function deleteAbsence()
 {
     require '../config/connect.php';
-    $sql = "DELETE FROM table_absence WHERE absence_id = :absence_id, user_id = :user_id";
+    $sql = "DELETE * FROM table_absence WHERE absence_id = :absence_id, user_id = :user_id";
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':absence_id', $_POST['absence_id']);
     $stmt->bindValue(':user_id', $_SESSION['user_id']);

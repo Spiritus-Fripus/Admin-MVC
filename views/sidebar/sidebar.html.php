@@ -4,11 +4,11 @@
         <li><a href='?controller=<?= $_SESSION['user_type'] ?>&action=profil'>Profil</a></li>
         <?php if ($_SESSION['user_type'] === 'admin') { ?>
             <li><a href="?controller=formation&action=viewFormation">Formation</a></li>
-            <li><a href="?controller=student&action=viewStudent">Eleves</a></li>
+            <li><a href="?controller=Promotion&action=viewPromotion">Promotion</a></li>
         <?php } ?>
         <?php if ($_SESSION['user_type'] === 'teacher') { ?>
             <li><a href="?controller=formation&action=viewFormation">Formation</a></li>
-            <li><a href="?controller=student&action=viewStudent">Eleves</a></li>
+            <li><a href="?controller=student&action=viewClasses">Classes</a></li>
         <?php } ?>
         <?php if ($_SESSION['user_type'] === 'student') { ?>
             <li><a href="?controller=delay&action=viewDelay">Retards</a></li>
