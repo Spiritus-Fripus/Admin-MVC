@@ -1,5 +1,5 @@
 <?php
-$config = loadConfig();
+$config = loadLayoutConfig();
 /** @var string $cssFile */
 ?>
 <!DOCTYPE html>

@@ -1,3 +1,8 @@
+<?php
+/**
+ * @var mixed $absences
+ */
+?>
 <div class="content-container">
     <table>
         <?php foreach ($absences as $absence) { ?>
@@ -15,11 +20,11 @@
     <form action="?controller=absence&action=viewownabsence" method="post">
         <div class="entree">
             <label for="absence_date_start">Date de début de l'absence</label>
-            <input type="date" name="absence_date_start" />
+            <input type="date" name="absence_date_start"/>
         </div>
         <div class="entree">
             <label for="absence_date_end">Date de fin de l'absence</label>
-            <input type="date" name="absence_date_end" />
+            <input type="date" name="absence_date_end"/>
         </div>
         <div class="entree">
             <select name="absence_type_id" id="absencetypeid">
@@ -30,9 +35,9 @@
         </div>
         <div class="entree">
             <label for="absence_date_declaration">Date de déclaration de l'absence</label>
-            <input type="date" name="absence_date_declaration" />
+            <input type="date" name="absence_date_declaration"/>
         </div>
-        <input class="bouton-enregistrer" type="submit" value="Enregistrer" />
+        <input class="bouton-enregistrer" type="submit" value="Enregistrer"/>
     </form>
     <?= $_SESSION['user_id']; ?>
 </div>
