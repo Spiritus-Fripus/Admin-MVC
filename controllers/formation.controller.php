@@ -1,6 +1,7 @@
 <?php
 
 require '../config/config.php';
+
 // Fonction pour afficher et ajouter une formation
 function viewFormationAction()
 {
@@ -44,7 +45,7 @@ function modifyFormationAction()
 {
     require '../models/admin/formation.manager.php';
     checkAdminRole();
-    
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['formation_id'])) {
         $config = loadLayoutConfig();
         updateFormation();
