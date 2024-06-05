@@ -1,16 +1,13 @@
 <?php
 
-function loadConfig()
-{
-    return include '../config/layout-config.php';
-}
-
+require '../config/config.php';
 // Fonction pour afficher et ajouter une formation
 function viewFormationAction()
 {
     require_once '../models/admin/formation.manager.php';
+    checkAdminRole();
     $formations = getAllFormation();
-    $config = loadConfig();
+    $config = loadLayoutConfig();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         createFormation();
@@ -27,9 +24,10 @@ function viewFormationAction()
 function deleteFormationAction()
 {
     require '../models/admin/formation.manager.php';
+    checkAdminRole();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['formation_id'])) {
-        $config = loadConfig();
+        $config = loadLayoutConfig();
         deleteFormation();
         // Redirection vers la liste des formations
         header("Location: ?controller=formation&action=viewformation");
@@ -45,9 +43,10 @@ function deleteFormationAction()
 function modifyFormationAction()
 {
     require '../models/admin/formation.manager.php';
-
+    checkAdminRole();
+    
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['formation_id'])) {
-        $config = loadConfig();
+        $config = loadLayoutConfig();
         updateFormation();
         // Redirection vers la liste des formations
         header("Location: ?controller=formation&action=viewformation");

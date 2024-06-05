@@ -1,9 +1,14 @@
-<?php foreach ($recordset as $row) { ?>
+<?php /* @var mixed $recordset */
+foreach ($recordset as $row) { ?>
 
     <div class="profil-container">
         <div class="profil-header-container">
             <div class="title">
-                <h1><?= $title ?> </h1>
+                <h1>
+                    <?php if (isset($title)) { ?>
+                        <?= $title ?>
+                    <?php } ?>
+                </h1>
             </div>
             <div class="img-container">
                 <img src="/img/ilya.jpg" alt="">
@@ -25,4 +30,4 @@
             </ul>
         </div>
     </div>
-<?php } ?>
+<?php }

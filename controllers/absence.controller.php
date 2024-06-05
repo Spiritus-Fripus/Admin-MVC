@@ -1,16 +1,13 @@
 <?php
 
-function loadConfig()
-{
-    return include '../config/layout-config.php';
-}
+require '../config/config.php';
 
 //fonction pour voir et ajouter ses propres absences
 function viewOwnAbsenceAction()
 {
     require_once '../models/absence.manager.php';
     $absences = getAllAbsenceByUserId();
-    $config = loadConfig();
+    $config = loadLayoutConfig();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         addAbsence();
