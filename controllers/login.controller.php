@@ -28,9 +28,10 @@ function formLoginAction()
                             $type_user = 'student';
                             break;
                     }
-                    // Stocke le type d'utilisateur et l'email dans la session
+                    // Stocke le type d'utilisateur, son id et l'email dans la session
                     $_SESSION['user_type'] = $type_user;
                     $_SESSION['user_mail'] = $_POST['email'];
+                    $_SESSION['user_id'] = $response['user_id'];
 
                     // Termine la mise en mémoire tampon de sortie et nettoie le tampon
                     ob_end_clean();

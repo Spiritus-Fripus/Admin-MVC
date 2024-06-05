@@ -1,6 +1,6 @@
 <div class="content-container">
     <div class="formation-container">
-        <form action="?controller=formation&action=modifyformation" method="post">
+        <form action="?controller=formation&action=modifyFormation" method="post">
             <input type="hidden" name="formation_id" value="<?= $formation['formation_id'] ?>" />
             <div class="entree">
                 <label for="formation_name">Nom de la formation :</label>
@@ -24,11 +24,11 @@
             </div>
             <div class="entree">
                 <label for="formation_type_id">Type de la formation :</label>
-                <select>
-                    <option value="1">Développement</option>
-                    <option value="2">Cybersécurité</option>
-                    <option value="3">Marketing</option>
-                    <option value="4">Réseau</option>/
+                <select name="formation_type_id">
+                    <option value="1" <?= $formation['formation_type_id'] == 1 ? 'selected' : '' ?>>Développement</option>
+                    <option value="2" <?= $formation['formation_type_id'] == 2 ? 'selected' : '' ?>>Cybersécurité</option>
+                    <option value="3" <?= $formation['formation_type_id'] == 3 ? 'selected' : '' ?>>Marketing</option>
+                    <option value="4" <?= $formation['formation_type_id'] == 4 ? 'selected' : '' ?>>Réseau</option>
                 </select>
             </div>
             <input class="bouton-enregistrer" type="submit" value="Enregistrer" />

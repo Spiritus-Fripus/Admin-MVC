@@ -6,7 +6,7 @@ function loadConfig()
 }
 
 // Fonction pour afficher et ajouter une formation
-function viewAndAddFormationAction()
+function viewFormationAction()
 {
     require_once '../models/admin/formation.manager.php';
     $formations = getAllFormation();
@@ -15,28 +15,11 @@ function viewAndAddFormationAction()
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         createFormation();
         // Redirection vers la liste des formations
-        header("Location: ?controller=formation&action=viewandaddformation");
+        header("Location: ?controller=formation&action=viewformation");
         exit();
     }
     $cssFile = '/css/admin/formation-style.css';
     $template = "../views/admin/formation/formation.html.php";
-    require "../views/layouts/layout.html.php";
-}
-
-// Fonction pour ajouter une formation
-function addFormationAction()
-{
-    require_once '../models/admin/formation.manager.php';
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $config = loadConfig();
-        createFormation();
-        // Redirection vers la liste des formations
-        header("Location: ?controller=formation&action=viewandaddformation");
-        exit();
-    }
-    $cssFile = '/css/admin/formation-style.css';
-    $template = "../views/admin/formation/add-formation.html.php";
     require "../views/layouts/layout.html.php";
 }
 
@@ -49,7 +32,7 @@ function deleteFormationAction()
         $config = loadConfig();
         deleteFormation();
         // Redirection vers la liste des formations
-        header("Location: ?controller=formation&action=viewandaddformation");
+        header("Location: ?controller=formation&action=viewformation");
         exit();
     }
 
@@ -67,7 +50,7 @@ function modifyFormationAction()
         $config = loadConfig();
         updateFormation();
         // Redirection vers la liste des formations
-        header("Location: ?controller=formation&action=viewandaddformation");
+        header("Location: ?controller=formation&action=viewformation");
         exit();
     }
 
@@ -76,7 +59,7 @@ function modifyFormationAction()
         $formation = getFormationById($_GET['formation_id']);
     } else {
         // Redirection ou message d'erreur si l'ID de la formation n'est pas fourni
-        header("Location: ?controller=formation&action=viewandaddformation");
+        header("Location: ?controller=formation&action=viewformation");
         exit();
     }
 
