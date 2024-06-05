@@ -2,7 +2,6 @@
 
 session_start();
 // On inclut dynamiquement le fichier de contrôleur
-
 if (!empty($_GET['controller'])) {
 
     $controllerName = $_GET['controller'];
