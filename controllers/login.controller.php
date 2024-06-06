@@ -1,6 +1,6 @@
 <?php
 
-function formLoginAction()
+function formLoginAction(): void
 {
     // Commence la mise en mémoire tampon de sortie
     ob_start();
@@ -47,7 +47,7 @@ function formLoginAction()
     ob_end_flush();
 }
 
-function logoutAction()
+function logoutAction(): void
 {
     require '../models/login/login.manager.php';
     disconnect();

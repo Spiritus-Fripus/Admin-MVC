@@ -1,8 +1,8 @@
 <?php
 
-require '../config/connect.php';
+require_once '../config/connect.php';
 
-function showInfo()
+function showInfo(): bool|array
 {
     $db = connectToDatabase();
     $sql = "SELECT * FROM table_user WHERE user_mail = :user_mail";

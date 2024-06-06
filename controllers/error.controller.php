@@ -1,6 +1,6 @@
 <?php
 
-function notFound()
+function notFound(): void
 {
     http_response_code(404);
     $cssFile = '/css/accueil-style.css';
@@ -10,7 +10,7 @@ function notFound()
 }
 
 
-function unauthorized()
+function unauthorized(): void
 {
     http_response_code(403);
     $cssFile = '/css/accueil-style.css';

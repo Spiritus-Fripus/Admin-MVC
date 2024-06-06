@@ -93,6 +93,7 @@ li {
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
 }
 
 /* ========== SIDEBAR ========== */
@@ -247,6 +248,7 @@ li {
   .querie-button {
     display: flex;
     justify-content: center;
+    gap: 10px;
   }
 
   .burger-menu {

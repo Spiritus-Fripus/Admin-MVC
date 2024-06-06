@@ -1,9 +1,9 @@
 <?php
 
-require '../config/config.php';
+require_once "../config/config.php";
 
 // Fonction pour afficher et ajouter une formation
-function viewFormationAction()
+function viewFormationAction(): void
 {
     require_once '../models/admin/formation.manager.php';
     checkAdminRole();
@@ -22,7 +22,7 @@ function viewFormationAction()
 }
 
 // Fonction pour supprimer une formation
-function deleteFormationAction()
+function deleteFormationAction(): void
 {
     require '../models/admin/formation.manager.php';
     checkAdminRole();
@@ -41,7 +41,7 @@ function deleteFormationAction()
     require "../views/layouts/layout.html.php";
 }
 
-function modifyFormationAction()
+function modifyFormationAction(): void
 {
     require '../models/admin/formation.manager.php';
     checkAdminRole();

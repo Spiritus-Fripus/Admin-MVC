@@ -1,9 +1,9 @@
 <?php
 
-require '../config/config.php';
+require_once "../config/config.php";
 
 //fonction pour voir et ajouter ses propres absences
-function viewOwnAbsenceAction()
+function viewOwnAbsenceAction(): void
 {
     require_once '../models/absence.manager.php';
     $absences = getAllAbsenceByUserId();
@@ -21,7 +21,7 @@ function viewOwnAbsenceAction()
     require "../views/layouts/layout.html.php";
 }
 
-function deleteAbsence()
+function deleteAbsence(): void
 {
     require_once '../models/absence.manager.php';
     $absences = getAllAbsenceByUserId();

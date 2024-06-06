@@ -1,7 +1,8 @@
 <?php
-require_once '../config/config.php';
 
-function viewDelayAction()
+require_once "../config/config.php";
+
+function viewDelayAction(): void
 {
     checkAdminRole();
     $config = loadLayoutConfig();
