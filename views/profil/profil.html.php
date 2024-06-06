@@ -1,17 +1,18 @@
-<?php /* @var mixed $recordset */
-foreach ($recordset as $row) { ?>
+<?php
+/**
+ * @var mixed $recordset
+ */
 
+foreach ($recordset as $row) { ?>
     <div class="profil-container">
         <div class="profil-header-container">
             <div class="title">
                 <h1>
-                    <?php if (isset($title)) { ?>
-                        <?= $title ?>
-                    <?php } ?>
+                    <?= $row['user_mail'] ?>
                 </h1>
             </div>
             <div class="img-container">
-                <img src="/img/ilya.jpg" alt="">
+                <img src="/img/blank-profile-picture.png" alt="">
             </div>
         </div>
         <div class="profil-main-container">
@@ -31,3 +32,4 @@ foreach ($recordset as $row) { ?>
         </div>
     </div>
 <?php }
+

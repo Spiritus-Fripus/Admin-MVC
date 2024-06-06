@@ -1,7 +1,8 @@
 <?php
-require '../config/connect.php';
 
-function getAllFormation()
+require_once '../config/connect.php';
+
+function getAllFormation(): bool|array
 {
     $db = connectToDatabase();
     $sql = 'SELECT * FROM table_formation';
@@ -20,7 +21,7 @@ function getFormationById($formation_id)
     return $stmt->fetch();
 }
 
-function createFormation()
+function createFormation(): void
 {
 
     $db = connectToDatabase();
@@ -37,7 +38,7 @@ function createFormation()
     $stmt->execute();
 }
 
-function deleteFormation()
+function deleteFormation(): void
 {
     $db = connectToDatabase();
 
@@ -47,7 +48,7 @@ function deleteFormation()
     $stmt->execute();
 }
 
-function updateFormation()
+function updateFormation(): void
 {
     $db = connectToDatabase();
 

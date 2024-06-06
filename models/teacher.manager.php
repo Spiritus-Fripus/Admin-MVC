@@ -2,7 +2,7 @@
 
 
 require '../config/connect.php';
-function showInfo()
+function showInfo(): bool|array
 {
     $db = connectToDatabase();
 

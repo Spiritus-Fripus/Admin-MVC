@@ -1,7 +1,7 @@
 <?php
 
-require '../config/config.php';
-function indexAction()
+require_once "../config/config.php";
+function indexAction(): void
 {
     checkTeacherRole();
     $title = "Bienvenue sur admin MNS , vous etes connecté en tant que professeur";
@@ -10,13 +10,13 @@ function indexAction()
     require '../views/layouts/layout.html.php';
 }
 
-function profilAction()
+function profilAction(): void
 {
     checkTeacherRole();
     require '../models/teacher.manager.php';
     $recordset = showInfo();
     $title = 'Teacher Connected';
     $cssFile = '/css/profil-style.css';
-    $template = '../views/teacher/profil.html.php';
+    $template = '../views/profil/profil.html.php';
     require '../views/layouts/layout.html.php';
 }

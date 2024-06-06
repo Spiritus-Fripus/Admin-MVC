@@ -1,18 +1,18 @@
 <?php
 
-require '../config/config.php';
+require_once "../config/config.php";
 
-function indexAction()
+function indexAction(): void
 {
     checkAdminRole();
     $title = "Bienvenue sur admin MNS , vous êtes connecté en tant qu'administrateur";
     $config = loadLayoutConfig();
-    $cssFile = '/css/accueil-style.css';
+    $cssFile = '/css/admin/accueil-style.css';
     $template = '../views/admin/index.html.php';
     require '../views/layouts/layout.html.php';
 }
 
-function profilAction()
+function profilAction(): void
 {
     checkAdminRole();
     require '../models/admin/admin.manager.php';
@@ -20,7 +20,7 @@ function profilAction()
     $title = 'Admin Connected';
     $cssFile = '/css/profil-style.css';
     $config = loadLayoutConfig();
-    $template = '../views/admin/profil.html.php';
+    $template = '../views/profil/profil.html.php';
     require '../views/layouts/layout.html.php';
 }
 

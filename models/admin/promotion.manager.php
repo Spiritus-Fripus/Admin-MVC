@@ -1,7 +1,7 @@
 <?php
 
-require '../config/connect.php';
-function getAllPromotion()
+require_once '../config/connect.php';
+function getAllPromotion(): bool|array
 {
     $db = connectToDatabase();
     $sql = 'SELECT * FROM table_promotion';
@@ -10,7 +10,7 @@ function getAllPromotion()
     return $stmt->fetchAll();
 }
 
-function createPromotion()
+function createPromotion(): void
 {
 
     $db = connectToDatabase();

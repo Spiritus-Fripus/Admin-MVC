@@ -1,9 +1,9 @@
 <?php
 
-require '../config/config.php';
+require_once "../config/config.php";
 
 // Fonction pour afficher et ajouter une formation
-function viewPromotionAction()
+function viewPromotionAction(): void
 {
     require_once '../models/admin/promotion.manager.php';
     $promotions = getAllPromotion();

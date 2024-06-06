@@ -1,7 +1,7 @@
 <?php
 
-require '../config/connect.php';
-function showInfo()
+require_once '../config/connect.php';
+function showInfo(): bool|array
 {
     $db = connectToDatabase();
 
