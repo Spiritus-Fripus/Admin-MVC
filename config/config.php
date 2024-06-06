@@ -1,4 +1,11 @@
 <?php
+function loadLayoutConfig()
+{
+    return [
+        'icons' => '../views/icons/icon-header.html.php',
+        'sidebarTemplate' => '../views/sidebar/sidebar.html.php',
+    ];
+}
 
 function checkAdminRole()
 {
@@ -25,12 +32,4 @@ function checkStudentRole()
         unauthorized();
         exit;
     }
-}
-
-function loadLayoutConfig()
-{
-    return [
-        'icons' => '../views/icons/icon-header.html.php',
-        'sidebarTemplate' => '../views/sidebar/sidebar.html.php',
-    ];
 }
