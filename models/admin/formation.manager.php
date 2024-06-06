@@ -1,8 +1,9 @@
 <?php
+require '../config/connect.php';
 
 function getAllFormation()
 {
-    require '../config/connect.php';
+    $db = connectToDatabase();
     $sql = 'SELECT * FROM table_formation';
     $stmt = $db->prepare($sql);
     $stmt->execute();
@@ -11,7 +12,7 @@ function getAllFormation()
 
 function getFormationById($formation_id)
 {
-    require '../config/connect.php';
+    $db = connectToDatabase();
     $sql = 'SELECT * FROM table_formation WHERE formation_id = :formation_id';
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':formation_id', $formation_id);
@@ -22,7 +23,7 @@ function getFormationById($formation_id)
 function createFormation()
 {
 
-    require '../config/connect.php';
+    $db = connectToDatabase();
 
     $sql = 'INSERT INTO table_formation (formation_type_id, formation_name, formation_duration, formation_date_start, formation_date_end, formation_max_student, formation_qualification) VALUES (:formation_type_id, :formation_name, :formation_duration, :formation_date_start, :formation_date_end, :formation_max_student, :formation_qualification)';
     $stmt = $db->prepare($sql);
@@ -38,7 +39,7 @@ function createFormation()
 
 function deleteFormation()
 {
-    require '../config/connect.php';
+    $db = connectToDatabase();
 
     $sql = "DELETE FROM table_formation WHERE formation_id = :formation_id";
     $stmt = $db->prepare($sql);
@@ -48,7 +49,7 @@ function deleteFormation()
 
 function updateFormation()
 {
-    require '../config/connect.php';
+    $db = connectToDatabase();
 
     $sql = "UPDATE table_formation 
             SET 

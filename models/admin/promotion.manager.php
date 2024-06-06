@@ -1,8 +1,9 @@
 <?php
 
+require '../config/connect.php';
 function getAllPromotion()
 {
-    require '../config/connect.php';
+    $db = connectToDatabase();
     $sql = 'SELECT * FROM table_promotion';
     $stmt = $db->prepare($sql);
     $stmt->execute();
@@ -12,7 +13,7 @@ function getAllPromotion()
 function createPromotion()
 {
 
-    require '../config/connect.php';
+    $db = connectToDatabase();
 
     $sql = 'INSERT INTO table_promotion (promotion_name, promotion_year, formation_id) VALUES (:promotion_name, :promotion_year, formation_id)';
     $stmt = $db->prepare($sql);

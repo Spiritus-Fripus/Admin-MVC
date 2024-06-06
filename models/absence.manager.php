@@ -1,8 +1,9 @@
 <?php
 
+require_once $_SERVER['DOCUMENT_ROOT'] . '/config/connect.php';
 function getAllAbsence()
 {
-    require '../config/connect.php';
+    $db = connectToDatabase();
     $sql = "SELECT * FROM table_absence WHERE user_id = user_id";
     $stmt = $db->prepare($sql);
     $stmt->execute();
@@ -11,7 +12,7 @@ function getAllAbsence()
 
 function getAllAbsenceByUserId()
 {
-    require '../config/connect.php';
+    $db = connectToDatabase();
     $sql = 'SELECT * FROM table_absence WHERE user_id = :user_id';
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':user_id', $_SESSION['user_id']);
@@ -21,7 +22,7 @@ function getAllAbsenceByUserId()
 
 function addAbsence()
 {
-    require '../config/connect.php';
+    $db = connectToDatabase();
     $sql = "INSERT INTO table_absence 
     (absence_date_start, absence_date_end, absence_date_declaration, absence_type_id, user_id) 
     VALUES (:absence_date_start, :absence_date_end, :absence_date_declaration, :absence_type_id, :user_id)";
@@ -36,7 +37,7 @@ function addAbsence()
 
 function updateAbsence()
 {
-    require '../config/connect.php';
+    $db = connectToDatabase();
     $sql = "UPDATE table_absence 
     SET 
     absence_date_start = :absence_date_start,
@@ -56,7 +57,7 @@ function updateAbsence()
 
 function deleteAbsence()
 {
-    require '../config/connect.php';
+    $db = connectToDatabase();
     $sql = "DELETE * FROM table_absence WHERE absence_id = :absence_id, user_id = :user_id";
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':absence_id', $_POST['absence_id']);
