@@ -25,7 +25,7 @@ function deleteAbsence()
 {
     require_once '../models/absence.manager.php';
     $absences = getAllAbsenceByUserId();
-    $config = loadConfig();
+    $config = loadLayoutConfig();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['absence_id'] != "") {
         deleteAbsence();

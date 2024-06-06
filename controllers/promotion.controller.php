@@ -1,16 +1,13 @@
 <?php
 
-function loadConfig()
-{
-    return include '../config/layout-config.php';
-}
+require '../config/config.php';
 
 // Fonction pour afficher et ajouter une formation
 function viewPromotionAction()
 {
     require_once '../models/admin/promotion.manager.php';
     $promotions = getAllPromotion();
-    $config = loadConfig();
+    $config = loadLayoutConfig();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         createPromotion();
