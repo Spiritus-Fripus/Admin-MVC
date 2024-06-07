@@ -42,6 +42,7 @@ function deleteFormationAction(): void
     require "../views/layouts/layout.html.php";
 }
 
+// fonction pour modifier une formation
 function modifyFormationAction(): void
 {
     require '../models/admin/formation.manager.php';

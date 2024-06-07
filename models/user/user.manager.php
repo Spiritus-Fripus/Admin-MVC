@@ -1,14 +1,12 @@
 <?php
 
 require_once '../config/connect.php';
-
-function showInfo(): bool|array
+function showAllUser(): bool|array
 {
     $db = connectToDatabase();
-    $sql = "SELECT * FROM table_user WHERE user_mail = :user_mail";
+    $sql = "SELECT * FROM table_user";
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(":user_mail", $_SESSION['user_mail']);
     $stmt->execute();
     return $stmt->fetchAll();
-}
 
+}
