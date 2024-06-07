@@ -5,11 +5,9 @@ require_once "../config/config.php";
 function indexAction(): void
 {
     checkAdminRole();
-    require '../models/admin/admin.manager.php';
-    $recordset = showAllUser();
     $title = "Bienvenue sur admin MNS , vous êtes connecté en tant qu'administrateur";
     $config = loadLayoutConfig();
-    $cssFile = '/css/admin/accueil-style.css';
+    $cssFile = '/css/accueil-style.css';
     $template = '../views/admin/index.html.php';
     require '../views/layouts/layout.html.php';
 }

@@ -74,6 +74,7 @@ $config = loadLayoutConfig();
     </main>
 
 </div>
+<script src="<?= $jsFile ?>"></script>
 <script src="/js/burger-menu.js"></script>
 </body>
 

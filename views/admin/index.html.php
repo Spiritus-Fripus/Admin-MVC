@@ -6,25 +6,30 @@
 ?>
 
 <div class="index-main-container">
-    <h1> <?= $title ?></h1>
-    <table class="table-user">
-        <thead>
-        <tr>
-            <th>Nom</th>
-            <th>Prénom</th>
-            <th>Email</th>
-            <th>Date de naissance</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php foreach ($recordset as $row) { ?>
-            <tr>
-                <td><?= $row['user_name'] ?></td>
-                <td><?= $row['user_firstname'] ?></td>
-                <td><?= $row['user_mail'] ?></td>
-                <td><?= $row['user_birthday_date'] ?></td>
-            </tr>
-        <?php } ?>
-        </tbody>
-    </table>
+
+    <button class="button-card">
+        <div class="card">
+            <p class="title">Utilisateurs</p>
+        </div>
+    </button>
+
+    <button class="button-card">
+        <div class="card">
+            <p class="title">Absences</p>
+        </div>
+    </button>
+
+    <button class="button-card">
+        <div class="card">
+            <p class="title">Retards</p>
+        </div>
+    </button>
+
+    <button class="button-card">
+        <div class="card">
+            <p class="title">Profile</p>
+        </div>
+    </button>
+
 </div>
+
