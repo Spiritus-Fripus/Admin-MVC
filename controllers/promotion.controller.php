@@ -6,6 +6,7 @@ require_once "../config/config.php";
 function viewPromotionAction(): void
 {
     require_once '../models/admin/promotion.manager.php';
+    checkAdminManagerRole();
     $promotions = getAllPromotion();
     $config = loadLayoutConfig();
 
@@ -16,6 +17,6 @@ function viewPromotionAction(): void
         exit();
     }
     $cssFile = '/css/admin/promotion-style.css';
-    $template = "../views/admin/promotion/promotion.html.php";
+    $template = "../views/admin-manager/promotion/promotion.html.php";
     require "../views/layouts/layout.html.php";
 }

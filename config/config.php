@@ -1,5 +1,5 @@
 <?php
-function loadLayoutConfig()
+function loadLayoutConfig(): array
 {
     return [
         'icons' => '../views/icons/icon-header.html.php',
@@ -7,7 +7,7 @@ function loadLayoutConfig()
     ];
 }
 
-function checkAdminRole()
+function checkAdminRole(): void
 {
     if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'admin') {
         require '../controllers/error.controller.php';
@@ -16,16 +16,25 @@ function checkAdminRole()
     }
 }
 
-function checkTeacherRole()
+function checkManagerRole(): void
 {
-    if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'teacher') {
+    if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'manager') {
         require '../controllers/error.controller.php';
         unauthorized();
         exit;
     }
 }
 
-function checkStudentRole()
+function checkAdminManagerRole(): void
+{
+    if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'manager' && $_SESSION['user_type'] !== 'admin') {
+        require '../controllers/error.controller.php';
+        unauthorized();
+        exit;
+    }
+}
+
+function checkStudentRole(): void
 {
     if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'student') {
         require '../controllers/error.controller.php';

@@ -1,19 +1,30 @@
-<?php /** @var string $title */ ?>
+<?php
+/**
+ * @var array|bool $recordset
+ * @var string $title
+ */
+?>
+
 <div class="index-main-container">
     <h1> <?= $title ?></h1>
-    <h2>
-        Debug $_SESSION:
-        <hr>
-        <?= "Mail= " . $_SESSION['user_mail'] .
-        "<hr>" .
-        "User_type= " . $_SESSION['user_type'] ?>
-    </h2>
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae at vero tempore non fuga ad quo temporibus
-        reprehenderit corporis voluptatem, voluptate vel nobis, laboriosam qui a maxime voluptas, ipsa repellendus.
-    </p>
-    <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae at vero tempore non fuga ad quo temporibus
-        reprehenderit corporis voluptatem, voluptate vel nobis, laboriosam qui a maxime voluptas, ipsa repellendus.
-    </p>
+    <table class="table-user">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Date de naissance</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($recordset as $row) { ?>
+            <tr>
+                <td><?= $row['user_name'] ?></td>
+                <td><?= $row['user_firstname'] ?></td>
+                <td><?= $row['user_mail'] ?></td>
+                <td><?= $row['user_birthday_date'] ?></td>
+            </tr>
+        <?php } ?>
+        </tbody>
+    </table>
 </div>

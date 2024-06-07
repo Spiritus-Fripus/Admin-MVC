@@ -6,7 +6,8 @@ require_once "../config/config.php";
 function viewFormationAction(): void
 {
     require_once '../models/admin/formation.manager.php';
-    checkAdminRole();
+    checkAdminManagerRole();
+
     $formations = getAllFormation();
     $config = loadLayoutConfig();
 
@@ -17,7 +18,7 @@ function viewFormationAction(): void
         exit();
     }
     $cssFile = '/css/admin/formation-style.css';
-    $template = "../views/admin/formation/formation.html.php";
+    $template = "../views/admin-manager/formation/formation.html.php";
     require "../views/layouts/layout.html.php";
 }
 
@@ -25,7 +26,7 @@ function viewFormationAction(): void
 function deleteFormationAction(): void
 {
     require '../models/admin/formation.manager.php';
-    checkAdminRole();
+    checkAdminManagerRole();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['formation_id'])) {
         $config = loadLayoutConfig();
@@ -35,7 +36,7 @@ function deleteFormationAction(): void
         exit();
     }
 
-    $cssFile = '/css/admin/formation-style.css';
+    $cssFile = '/css/admin-manager/formation-style.css';
     $formations = getAllFormation();
     $template = "../views/admin/formation/formation.html.php";
     require "../views/layouts/layout.html.php";
@@ -44,7 +45,7 @@ function deleteFormationAction(): void
 function modifyFormationAction(): void
 {
     require '../models/admin/formation.manager.php';
-    checkAdminRole();
+    checkAdminManagerRole();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['formation_id'])) {
         $config = loadLayoutConfig();
@@ -64,6 +65,6 @@ function modifyFormationAction(): void
     }
 
     $cssFile = '/css/admin/formation-style.css';
-    $template = "../views/admin/formation/modifyformation.html.php";
+    $template = "../views/admin-manager/formation/modifyformation.html.php";
     require "../views/layouts/layout.html.php";
 }

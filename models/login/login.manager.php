@@ -14,7 +14,7 @@ function connect($email)
 }
 
 
-function disconnect()
+function disconnect(): never
 {
     $_SESSION['user_mail'] = '';
     $_SESSION['user_type'] = '';
