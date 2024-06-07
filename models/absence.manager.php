@@ -4,7 +4,7 @@ require_once '../config/connect.php';
 function getAllAbsence(): bool|array
 {
     $db = connectToDatabase();
-    $sql = "SELECT * FROM table_absence WHERE user_id = user_id";
+    $sql = "SELECT * FROM table_absence WHERE user_id = :user_id";
     $stmt = $db->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll();
@@ -58,7 +58,7 @@ function updateAbsence(): void
 function deleteAbsence(): void
 {
     $db = connectToDatabase();
-    $sql = "DELETE * FROM table_absence WHERE absence_id = :absence_id, user_id = :user_id";
+    $sql = "DELETE FROM table_absence WHERE absence_id = :absence_id AND user_id = :user_id";
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':absence_id', $_POST['absence_id']);
     $stmt->bindValue(':user_id', $_SESSION['user_id']);

@@ -22,7 +22,7 @@ function formLoginAction(): void
                             $type_user = 'admin';
                             break;
                         case 2:
-                            $type_user = 'teacher';
+                            $type_user = 'manager';
                             break;
                         case 3:
                             $type_user = 'student';

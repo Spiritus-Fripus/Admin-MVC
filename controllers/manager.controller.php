@@ -3,19 +3,19 @@
 require_once "../config/config.php";
 function indexAction(): void
 {
-    checkTeacherRole();
-    $title = "Bienvenue sur admin MNS , vous etes connecté en tant que professeur";
+    checkManagerRole();
+    $title = "Bienvenue sur admin MNS , vous etes connecté en tant que Manager";
     $cssFile = '/css/accueil-style.css';
-    $template = '../views/teacher/index.html.php';
+    $template = '../views/manager/index.html.php';
     require '../views/layouts/layout.html.php';
 }
 
 function profilAction(): void
 {
-    checkTeacherRole();
-    require '../models/teacher.manager.php';
+    checkManagerRole();
+    require '../models/manager.manager.php';
     $recordset = showInfo();
-    $title = 'Teacher Connected';
+    $title = 'Manager Connected';
     $cssFile = '/css/profil-style.css';
     $template = '../views/profil/profil.html.php';
     require '../views/layouts/layout.html.php';

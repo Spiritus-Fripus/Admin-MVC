@@ -12,8 +12,12 @@ function showInfo(): bool|array
     return $stmt->fetchAll();
 }
 
-function showAllStudent()
+function showAllUser(): bool|array
 {
-
+    $db = connectToDatabase();
+    $sql = "SELECT * FROM table_user";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll();
 
 }
