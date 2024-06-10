@@ -20,6 +20,7 @@ li {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  gap: 20px;
   border-bottom: 1px solid black;
 }
 
@@ -58,5 +59,23 @@ li {
 
   .profil-header-container img {
     z-index: 1;
+  }
+}
+
+@media screen and (max-width: 605px) {
+  .profil-header-container {
+    gap: 10px;
+  }
+
+  .profil-header-container .title {
+    font-size: 0.8rem;
+  }
+
+  .profil-header-container img {
+    max-width: 50px;
+  }
+
+  .profil-main-container h3 {
+    font-size: 1rem;
   }
 }

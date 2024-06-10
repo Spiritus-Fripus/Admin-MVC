@@ -25,12 +25,13 @@ $config = loadLayoutConfig();
 </head>
 
 <body>
-<!-- Burger-menu (hidden par défaut) -->
-<div class="burger-menu">
-    <?php require $config['sidebarTemplate'] ?>
-</div>
-
 <div class="grid-container">
+    <!-- Burger-menu (hidden par défaut) -->
+    <div class="burger-menu">
+        <?php require $config['sidebarTemplate'] ?>
+    </div>
+    <!-- /Burger-menu -->
+
     <!-- Header  -->
     <header class="header-container">
         <div class="burger">
@@ -39,12 +40,15 @@ $config = loadLayoutConfig();
                 </span>
         </div>
         <div class="logo">
-            <h1>ADMIN MNS</h1>
+            <a href="?controller=<?= $_SESSION['user_type'] ?>&action=index">
+                <h1>ADMIN MNS</h1>
+            </a>
         </div>
         <div class="header-icons">
             <?php require $config['icons'] ?>
         </div>
     </header>
+    <!-- /Header -->
 
     <!-- Main -->
     <main class="main-container">
@@ -52,7 +56,7 @@ $config = loadLayoutConfig();
             <?php require $template; ?>
         </div>
     </main>
-
+    <!-- /Main -->
 </div>
 <script src="<?= $jsFile ?>"></script>
 <script src="/js/burger-menu.js"></script>
