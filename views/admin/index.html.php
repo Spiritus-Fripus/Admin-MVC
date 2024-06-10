@@ -7,29 +7,15 @@
 
 <div class="index-main-container">
 
-    <button class="button-card">
-        <div class="card">
-            <p class="title">Utilisateurs</p>
+    <div class="card">
+        <div class="card-header">
+            <span>title</span>
         </div>
-    </button>
+        <div class="card-body">
+            <span>content</span>
+        </div>
+    </div>
 
-    <button class="button-card">
-        <div class="card">
-            <p class="title">Absences</p>
-        </div>
-    </button>
-
-    <button class="button-card">
-        <div class="card">
-            <p class="title">Retards</p>
-        </div>
-    </button>
-
-    <button class="button-card">
-        <div class="card">
-            <p class="title">Profile</p>
-        </div>
-    </button>
 
 </div>
 
