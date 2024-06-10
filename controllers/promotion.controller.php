@@ -6,8 +6,11 @@ require_once "../config/config.php";
 function viewPromotionAction(): void
 {
     require_once '../models/admin/promotion.manager.php';
+    require_once '../models/admin/formation.manager.php';
     checkAdminManagerRole();
     $promotions = getAllPromotion();
+    $formations = getAllFormation();
+    $formationstypes = getAllFormationType();
     $config = loadLayoutConfig();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {

@@ -10,6 +10,15 @@ function getAllPromotion(): bool|array
     return $stmt->fetchAll();
 }
 
+function getAllFormationType(): bool|array
+{
+    $db = connectToDatabase();
+    $sql = 'SELECT * FROM table_formation_type';
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
+
 function createPromotion(): void
 {
 
