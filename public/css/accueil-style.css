@@ -13,7 +13,7 @@ button {
 
 .card {
   box-sizing: border-box;
-  width: 400px;
+  width: 200px;
   height: 200px;
   background: red;
 }

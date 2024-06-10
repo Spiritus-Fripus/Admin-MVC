@@ -228,6 +228,8 @@ li {
 
   .header .logo {
     display: block;
+    font-size: 0.7rem;
+    padding-left: 7%;
   }
 
   .header .burger {
@@ -256,6 +258,10 @@ li {
     height: 100vh;
     margin-left: -100%;
     transition: all 0.6s ease;
+  }
+
+  .header-icons {
+    gap: 0;
   }
 
   .burger-menu li a {
