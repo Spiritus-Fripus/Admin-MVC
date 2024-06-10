@@ -33,7 +33,15 @@ $config = loadLayoutConfig();
 <div class="grid-container">
     <!-- Header  -->
     <header class="header">
-        <div class="header-l">
+        <div class="burger">
+                <span class="material-symbols-rounded">
+                    menu
+                </span>
+        </div>
+        <div class="logo">
+            <h1>ADMIN MNS</h1>
+        </div>
+        <div class="header-searchbar">
             <form action="" class="form-search">
                 <input id="search-bar" type="search" placeholder="Recherche">
                 <button type="button">
@@ -43,7 +51,7 @@ $config = loadLayoutConfig();
                 </button>
             </form>
         </div>
-        <div class="header-r">
+        <div class="header-icons">
             <?php require $config['icons'] ?>
         </div>
     </header>
@@ -53,16 +61,8 @@ $config = loadLayoutConfig();
         <div class="logo">
             <h1>ADMIN MNS</h1>
         </div>
-        <div class="burger">
-                <span class="material-symbols-rounded">
-                    menu
-                </span>
-        </div>
         <div class="menu">
             <?php require $config['sidebarTemplate'] ?>
-        </div>
-        <div class="querie-button">
-            <?php require $config['icons'] ?>
         </div>
     </aside>
 
