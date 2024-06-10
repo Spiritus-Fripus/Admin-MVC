@@ -2,8 +2,9 @@
 /**
  * @var mixed $recordset
  */
+?>
 
-foreach ($recordset as $row) { ?>
+<?php foreach ($recordset as $row) { ?>
     <div class="profil-container">
         <div class="profil-header-container">
             <div class="title">

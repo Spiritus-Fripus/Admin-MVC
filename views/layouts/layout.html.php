@@ -32,7 +32,7 @@ $config = loadLayoutConfig();
 
 <div class="grid-container">
     <!-- Header  -->
-    <header class="header">
+    <header class="header-container">
         <div class="burger">
                 <span class="material-symbols-rounded">
                     menu
@@ -41,30 +41,10 @@ $config = loadLayoutConfig();
         <div class="logo">
             <h1>ADMIN MNS</h1>
         </div>
-        <div class="header-searchbar">
-            <form action="" class="form-search">
-                <input id="search-bar" type="search" placeholder="Recherche">
-                <button type="button">
-                        <span class="material-symbols-rounded">
-                            search
-                        </span>
-                </button>
-            </form>
-        </div>
         <div class="header-icons">
             <?php require $config['icons'] ?>
         </div>
     </header>
-
-    <!-- Sidebar -->
-    <aside id="sidebar">
-        <div class="logo">
-            <h1>ADMIN MNS</h1>
-        </div>
-        <div class="menu">
-            <?php require $config['sidebarTemplate'] ?>
-        </div>
-    </aside>
 
     <!-- Main -->
     <main class="main-container">
