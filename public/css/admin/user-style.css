@@ -11,6 +11,94 @@
   list-style-type: none;
 }
 
+.index-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.index-header h1 {
+  text-align: center;
+}
+
+.button-crud {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.add,
+.modify,
+.delete {
+  position: relative;
+  border-radius: 5px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 150px;
+  height: 25px;
+  color: #fff;
+  font-size: 0.8rem;
+  border: none;
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.add::before,
+.modify::before,
+.delete::before {
+  content: "";
+  width: 0;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: width 700ms ease-in-out;
+  display: inline-block;
+}
+
+.add:hover::before,
+.delete:hover::before,
+.modify:hover::before {
+  width: 100%;
+}
+
+.add {
+  background-color: #283e58;
+  box-shadow: #243149 0 4px 0 0;
+}
+
+.add::before {
+  background-color: #4e6183ff;
+}
+
+.modify,
+.delete {
+  width: 100%;
+}
+
+.modify {
+  background-color: #649c25;
+  box-shadow: #49701a 0 4px 0 0;
+}
+
+.modify::before {
+  background-color: #8adc33;
+}
+
+.delete {
+  background-color: #93291e;
+  box-shadow: #6c1f17ff 0 4px 0 0;
+}
+
+.delete::before {
+  background-color: #bc3b35;
+}
+
 table {
   display: flex;
   flex-direction: column;
@@ -22,20 +110,13 @@ table {
 tbody {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   gap: 10px;
-}
-
-table caption {
-  font-size: 1.5em;
-  margin: 0.5em 0 0.75em;
-  text-transform: uppercase;
 }
 
 table tr {
   background-color: #f8f8f8;
   border: 1px solid #ddd;
-
   border-bottom: 3px solid #ddd;
   display: block;
   margin-bottom: 0.6rem;
@@ -46,7 +127,7 @@ table td {
   border-bottom: 1px solid #ddd;
   display: flex;
   justify-content: space-between;
-  font-size: 0.8em;
+  font-size: 0.8rem;
 }
 
 table th,
@@ -63,16 +144,25 @@ table td::before {
 }
 
 table td:hover {
-  background: blanchedalmond;
+  background: #ffba08;
 }
 
 table td:last-child {
   border-bottom: 0;
 }
 
-@media screen and (max-width: 425px) {
-  .index-main-container {
-    box-sizing: content-box;
+table td:last-child:hover {
+  background: none;
+}
+
+@media screen and (max-width: 600px) {
+  .index-header {
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+
+  .index-header h1 {
+    margin-bottom: 10px;
   }
 
   tbody {
@@ -82,7 +172,17 @@ table td:last-child {
   }
 
   table tr {
-    width: 90%;
+    width: 100%;
+  }
+
+  table td {
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .index-main-container {
+    box-sizing: content-box;
   }
 
   .main-container {
