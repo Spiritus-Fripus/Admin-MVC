@@ -1,3 +1,5 @@
+/* ===== Main ===== */
+
 .index-main-container {
   display: flex;
   flex-direction: column;
@@ -5,10 +7,6 @@
   align-items: center;
   padding: 0 5%;
   box-sizing: border-box;
-}
-
-.index-main-container li {
-  list-style-type: none;
 }
 
 .index-header {
@@ -22,6 +20,9 @@
   text-align: center;
 }
 
+/* ===== /Main ===== */
+
+/* ===== Button ===== */
 .button-crud {
   width: 100%;
   display: flex;
@@ -68,26 +69,21 @@
 }
 
 .add {
-  background-color: #283e58;
-  box-shadow: #243149 0 4px 0 0;
-}
-
-.add::before {
-  background-color: #4e6183ff;
-}
-
-.modify,
-.delete {
-  width: 100%;
-}
-
-.modify {
   background-color: #649c25;
   box-shadow: #49701a 0 4px 0 0;
 }
 
-.modify::before {
+.add::before {
   background-color: #8adc33;
+}
+
+.modify {
+  background-color: #283e58;
+  box-shadow: #243149 0 4px 0 0;
+}
+
+.modify::before {
+  background-color: #4e6183ff;
 }
 
 .delete {
@@ -99,6 +95,14 @@
   background-color: #bc3b35;
 }
 
+.modify,
+.delete {
+  width: 100%;
+}
+
+/* ===== /Button ===== */
+
+/* ===== Table ===== */
 table {
   display: flex;
   flex-direction: column;
@@ -155,6 +159,7 @@ table td:last-child:hover {
   background: none;
 }
 
+/* ===== /Table ===== */
 @media screen and (max-width: 600px) {
   .index-header {
     flex-direction: column;
