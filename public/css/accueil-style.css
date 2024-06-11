@@ -7,26 +7,6 @@
   padding: 5% 0;
 }
 
-button {
-  border: none;
-}
-
-.card {
-  box-sizing: border-box;
-  width: 200px;
-  height: 200px;
-  background: red;
-}
-
-.card-header {
-  box-sizing: content-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid black;
-  height: 20%;
-}
-
 @media screen and (max-width: 425px) {
   .index-main-container {
     box-sizing: content-box;

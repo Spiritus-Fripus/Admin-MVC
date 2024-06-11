@@ -7,6 +7,7 @@ body {
 a {
   text-decoration: none;
   color: whitesmoke;
+  transition: color 0.5s ease;
 }
 
 a:hover {
@@ -50,9 +51,20 @@ li {
   transition: all 0.6s ease;
 }
 
+.burger-menu li {
+  display: flex;
+  justify-content: center;
+}
+
 .burger-menu li a {
   display: flex;
-  padding: 30px 0;
+  padding-top: 30px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid transparent;
+  transition:
+    color 0.5s ease,
+    border-bottom-color 0.5s ease,
+    border-bottom-width 0.5s ease;
   color: black;
   font-size: 2rem;
   font-weight: 700;
@@ -60,6 +72,8 @@ li {
 
 .burger-menu li a:hover {
   color: #ffba08;
+  border-bottom-color: #ffba08;
+  border-bottom-width: 2px;
 }
 
 .burger-menu-toggle {
@@ -88,6 +102,10 @@ li {
     #283e58,
     #212d45
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.header-container .burger {
+  transition: color 0.5s ease;
 }
 
 .header-container .burger:hover {
