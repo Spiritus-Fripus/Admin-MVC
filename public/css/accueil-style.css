@@ -13,12 +13,12 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  align-content: center;
   gap: 10px;
-  padding: auto;
 }
 .card {
-  width: calc(30%);
-  height: 40%;
+  width: calc(30% - 0.5vw);
+  height: calc(40% - 0.4vh);
   border: 1px solid white;
   border-radius: 15px;
   display: flex;
@@ -35,15 +35,19 @@
   width: 100%;
   color: black;
   text-align: center;
+  display: flex;
+  justify-content: center;
   font-size: calc(15px + 1vw);
 }
 
 .card:hover {
-  transform: translateY(-1);
+  transform: translateY(-2px);
+  background-color: rgba(255, 255, 255, 0.725);
+  cursor: pointer;
 }
 svg {
-  width: 40%;
-  height: 40%;
+  width: calc(40% - 0.6vw);
+  height: calc(40% - 0.6vh);
 }
 
 @media screen and (max-width: 425px) {
