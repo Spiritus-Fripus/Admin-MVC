@@ -5,6 +5,7 @@
         <?php if ($_SESSION['user_type'] === 'admin') { ?>
             <li><a href="?controller=formation&action=viewFormation">Formation</a></li>
             <li><a href="?controller=Promotion&action=viewPromotion">Promotion</a></li>
+            <li><a href="?controller=user&action=index">User</a></li>
         <?php } ?>
 
         <?php if ($_SESSION['user_type'] === 'manager') { ?>
