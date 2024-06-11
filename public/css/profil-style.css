@@ -2,7 +2,7 @@ li {
   list-style-type: none;
 }
 
-.title {
+.index-header {
   text-align: center;
   font-size: 1.5rem;
 }
@@ -67,7 +67,7 @@ li {
     gap: 10px;
   }
 
-  .profil-header-container .title {
+  .profil-header-container .index-header {
     font-size: 0.8rem;
   }
 

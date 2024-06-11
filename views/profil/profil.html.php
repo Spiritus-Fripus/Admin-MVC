@@ -7,7 +7,7 @@
 <?php foreach ($recordset as $row) { ?>
     <div class="profil-container">
         <div class="profil-header-container">
-            <div class="title">
+            <div class="index-header">
                 <h1>
                     <?= $row['user_mail'] ?>
                 </h1>
