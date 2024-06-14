@@ -1,4 +1,5 @@
 <?php
+
 function loadLayoutConfig(): array
 {
     return [

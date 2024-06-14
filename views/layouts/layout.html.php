@@ -16,51 +16,48 @@ $config = loadLayoutConfig();
     <!-- Ubuntu font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
-          rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <!-- Icon -->
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
 </head>
 
 <body>
-<!-- Burger-menu (hidden par défaut) -->
-<div class="burger-menu">
-    <?php require $config['sidebarTemplate'] ?>
-</div>
+    <!-- Burger-menu (hidden par défaut) -->
+    <div class="burger-menu">
+        <?php require $config['sidebarTemplate'] ?>
+    </div>
 
-<div class="grid-container">
-    <!-- Header  -->
-    <header class="header-container">
-        <div class="burger">
+    <div class="grid-container">
+        <!-- Header  -->
+        <header class="header-container">
+            <div class="burger">
                 <span class="material-symbols-rounded">
                     menu
                 </span>
-        </div>
-        <div class="logo">
-            <a href="?controller=<?= $_SESSION['user_type'] ?>&action=index">
-                <h1>ADMIN MNS</h1>
-            </a>
+            </div>
+            <div class="logo">
+                <a href="?controller=<?= $_SESSION['user_type'] ?>&action=index">
+                    <h1>ADMIN MNS</h1>
+                </a>
 
-        </div>
-        <div class="header-icons">
-            <?php require $config['icons'] ?>
-        </div>
-    </header>
+            </div>
+            <div class="header-icons">
+                <?php require $config['icons'] ?>
+            </div>
+        </header>
 
-    <!-- Main -->
-    <main class="main-container">
-        <div class="main-body">
-            <?php require $template; ?>
-        </div>
-    </main>
+        <!-- Main -->
+        <main class="main-container">
+            <div class="main-body">
+                <?php require $template; ?>
+            </div>
+        </main>
 
-</div>
-<script src="<?= $jsFile ?>"></script>
-<script src="/js/burger-menu.js"></script>
+    </div>
+    <script src="<?= $jsFile ?>"></script>
+    <script src="/js/burger-menu.js"></script>
 </body>
 
 </html>
