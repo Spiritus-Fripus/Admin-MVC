@@ -18,6 +18,7 @@ function viewFormationAction(): void
         exit();
     }
     $cssFile = '/css/admin/formation-style.css';
+    $jsFile = '/js/formation.js';
     $template = "../views/admin-manager/formation/formation.html.php";
     require "../views/layouts/layout.html.php";
 }

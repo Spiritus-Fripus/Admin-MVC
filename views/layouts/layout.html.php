@@ -24,7 +24,7 @@ $config = loadLayoutConfig();
 </head>
 
 <body>
-    <!-- Burger-menu (hidden par défaut) -->
+    <!-- Burger-menu (hidden par defaut) -->
     <div class="burger-menu">
         <?php require $config['sidebarTemplate'] ?>
     </div>
@@ -56,7 +56,9 @@ $config = loadLayoutConfig();
         </main>
 
     </div>
-    <script src="<?= $jsFile ?>"></script>
+    <?php if (isset($jsFile)) { ?>
+        <script src="<?= $jsFile ?>"></script>
+    <?php } ?>
     <script src="/js/burger-menu.js"></script>
 </body>
 
