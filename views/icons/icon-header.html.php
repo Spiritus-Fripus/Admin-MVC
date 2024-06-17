@@ -1,6 +1,6 @@
 <a href='?controller=<?= $_SESSION['user_type'] ?>&action=profil'>
     <span class="material-symbols-rounded">
-        shield_person
+        account_circle
     </span>
 </a>
 <span class="material-symbols-rounded">
