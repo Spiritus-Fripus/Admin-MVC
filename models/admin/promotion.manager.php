@@ -1,6 +1,7 @@
 <?php
 
 require_once "../config/connect.php";
+
 function getAllPromotion(): bool|array
 {
     $db = connectToDatabase();
@@ -21,10 +22,8 @@ function getAllFormationType(): bool|array
 
 function createPromotion(): void
 {
-
     $db = connectToDatabase();
-
-    $sql = 'INSERT INTO table_promotion (promotion_name, promotion_year, formation_id) VALUES (:promotion_name, :promotion_year, formation_id)';
+    $sql = 'INSERT INTO table_promotion (promotion_name, promotion_year, formation_id) VALUES (:promotion_name, :promotion_year, :formation_id)';
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':promotion_name', $_POST['promotion_name']);
     $stmt->bindValue(':promotion_year', $_POST['promotion_year']);

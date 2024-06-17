@@ -21,32 +21,32 @@
         <form action="?controller=formation&action=viewformation" method="post">
             <div class="entree">
                 <label for="formation_name">Nom de la formation</label>
-                <input type="text" name="formation_name" />
-            </div>
-            <div class="entree">
-                <label for="formation_duration">Durée de la formation</label>
-                <input type="text" name="formation_duration" />
+                <input type="text" name="formation_name" required />
             </div>
             <div class="entree">
                 <label for="formation_date_start">Date de début de la formation</label>
-                <input type="date" name="formation_date_start" />
+                <input type="date" name="formation_date_start" required />
             </div>
             <div class="entree">
                 <label for="formation_date_end">Date de fin de la formation</label>
-                <input type="date" name="formation_date_end" />
+                <input type="date" name="formation_date_end" required />
+            </div>
+            <div class="entree">
+                <label for="formation_duration">Durée de la formation</label>
+                <input type="text" name="formation_duration" required />
             </div>
             <div class="entree">
                 <label for="formation_max_student">Nombre maximal d'élèves</label>
-                <input type="number" name="formation_max_student" />
+                <input type="number" name="formation_max_student" required />
             </div>
             <div class="entree-select">
-                <select name="formation_qualification">
+                <select name="formation_qualification" required>
                     <option value="1">Bac+1</option>
                     <option value="2">Bac+2</option>
                     <option value="3">Bac+3</option>
                     <option value="5">Bac+5</option>
                 </select>
-                <select name="formation_type_id">
+                <select name="formation_type_id" required>
                     <option value="1">Développement</option>
                     <option value="2">Cybersécurité</option>
                     <option value="3">Marketing</option>

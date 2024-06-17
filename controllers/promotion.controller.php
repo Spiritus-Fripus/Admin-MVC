@@ -20,6 +20,29 @@ function viewPromotionAction(): void
         exit();
     }
     $cssFile = '/css/admin/promotion-style.css';
+    $jsFile = '/js/promotion.js';
     $template = "../views/admin-manager/promotion/promotion.html.php";
+    require "../views/layouts/layout.html.php";
+}
+
+// Fonction pour modifier une formation
+function modifyFormationAction(): void
+{
+    require_once '../models/admin/formation.manager.php';
+    checkAdminManagerRole();
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        updateFormation();
+        // Redirection vers la liste des formations
+        header("Location: ?controller=formation&action=viewformation");
+        exit();
+    }
+
+    $formationId = $_GET['formation_id'];
+    $formation = getFormationById($formationId);
+    $formationstypes = getAllFormationType();
+    $config = loadLayoutConfig();
+    $cssFile = '/css/admin/formation-style.css';
+    $template = "../views/admin-manager/formation/modify-formation.html.php";
     require "../views/layouts/layout.html.php";
 }
