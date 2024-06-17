@@ -18,7 +18,7 @@ function viewFormationAction(): void
         exit();
     }
     $cssFile = '/css/admin/formation-style.css';
-    $jsFile = '/js/formation.js';
+    $jsFile = '/js/modal.js';
     $template = "../views/admin-manager/formation/formation.html.php";
     require "../views/layouts/layout.html.php";
 }
@@ -39,11 +39,12 @@ function deleteFormationAction(): void
 
     $cssFile = '/css/admin-manager/formation-style.css';
     $formations = getAllFormation();
+    $config = loadLayoutConfig();
     $template = "../views/admin/formation/formation.html.php";
     require "../views/layouts/layout.html.php";
 }
 
-// fonction pour modifier une formation
+// Fonction pour modifier une formation
 function modifyFormationAction(): void
 {
     require '../models/admin/formation.manager.php';
@@ -67,6 +68,7 @@ function modifyFormationAction(): void
     }
 
     $cssFile = '/css/admin/formation-style.css';
+    $config = loadLayoutConfig();
     $template = "../views/admin-manager/formation/modifyformation.html.php";
     require "../views/layouts/layout.html.php";
 }

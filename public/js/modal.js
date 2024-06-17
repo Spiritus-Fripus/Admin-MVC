@@ -1,5 +1,3 @@
-console.log("JavaScript chargé");
-
 document.addEventListener("DOMContentLoaded", (event) => {
   const modal = document.getElementById("deleteModal");
   const span = document.getElementsByClassName("close")[0];

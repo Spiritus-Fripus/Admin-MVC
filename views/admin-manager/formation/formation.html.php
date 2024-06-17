@@ -3,15 +3,15 @@
         <?php /** @var mixed $formations */
         foreach ($formations as $formation) { ?>
             <ul class="formation">
-                <li> <?= $formation['formation_name'] ?></li>
-                <li> <?= $formation['formation_duration'] ?> </li>
-                <li> <?= "Bac+" . $formation['formation_qualification'] ?></li>
+                <li> <?= htmlspecialchars($formation['formation_name']) ?></li>
+                <li> <?= htmlspecialchars($formation['formation_duration']) ?> </li>
+                <li> <?= "Bac+" . htmlspecialchars($formation['formation_qualification']) ?></li>
                 <div class="boutons-modif">
-                    <form action="?controller=formation&action=deleteformation" method="post">
-                        <button class="bouton-suppression" type="button" value="<?= $formation['formation_id'] ?>" name="formation_id"> Supprimer
-                        </button>
+                    <form action="?controller=formation&action=deleteformation" method="post" class="delete-form">
+                        <input type="hidden" name="formation_id" value="<?= htmlspecialchars($formation['formation_id']) ?>">
+                        <button class="bouton-suppression" type="button">Supprimer</button>
                     </form>
-                    <a href="?controller=formation&action=modifyFormation&formation_id=<?= $formation['formation_id'] ?>" class="bouton-modification">Modifier</a>
+                    <a href="?controller=formation&action=modifyFormation&formation_id=<?= htmlspecialchars($formation['formation_id']) ?>" class="bouton-modification">Modifier</a>
                 </div>
             </ul>
         <?php } ?>
@@ -57,6 +57,7 @@
         </form>
     </div>
 </div>
+
 <div id="deleteModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
