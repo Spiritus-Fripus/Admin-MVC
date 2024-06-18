@@ -37,7 +37,7 @@
             <label for="absence_date_declaration">Date de déclaration de l'absence</label>
             <input type="date" name="absence_date_declaration"/>
         </div>
+        <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
         <input class="bouton-enregistrer" type="submit" value="Enregistrer"/>
     </form>
-    <?= $_SESSION['user_id']; ?>
 </div>

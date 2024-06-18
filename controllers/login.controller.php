@@ -9,6 +9,7 @@ function formLoginAction(): void
     $title = "LOGIN MNS";
     $cssFile = 'css/login-style.css';
     require '../views/login/index-login.html.php';
+    require '../config/config.php';
     $type_user = '';
 
     if (isset($_POST['send'])) {
@@ -32,6 +33,8 @@ function formLoginAction(): void
                     $_SESSION['user_type'] = $type_user;
                     $_SESSION['user_mail'] = $_POST['email'];
                     $_SESSION['user_id'] = $response['user_id'];
+                    // Génère un jeton CSRF de 32 octets et le stocke le jeton csrf dans la session pour les formulaires
+                    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 
                     // Termine la mise en mémoire tampon de sortie et nettoie le tampon
                     ob_end_clean();

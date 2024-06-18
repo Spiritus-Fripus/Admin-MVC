@@ -2,21 +2,33 @@
 /**
  * @var bool|array $recordset
  */
+
 ?>
-
-
 <div class="index-main-container">
     <div class="index-header">
-        <h1>Liste des utilisateurs: </h1>
-        <button type="button" class="add">Ajouter un utilisateur</button>
+        <form action="?controller=user&action=index" method="post">
+            <label for="search"></label>
+            <input type="text" name=search class="search-bar" placeholder="Recherche">
+            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
+            <input type="hidden" value="Envoyer">
+        </form>
+        <a href="?controller=user&action=addUser" class="add">Ajouter un utilisateur</a>
     </div>
     <table class="user-card">
         <tbody>
         <?php foreach ($recordset as $row) { ?>
+
             <?php
             // Mise à jour de la date en version FR
-            $date = new DateTime($row['user_birthday_date']);
-            $formattedDate = $date->format('d-m-Y');
+            try {
+                $date = new DateTime($row['user_birthday_date']);
+                $formattedDate = $date->format('d-m-Y');
+            } catch (Exception $e) {
+                error_log('Erreur lors de la création de l\'objet DateTime : ' . $e->getMessage());
+                $formattedDate = 'Date invalide'; // Valeur par défaut en cas d'erreur
+            } ?>
+
+            <?php
             // switch sur les types
             switch ($row['user_type_id']) {
                 case 1:
@@ -31,12 +43,14 @@
             } ?>
             <tr>
                 <input type="hidden" name="user_id" value="<?= htmlspecialchars($row['user_id']) ?>"/>
-                <td data-label="Nom"><?= $row['user_name'] ?></td>
-                <td data-label="Prénom"><?= $row['user_firstname'] ?></td>
-                <td data-label="Mail"><?= $row['user_mail'] ?></td>
-                <td data-label="Téléphone"><?= $row['user_phonenumber'] ?></td>
-                <td data-label="Date de naissance"><?= $formattedDate ?></td>
-                <td data-label="Type"><?= $type_user ?></td>
+                <td data-label="Nom"><?= htmlspecialchars($row['user_name']) ?></td>
+                <td data-label="Prénom"><?= htmlspecialchars($row['user_firstname']) ?></td>
+                <td data-label="Mail"><?= htmlspecialchars($row['user_mail']) ?></td>
+                <td data-label="Téléphone"><?= htmlspecialchars($row['user_phonenumber']) ?></td>
+                <td data-label="Date de naissance"><?= htmlspecialchars($formattedDate) ?></td>
+                <td data-label="Age"><?= htmlspecialchars($row['age']) ?></td>
+                <td data-label="Genre"><?= htmlspecialchars($row['user_gender']) ?></td>
+                <td data-label="Type"><?= htmlspecialchars($type_user) ?></td>
                 <td>
                     <div class="button-crud">
                         <a href="?controller=user&action=updateUser&user_id=<?= $row['user_id'] ?>" class="modify">Modifier</a>

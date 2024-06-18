@@ -8,11 +8,13 @@
                 <li> <?= "Bac+" . $formation['formation_qualification'] ?></li>
                 <div class="boutons-modif">
                     <form action="?controller=formation&action=deleteformation" method="post">
+                        <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
                         <button class="bouton-suppression" type="submit" value="<?= $formation['formation_id'] ?>"
                                 name="formation_id" id="deleteFormation"> Supprimer
                         </button>
                     </form>
-                    <a href="?controller=formation&action=modifyFormation&formation_id=<?= $formation['formation_id'] ?>" class="bouton-modification">Modifier</a>
+                    <a href="?controller=formation&action=modifyFormation&formation_id=<?= $formation['formation_id'] ?>"
+                       class="bouton-modification">Modifier</a>
                 </div>
             </ul>
         <?php } ?>
@@ -53,6 +55,7 @@
                     <option value="3">Marketing</option>
                     <option value="4">Réseau</option>
                 </select>
+                <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
                 <input class="bouton-enregistrer" type="submit" value="Enregistrer"/>
             </div>
         </form>
