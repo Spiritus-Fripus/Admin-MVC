@@ -8,6 +8,15 @@ function loadLayoutConfig(): array
     ];
 }
 
+function verifyCsrfToken(): bool
+{
+    if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
+        // Jeton CSRF invalide
+        return false;
+    }
+    return true;
+}
+
 function checkAdminRole(): void
 {
     if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'admin') {

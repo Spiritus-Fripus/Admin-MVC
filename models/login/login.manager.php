@@ -1,6 +1,7 @@
 <?php
 
 require_once '../config/connect.php';
+
 function connect($email)
 {
     $db = connectToDatabase();
@@ -19,6 +20,7 @@ function disconnect(): never
     $_SESSION['user_mail'] = '';
     $_SESSION['user_type'] = '';
     $_SESSION['user_id'] = '';
+    $_SESSION['csrf_token'] = '';
     session_destroy();
     header('Location: /');
     exit();

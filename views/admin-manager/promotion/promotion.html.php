@@ -6,9 +6,13 @@
                 <li> <?= $promotion['promotion_year'] ?> </li>
                 <div class="boutons-modif">
                     <form action="?controller=promotion&action=deletepromotion" method="post">
-                        <button class="bouton-suppression" type="submit" value="<?= $promotion['promotion_id'] ?>" name="promotion_id" id="deletePromotion"> Supprimer</button>
+                        <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
+                        <button class="bouton-suppression" type="submit" value="<?= $promotion['promotion_id'] ?>"
+                                name="promotion_id" id="deletePromotion"> Supprimer
+                        </button>
                     </form>
-                    <a href="?controller=promotion&action=modifyPromotion&promotion_id=<?= $formation['promotion_id'] ?>" class="bouton-modification">Modifier</a>
+                    <a href="?controller=promotion&action=modifyPromotion&promotion_id=<?= $formation['promotion_id'] ?>"
+                       class="bouton-modification">Modifier</a>
                 </div>
             </ul>
         <?php } ?>
@@ -21,8 +25,8 @@
                     <li> <?= $formation['formation_date_start'] ?> </li>
                     <li> <?= $formation['formation_date_end'] ?> </li>
                     <li> <?= "Bac+" . $formation['formation_qualification'] ?></li>
-                    </form>
-                    <a href="?controller=Promotion&action=addPromotion&formation_id=<?= $formation['formation_id'] ?>" class="bouton-ajout-promotion">Ajouter une Promotion
+                    <a href="?controller=Promotion&action=addPromotion&formation_id=<?= $formation['formation_id'] ?>"
+                       class="bouton-ajout-promotion">Ajouter une Promotion
                     </a>
                 </ul>
             <?php } ?>
