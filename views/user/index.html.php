@@ -7,36 +7,33 @@
 <div class="index-main-container">
     <div class="index-header">
 
-        <!-- SEARCHBAR -->
         <form action="?controller=user&action=index" method="post" class="form-search">
+
+            <!-- SEARCHBAR -->
             <label for="search"></label>
             <input type="text" name=search class="search-bar" placeholder="Recherche">
-            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
-            <button type="submit">Rechercher</button>
-        </form>
-        <!-- END / SEARCHBAR -->
+            <!-- END / SEARCHBAR -->
 
-        <!-- TRI PAR ID/NAME/FIRSTNAME -->
-        <form action="?controller=user&action=index" method="post">
-            <select name="sort" id="">
-                <option value="user_id" <?= isset($_POST['sort']) && $_POST['sort'] == 'user_id' ? 'selected' : '' ?>>
+            <!-- TRI PAR ID/NAME/FIRSTNAME -->
+            <select name="sort-by" id="">
+                <option value="user_id" <?= isset($_POST['sort-by']) && $_POST['sort-by'] == 'user_id' ? 'selected' : '' ?>>
                     Id
                 </option>
-                <option value="user_name" <?= isset($_POST['sort']) && $_POST['sort'] == 'user_name' ? 'selected' : '' ?>>
+                <option value="user_name" <?= isset($_POST['sort-by']) && $_POST['sort-by'] == 'user_name' ? 'selected' : '' ?>>
                     Nom
                 </option>
-                <option value="user_firstname" <?= isset($_POST['sort']) && $_POST['sort'] == 'user_firstname' ? 'selected' : '' ?>>
+                <option value="user_firstname" <?= isset($_POST['sort-by']) && $_POST['sort-by'] == 'user_firstname' ? 'selected' : '' ?>>
                     Prénom
                 </option>
             </select>
             <!-- END / TRI PAR ID/NAME/FIRSTNAME-->
 
             <!-- ORDER BY  -->
-            <select name="sort-by" id="">
-                <option value="ASC" <?= isset($_POST['sort-by']) && $_POST['sort-by'] == 'ASC' ? 'selected' : '' ?>>
+            <select name="sort-direction" id="">
+                <option value="ASC" <?= isset($_POST['sort-direction']) && $_POST['sort-direction'] == 'ASC' ? 'selected' : '' ?>>
                     ASC
                 </option>
-                <option value="DESC" <?= isset($_POST['sort-by']) && $_POST['sort-by'] == 'DESC' ? 'selected' : '' ?>>
+                <option value="DESC" <?= isset($_POST['sort-direction']) && $_POST['sort-direction'] == 'DESC' ? 'selected' : '' ?>>
                     DESC
                 </option>
             </select>
@@ -60,9 +57,8 @@
             <!-- END / TRI PAR TYPE -->
 
             <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
-            <button type="submit">Trier</button>
+            <button type="submit">Recherche</button>
         </form>
-
 
         <a href="?controller=user&action=addUser" class="add">Ajouter un utilisateur</a>
     </div>
@@ -78,6 +74,7 @@
         </thead>
 
         <tbody>
+
         <?php foreach ($recordset as $row) { ?>
             <?php
             // Mise à jour de la date en version FR

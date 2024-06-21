@@ -8,9 +8,9 @@ function indexAction(): void
     require '../models/user/user.manager.php';
 
     $search = $_POST['search'] ?? '';
-    $sortColumn = $_POST['sort'] ?? 'user_id';
-    $sortDirection = $_POST['sort-by'] ?? 'ASC';
-    $sortType = $_POST['sort-type'] ?? 'ALL';
+    $orderBy = $_POST['sort-by'] ?? 'user_id';
+    $direction = $_POST['sort-direction'] ?? 'DESC';
+    $type = $_POST['sort-type'] ?? 'ALL';
 
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -19,10 +19,8 @@ function indexAction(): void
             require '../models/login/login.manager.php';
             disconnect();
         }
-        $recordset = $search ? search($search) : orderUsers($sortColumn, $sortDirection, $sortType);
-    } else {
-        $recordset = orderUsers($sortColumn, $sortDirection, $sortType);
     }
+    $recordset = searchAndFilter($search, $type, $orderBy, $direction);
 
     $title = 'Liste des utilisateurs';
     $cssFile = '/css/admin/user-style.css';

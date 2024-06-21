@@ -125,46 +125,44 @@ function archiveUser($user_id): void
     }
 }
 
-function search($search): false|array
+
+function searchAndFilter($search, $type = 'ALL', $orderBy = 'user_id', $direction = 'DESC'): bool|array
 {
     $db = connectToDatabase();
-    $sql = "SELECT *, TIMESTAMPDIFF(YEAR, user_birthday_date, CURDATE()) AS age 
-            FROM table_user 
-            WHERE CONCAT (user_firstname,' ', user_name,' ', user_mail, ' ') 
-            LIKE :search";
-
-    $stmt = $db->prepare($sql);
-    $stmt->bindValue(":search", '%' . $search . '%', PDO::PARAM_STR);
-    $stmt->execute();
-    return $stmt->fetchAll();
-}
-
-function orderUsers($column = 'user_id', $direction = 'ASC', $type = 'ALL'): bool|array
-{
-    $db = connectToDatabase();
-    // Liste des colonnes autorisées pour éviter les injections SQL
-    $allowedColumns = ['user_id', 'user_name', 'user_firstname'];
-    $where = '';
-
-    if (!in_array($column, $allowedColumns)) {
-        $column = 'user_id';
-    }
-    $direction = strtoupper($direction) === 'DESC' ? 'DESC' : 'ASC';
+    $where = [];
+    $params = [];
 
     // WHERE pour filtrer par type
     if ($type !== 'ALL') {
-        $where = "WHERE user_type_id = :type";
+        $where[] = "user_type_id = :type";
+        $params[':type'] = (int)$type;
     }
+
+    // WHERE pour la recherche
+    if (!empty($search)) {
+        $where[] = "CONCAT(user_firstname, ' ', user_name, ' ', user_mail) LIKE :search";
+        $params[':search'] = '%' . $search . '%';
+    }
+
+    // Construction de la clause WHERE
+    $whereClause = '';
+    if (!empty($where)) {
+        $whereClause = 'WHERE ' . implode(' AND ', $where);
+    }
+
+    // Ordre de tri
+    $direction = strtoupper($direction) === 'DESC' ? 'DESC' : 'ASC';
 
     $sql = "SELECT *, TIMESTAMPDIFF(YEAR, user_birthday_date, CURDATE()) AS age
             FROM table_user
-            $where
-            ORDER BY $column $direction";
+            $whereClause
+            ORDER BY $orderBy $direction";
+
     $stmt = $db->prepare($sql);
 
-
-    if ($type !== 'ALL') {
-        $stmt->bindValue(':type', (int)$type, PDO::PARAM_INT);
+    // Binding des valeurs
+    foreach ($params as $key => $value) {
+        $stmt->bindValue($key, $value, PDO::PARAM_STR);
     }
 
     $stmt->execute();
