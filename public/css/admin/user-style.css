@@ -22,6 +22,13 @@
   border: 1px solid rgba(255, 255, 255, 0.49);
 }
 
+.form-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
 .search-bar {
   width: 100%;
   height: 20px;
@@ -44,14 +51,17 @@
 
 .add,
 .modify,
-.delete {
+.delete,
+.see {
   position: relative;
-  padding-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 5px;
   background-repeat: no-repeat;
   cursor: pointer;
   box-sizing: border-box;
-  width: 150px;
+  width: 100%;
   height: 25px;
   color: #fff;
   font-size: 0.8rem;
@@ -64,7 +74,8 @@
 
 .add::before,
 .modify::before,
-.delete::before {
+.delete::before,
+.see::before {
   content: "";
   width: 0;
   height: 100%;
@@ -78,22 +89,35 @@
 
 .add:hover,
 .delete:hover,
-.modify:hover {
+.modify:hover,
+.see:hover {
   color: #fff;
 }
 
 .add:hover::before,
 .delete:hover::before,
-.modify:hover::before {
+.modify:hover::before,
+.see:hover::before {
   width: 100%;
 }
 
 .add {
   background-color: #649c25;
   box-shadow: #49701a 0 4px 0 0;
+  width: 150px;
+  height: 25px;
 }
 
 .add::before {
+  background-color: #8adc33;
+}
+
+.see {
+  background-color: #649c25;
+  box-shadow: #49701a 0 4px 0 0;
+}
+
+.see::before {
   background-color: #8adc33;
 }
 
@@ -116,98 +140,132 @@
 }
 
 .modify,
-.delete {
+.delete,
+.see {
   width: 100%;
 }
 
 /* ===== /Button ===== */
 
 /* ===== Table ===== */
-table {
-  display: flex;
-  flex-direction: column;
-  box-sizing: content-box;
+
+.table-container {
   width: 100%;
-  gap: 10px;
+  border-collapse: collapse;
+  margin: 20px 0;
+  text-align: left;
 }
 
-tbody {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-
-table tr {
-  background-color: #f8f8f8;
+.table-container th,
+.table-container td {
+  padding: 12px 15px;
   border: 1px solid #ddd;
-  border-bottom: 3px solid #ddd;
-  display: block;
-  margin-bottom: 0.6rem;
-  width: 45%;
 }
 
-table td {
-  border-bottom: 1px solid #ddd;
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.8rem;
+.table-container th {
+  background-color: #f4f4f4;
 }
 
-table th,
-table td {
-  padding: 0.6rem;
-  text-align: center;
-}
+/* ==== /Table ===== */
 
-table td::before {
-  content: attr(data-label);
-  float: left;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-table td:hover {
-  background: #ffba08;
-}
-
-table td:last-child {
-  border-bottom: 0;
-}
-
-table td:last-child:hover {
-  background: none;
-}
-
-/* ===== /Table ===== */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 960px) {
   .index-header {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  table {
+    display: flex;
     flex-direction: column;
-    gap: 20px;
-    margin-bottom: 20px;
+    box-sizing: content-box;
+    width: 100%;
+    gap: 10px;
+  }
+
+  table thead {
+    display: none;
   }
 
   tbody {
-    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    gap: 30px;
   }
 
   table tr {
-    width: 100%;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: 0.6rem;
+    width: 45%;
   }
 
   table td {
-    font-size: 0.75rem;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+  }
+
+  table th,
+  table td {
+    padding: 0.6rem;
+    text-align: center;
+  }
+
+  table td::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  table td:hover {
+    background: #ffba08;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
+
+  table td:last-child:hover {
+    background: none;
   }
 }
 
-@media screen and (max-width: 425px) {
+/* Responsive pour les écrans de petite taille */
+@media (max-width: 480px) {
+  .table-container td::before {
+    left: 5px;
+  }
+
+  .button-crud {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .button-crud a {
+    padding: 8px;
+    font-size: 16px;
+  }
+
   .index-main-container {
     box-sizing: content-box;
   }
 
   .main-container {
     padding: 20px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .table-container td::before {
+    font-size: 0.6rem;
+  }
+
+  .table-container td {
+    font-size: 0.6rem;
   }
 }

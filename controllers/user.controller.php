@@ -7,19 +7,21 @@ function indexAction(): void
     checkAdminRole();
     require '../models/user/user.manager.php';
 
+    $search = $_POST['search'] ?? '';
+    $sortColumn = $_POST['sort'] ?? 'user_id';
+    $sortDirection = $_POST['sort-by'] ?? 'ASC';
+    $sortType = $_POST['sort-type'] ?? 'ALL';
+
+
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!verifyCsrfToken()) {
             // Jeton CSRF invalide
             require '../models/login/login.manager.php';
             disconnect();
         }
-        if (isset($_POST['search'])) {
-            $recordset = search($_POST['search']);
-        } else {
-            $recordset = showAllUser();
-        }
+        $recordset = $search ? search($search) : orderUsers($sortColumn, $sortDirection, $sortType);
     } else {
-        $recordset = showAllUser();
+        $recordset = orderUsers($sortColumn, $sortDirection, $sortType);
     }
 
     $title = 'Liste des utilisateurs';
@@ -76,7 +78,7 @@ function updateUserAction(): void
         header("Location: ?controller=user&action=index");
         exit();
     }
-    
+
     $config = loadLayoutConfig();
     $cssFile = '/css/form-style.css';
     $template = "../views/user/update-user.html.php";
@@ -84,6 +86,9 @@ function updateUserAction(): void
 }
 
 
+/**
+ * @throws Exception
+ */
 function archiveUserAction(): void
 {
     checkAdminRole();
@@ -95,4 +100,15 @@ function archiveUserAction(): void
     header("Location: ?controller=user&action=index");
 }
 
-
+function userInfoAction(): void
+{
+    checkAdminRole();
+    require '../models/user/user.manager.php';
+    if (isset($_GET['user_id'])) {
+        $user = getUserById($_GET['user_id']);
+    }
+    $config = loadLayoutConfig();
+    $cssFile = '/css/user/user-info.css';
+    $template = "../views/user/user-info.html.php";
+    require "../views/layouts/layout.html.php";
+}

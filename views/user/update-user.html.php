@@ -1,8 +1,6 @@
 <?php
 /** @var mixed $user */
 
-$genders = ['Homme', 'Femme', 'Autres'];
-
 switch ($user['user_type_id']) {
     case 1:
         $type_user = 'admin';
@@ -51,21 +49,16 @@ switch ($user['user_type_id']) {
 
             <div class="select">
                 <select name="gender">
-                    <?php if (isset ($user['user_gender'])) { ?>
-                        <option value="<?= htmlspecialchars($user['user_gender']) ?>"><?= htmlspecialchars($user['user_gender']) ?></option>
-                    <?php } ?>
-                    <?php foreach ($genders as $gender) {
-                        if ($gender != $user['user_gender']) { ?>
-                            <option value="<?= htmlspecialchars($gender) ?>"><?= htmlspecialchars($gender) ?></option>
-                        <?php } ?>
-                    <?php } ?>
+                    <option value="Homme" <?= $user['user_gender'] == 'Homme' ? 'selected' : '' ?>>Homme</option>
+                    <option value="Femme" <?= $user['user_gender'] == 'Femme' ? 'selected' : '' ?>>Femme</option>
+                    <option value="Autre" <?= $user['user_gender'] == 'Autre' ? 'selected' : '' ?>>Autre</option>
                 </select>
 
                 <?php if ($user['user_mail'] !== $_SESSION['user_mail']) { ?>
                     <select name="user_type_id">
-                        <option value="1" <?= $user['user_type_id'] == 3 ? 'selected' : '' ?>>Élève</option>
+                        <option value="3" <?= $user['user_type_id'] == 3 ? 'selected' : '' ?>>Élève</option>
                         <option value="2" <?= $user['user_type_id'] == 2 ? 'selected' : '' ?>>Gestionnaire</option>
-                        <option value="3" <?= $user['user_type_id'] == 1 ? 'selected' : '' ?>>Admin</option>
+                        <option value="1" <?= $user['user_type_id'] == 1 ? 'selected' : '' ?>>Admin</option>
                     </select>
                 <?php } ?>
 

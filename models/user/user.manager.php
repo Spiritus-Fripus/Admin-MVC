@@ -7,7 +7,7 @@ function showAllUser(): bool|array
     $db = connectToDatabase();
     // Ajout d'un alias pour calculer l'age de l'utilisateur avec TIMESTAMPDIFF()
     $sql = "SELECT *, TIMESTAMPDIFF(YEAR, user_birthday_date, CURDATE()) AS age
-            FROM table_user ORDER BY user_id DESC";
+            FROM table_user ORDER BY user_id ";
     $stmt = $db->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -16,11 +16,11 @@ function showAllUser(): bool|array
 function getUserById($user_id)
 {
     $db = connectToDatabase();
-    $sql = 'SELECT *
+    $sql = 'SELECT *, TIMESTAMPDIFF(YEAR, user_birthday_date, CURDATE()) AS age  
             FROM table_user 
             WHERE user_id = :user_id';
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+    $stmt->bindValue(':user_id', $user_id);
     $stmt->execute();
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
@@ -77,6 +77,9 @@ function updateUser(): void
     $stmt->execute();
 }
 
+/**
+ * @throws Exception
+ */
 function archiveUser($user_id): void
 {
     $db = connectToDatabase();
@@ -129,9 +132,41 @@ function search($search): false|array
             FROM table_user 
             WHERE CONCAT (user_firstname,' ', user_name,' ', user_mail, ' ') 
             LIKE :search";
-    
+
     $stmt = $db->prepare($sql);
     $stmt->bindValue(":search", '%' . $search . '%', PDO::PARAM_STR);
     $stmt->execute();
     return $stmt->fetchAll();
+}
+
+function orderUsers($column = 'user_id', $direction = 'ASC', $type = 'ALL'): bool|array
+{
+    $db = connectToDatabase();
+    // Liste des colonnes autorisées pour éviter les injections SQL
+    $allowedColumns = ['user_id', 'user_name', 'user_firstname'];
+    $where = '';
+
+    if (!in_array($column, $allowedColumns)) {
+        $column = 'user_id';
+    }
+    $direction = strtoupper($direction) === 'DESC' ? 'DESC' : 'ASC';
+
+    // WHERE pour filtrer par type
+    if ($type !== 'ALL') {
+        $where = "WHERE user_type_id = :type";
+    }
+
+    $sql = "SELECT *, TIMESTAMPDIFF(YEAR, user_birthday_date, CURDATE()) AS age
+            FROM table_user
+            $where
+            ORDER BY $column $direction";
+    $stmt = $db->prepare($sql);
+
+
+    if ($type !== 'ALL') {
+        $stmt->bindValue(':type', (int)$type, PDO::PARAM_INT);
+    }
+
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
