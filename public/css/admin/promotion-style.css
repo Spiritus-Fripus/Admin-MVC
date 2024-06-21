@@ -105,13 +105,13 @@
 .promotion-container {
   width: 100%;
   height: 100%;
-  max-width: 800px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .promotion-container form {
-  width: 100%;
+  width: 60%;
   display: flex;
   flex-direction: column;
   align-items: center;
