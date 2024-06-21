@@ -1,0 +1,289 @@
+.content-container {
+  display: flex;
+  flex-direction: column-reverse;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  overflow: hidden;
+}
+
+.promotions {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 15px;
+  border-top: 1px solid #184999;
+  width: 100%;
+  height: 80%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.promotions ul {
+  padding: 0;
+  list-style: none;
+}
+
+.promotion {
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 23%;
+  margin: 1%;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.promotion li {
+  height: auto;
+  width: 100%;
+}
+
+.promotion form {
+  margin-top: auto;
+  width: 100%;
+}
+.boutons-modif {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  font-family: "rubik";
+}
+.bouton-suppression {
+  background: #ed213a; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    #93291e,
+    #ed213a
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #93291e,
+    #ed213a
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  width: 100%;
+  height: 30px;
+  margin-top: auto;
+}
+.bouton-modification {
+  background: #56ab2f; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #a8e063,
+    #56ab2f
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #a8e063,
+    #56ab2f
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  width: 100%;
+  height: 30px;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bouton-modification a {
+  text-align: center;
+}
+
+.bouton-suppression:hover {
+  cursor: pointer;
+}
+
+.promotion-container {
+  width: 100%;
+  height: 100%;
+  max-width: 800px;
+  display: flex;
+  align-items: center;
+}
+
+.promotion-container form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 2%;
+}
+
+.entree {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.promotion-container label {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.promotion-container input,
+select {
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.entree-select {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 15px;
+}
+
+.entree-select select {
+  cursor: pointer;
+}
+
+.bouton-enregistrer {
+  border: 1px solid white;
+  border-radius: 5px;
+  width: 100%;
+  background-color: #184999;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.bouton-enregistrer:hover {
+  background-color: #163a7d;
+}
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal button {
+  margin: 10px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#confirmDelete {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+}
+
+#cancelDelete {
+  background-color: #5bc0de;
+  color: white;
+  border: none;
+}
+
+@media (max-width: 1200px) {
+  .promotion {
+    width: 30%; /* 3 promotions */
+  }
+}
+
+@media (max-width: 992px) {
+  .promotion {
+    width: 45%; /* 2 promotions */
+  }
+}
+
+@media (max-width: 768px) {
+  .promotion {
+    width: 100%; /* 1 promotion */
+  }
+
+  .promotions {
+    padding: 10px;
+  }
+
+  .promotion-container {
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .promotion-container form {
+    gap: 5px;
+  }
+
+  .entree-select {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .bouton-enregistrer {
+    padding: 8px;
+  }
+  .modal-content {
+    width: 90%;
+    margin: 30% auto;
+  }
+
+  modal button {
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .promotion {
+    padding: 8px;
+  }
+
+  .promotion-container input,
+  select {
+    padding: 8px;
+  }
+
+  .bouton-enregistrer {
+    padding: 8px;
+  }
+}
