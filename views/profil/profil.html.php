@@ -29,8 +29,10 @@
                 <hr>
                 <li> birthday : <?= $row['user_birthday_date'] ?></li>
                 <hr>
+                <li>csrf_token : <?= $_SESSION['csrf_token'] ?></li>
+                <hr>
             </ul>
         </div>
     </div>
-<?php }
+<?php } ?>
 

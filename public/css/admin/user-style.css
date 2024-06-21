@@ -1,201 +1,271 @@
 /* ===== Main ===== */
 
 .index-main-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0 5%;
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 5%;
+  box-sizing: border-box;
 }
 
 .index-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 92%;
+  margin: 15px 0;
+  padding: 15px 0;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.49);
 }
 
-.index-header h1 {
-    text-align: center;
+.form-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-bar {
+  width: 100%;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  text-align: center;
 }
 
 /* ===== /Main ===== */
 
 /* ===== Button ===== */
 .button-crud {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .add,
 .modify,
-.delete {
-    position: relative;
-    padding-top: 5px;
-    border-radius: 5px;
-    background-repeat: no-repeat;
-    cursor: pointer;
-    box-sizing: border-box;
-    width: 150px;
-    height: 25px;
-    color: #fff;
-    font-size: 0.8rem;
-    border: none;
-    transition: all 0.3s ease-in-out;
-    z-index: 1;
-    overflow: hidden;
+.delete,
+.see {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  box-sizing: border-box;
+  width: 100%;
+  height: 25px;
+  color: #fff;
+  font-size: 0.8rem;
+  border: none;
+  transition: all 0.3s ease-in-out;
+  z-index: 1;
+  text-align: center;
+  overflow: hidden;
 }
 
 .add::before,
 .modify::before,
-.delete::before {
-    content: "";
-    width: 0;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: width 700ms ease-in-out;
-    display: inline-block;
+.delete::before,
+.see::before {
+  content: "";
+  width: 0;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: width 700ms ease-in-out;
+  display: inline-block;
 }
+
 .add:hover,
 .delete:hover,
-.modify:hover {
-    color: #fff;
+.modify:hover,
+.see:hover {
+  color: #fff;
 }
+
 .add:hover::before,
 .delete:hover::before,
-.modify:hover::before {
-    width: 100%;
+.modify:hover::before,
+.see:hover::before {
+  width: 100%;
 }
 
 .add {
-    background-color: #649c25;
-    box-shadow: #49701a 0 4px 0 0;
+  background-color: #649c25;
+  box-shadow: #49701a 0 4px 0 0;
+  width: 150px;
+  height: 25px;
 }
 
 .add::before {
-    background-color: #8adc33;
+  background-color: #8adc33;
+}
+
+.see {
+  background-color: #649c25;
+  box-shadow: #49701a 0 4px 0 0;
+}
+
+.see::before {
+  background-color: #8adc33;
 }
 
 .modify {
-    background-color: #283e58;
-    box-shadow: #243149 0 4px 0 0;
+  background-color: #283e58;
+  box-shadow: #243149 0 4px 0 0;
 }
 
 .modify::before {
-    background-color: #4e6183ff;
+  background-color: #4e6183ff;
 }
 
 .delete {
-    background-color: #93291e;
-    box-shadow: #6c1f17ff 0 4px 0 0;
+  background-color: #93291e;
+  box-shadow: #6c1f17ff 0 4px 0 0;
 }
 
 .delete::before {
-    background-color: #bc3b35;
+  background-color: #bc3b35;
 }
 
 .modify,
-.delete {
-    width: 100%;
+.delete,
+.see {
+  width: 100%;
 }
 
 /* ===== /Button ===== */
 
 /* ===== Table ===== */
-table {
+
+.table-container {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  text-align: left;
+}
+
+.table-container th,
+.table-container td {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+.table-container th {
+  background-color: #f4f4f4;
+}
+
+/* ==== /Table ===== */
+
+@media screen and (max-width: 960px) {
+  .index-header {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  table {
     display: flex;
     flex-direction: column;
     box-sizing: content-box;
     width: 100%;
     gap: 10px;
-}
+  }
 
-tbody {
+  table thead {
+    display: none;
+  }
+
+  tbody {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 10px;
-}
+    justify-content: center;
+    gap: 30px;
+  }
 
-table tr {
+  table tr {
     background-color: #f8f8f8;
     border: 1px solid #ddd;
     border-bottom: 3px solid #ddd;
     display: block;
     margin-bottom: 0.6rem;
     width: 45%;
-}
+  }
 
-table td {
+  table td {
     border-bottom: 1px solid #ddd;
     display: flex;
     justify-content: space-between;
     font-size: 0.8rem;
-}
+  }
 
-table th,
-table td {
+  table th,
+  table td {
     padding: 0.6rem;
     text-align: center;
-}
+  }
 
-table td::before {
+  table td::before {
     content: attr(data-label);
     float: left;
     font-weight: bold;
     text-transform: uppercase;
-}
+  }
 
-table td:hover {
+  table td:hover {
     background: #ffba08;
-}
+  }
 
-table td:last-child {
+  table td:last-child {
     border-bottom: 0;
-}
+  }
 
-table td:last-child:hover {
+  table td:last-child:hover {
     background: none;
+  }
 }
 
-/* ===== /Table ===== */
-@media screen and (max-width: 600px) {
-    .index-header {
-        flex-direction: column;
-        margin-bottom: 20px;
-    }
+/* Responsive pour les écrans de petite taille */
+@media (max-width: 480px) {
+  .table-container td::before {
+    left: 5px;
+  }
 
-    .index-header h1 {
-        margin-bottom: 10px;
-    }
+  .button-crud {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 
-    tbody {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+  .button-crud a {
+    padding: 8px;
+    font-size: 16px;
+  }
 
-    table tr {
-        width: 100%;
-    }
+  .index-main-container {
+    box-sizing: content-box;
+  }
 
-    table td {
-        font-size: 0.75rem;
-    }
+  .main-container {
+    padding: 20px;
+  }
 }
 
-@media screen and (max-width: 425px) {
-    .index-main-container {
-        box-sizing: content-box;
-    }
+@media screen and (max-width: 375px) {
+  .table-container td::before {
+    font-size: 0.6rem;
+  }
 
-    .main-container {
-        padding: 20px;
-    }
+  .table-container td {
+    font-size: 0.6rem;
+  }
 }
