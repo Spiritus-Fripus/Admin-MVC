@@ -29,10 +29,14 @@
                 <input type="text" name="formation_duration" required />
             </div>
             <div class="entree">
-                <label for="promotion_formation_name">Formation</label>
-                <input type="text" name="" id="">
+                <label for="promotion_formation_name">Formation de la promotion</label>
+                <select name="promotion_formation_name" id="promotion_formation_name">
+                    <?php foreach ($formations as $formation) { ?>
+                        <option value="<?= $formation['formation_name'] ?>"><?= $formation['formation_name'] ?></option>
+                    <?php } ?>
+                </select>
             </div>
-            <div class="entree-select">
+            <div class="entree">
                 <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
                 <input class="bouton-enregistrer" type="submit" value="Enregistrer" />
             </div>
