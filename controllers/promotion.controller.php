@@ -26,15 +26,15 @@ function viewPromotionAction(): void
 }
 
 // Fonction pour modifier une formation
-function modifyFormationAction(): void
+function modifyPromotionAction(): void
 {
-    require_once '../models/admin/formation.manager.php';
+    require_once '../models/admin/promotion.manager.php';
     checkAdminManagerRole();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        updateFormation();
+        updatePromotion();
         // Redirection vers la liste des formations
-        header("Location: ?controller=formation&action=viewformation");
+        header("Location: ?controller=promotion&action=viewpromotion");
         exit();
     }
 
@@ -44,5 +44,22 @@ function modifyFormationAction(): void
     $config = loadLayoutConfig();
     $cssFile = '/css/admin/formation-style.css';
     $template = "../views/admin-manager/formation/modify-formation.html.php";
+    require "../views/layouts/layout.html.php";
+}
+
+function deletePromotionAction(): void
+{
+    require_once '../models/admin/promotion.manager.php';
+    checkAdminManagerRole();
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        deletePromotion();
+        //Redirection vers la liste des promotions
+        header("Location: ?controller=promotion&action=viewpromotion");
+        exit();
+    }
+    $cssFile = '/css/admin/promotion-style.css';
+    $jsFile = '/js/promotion.js';
+    $template = "../views/admin-manager/promotion/promotion.html.php";
     require "../views/layouts/layout.html.php";
 }

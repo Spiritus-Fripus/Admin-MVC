@@ -6,9 +6,9 @@
             <ul class="promotion">
                 <li> <?= htmlspecialchars($promotion['promotion_name']) ?></li>
                 <li> <?= "Année promotion: " . htmlspecialchars($promotion['promotion_year']) ?></li>
-                <li> <?= $promotion['formation_id'] ?></li>
+                <li> <?= $promotion['formation_name'] ?></li>
                 <div class="boutons-modif">
-                    <form action="?controller=promotion&action=deletepromotion" method="post">
+                    <form action="?controller=promotion&action=deletePromotion" method="post">
                         <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
                         <button class="bouton-suppression" type="submit" value="<?= $promotion['promotion_id'] ?>" name="promotion_id" id="deletePromotion"> Supprimer
                         </button>
@@ -22,17 +22,17 @@
         <form action="?controller=promotion&action=viewpromotion" method="post">
             <div class="entree">
                 <label for="promotion_name">Nom de la promotion</label>
-                <input type="date" name="promotion_name" required />
+                <input type="text" name="promotion_name" required />
             </div>
             <div class="entree">
-                <label for="promotion_year">Année de la promotion</label>
-                <input type="text" name="formation_duration" required />
+                <label for="promotion_year">Année de début de la promotion</label>
+                <input type="text" name="promotion_year" required />
             </div>
             <div class="entree">
                 <label for="promotion_formation_name">Formation de la promotion</label>
-                <select name="promotion_formation_name" id="promotion_formation_name">
+                <select name="promotion_formation_id" id="promotion_formation_id">
                     <?php foreach ($formations as $formation) { ?>
-                        <option value="<?= $formation['formation_name'] ?>"><?= $formation['formation_name'] ?></option>
+                        <option value="<?= $formation['formation_id'] ?>"><?= $formation['formation_name'] ?></option>
                     <?php } ?>
                 </select>
             </div>
