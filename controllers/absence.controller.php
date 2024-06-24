@@ -17,11 +17,11 @@ function viewOwnAbsenceAction(): void
     }
 
     $cssFile = '/css/student/absence-style.css';
-    $template = "../views/student/absence/index.html.php";
+    $template = "../views/student/absence/absence.html.php";
     require "../views/layouts/layout.html.php";
 }
 
-function deleteAbsence(): void
+function deleteAbsenceAction(): void
 {
     require_once '../models/absence.manager.php';
     $absences = getAllAbsenceByUserId();
@@ -35,6 +35,6 @@ function deleteAbsence(): void
     }
 
     $cssFile = '/css/student/absence-style.css';
-    $template = "../views/student/absence/index.html.php";
+    $template = "../views/student/absence/absence.html.php";
     require "../views/layouts/layout.html.php";
 }

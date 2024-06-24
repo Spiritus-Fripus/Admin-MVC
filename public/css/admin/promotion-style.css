@@ -7,7 +7,7 @@
   overflow: hidden;
 }
 
-.formations {
+.promotions {
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -16,17 +16,17 @@
   padding: 15px;
   border-top: 1px solid #184999;
   width: 100%;
-  height: 60%;
+  height: 80%;
   box-sizing: border-box;
   text-align: center;
 }
 
-.formations ul {
+.promotions ul {
   padding: 0;
   list-style: none;
 }
 
-.formation {
+.promotion {
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -38,12 +38,12 @@
   box-sizing: border-box;
 }
 
-.formation li {
+.promotion li {
   height: auto;
   width: 100%;
 }
 
-.formation form {
+.promotion form {
   margin-top: auto;
   width: 100%;
 }
@@ -102,16 +102,16 @@
   cursor: pointer;
 }
 
-.formation-container {
+.promotion-container {
   width: 100%;
   height: 100%;
-  max-width: 800px;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
-.formation-container form {
-  width: 100%;
+.promotion-container form {
+  width: 60%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -125,7 +125,7 @@
   width: 100%;
 }
 
-.formation-container label {
+.promotion-container label {
   display: flex;
   align-items: center;
   width: 100%;
@@ -133,7 +133,7 @@
   margin-bottom: 5px;
 }
 
-.formation-container input,
+.promotion-container input,
 select {
   padding: 10px;
   width: 100%;
@@ -225,32 +225,32 @@ select {
 }
 
 @media (max-width: 1200px) {
-  .formation {
-    width: 30%; /* 3 formations */
+  .promotion {
+    width: 30%; /* 3 promotions */
   }
 }
 
 @media (max-width: 992px) {
-  .formation {
-    width: 45%; /* 2 formations */
+  .promotion {
+    width: 45%; /* 2 promotions */
   }
 }
 
 @media (max-width: 768px) {
-  .formation {
-    width: 100%; /* 1 formation */
+  .promotion {
+    width: 100%; /* 1 promotion */
   }
 
-  .formations {
+  .promotions {
     padding: 10px;
   }
 
-  .formation-container {
+  .promotion-container {
     max-width: 100%;
     padding: 0 10px;
   }
 
-  .formation-container form {
+  .promotion-container form {
     gap: 5px;
   }
 
@@ -274,11 +274,11 @@ select {
 }
 
 @media (max-width: 576px) {
-  .formation {
+  .promotion {
     padding: 8px;
   }
 
-  .formation-container input,
+  .promotion-container input,
   select {
     padding: 8px;
   }
