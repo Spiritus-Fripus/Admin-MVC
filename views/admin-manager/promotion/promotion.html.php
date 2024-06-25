@@ -6,14 +6,14 @@
             <ul class="promotion">
                 <li> <?= htmlspecialchars($promotion['promotion_name']) ?></li>
                 <li> <?= "Année promotion: " . htmlspecialchars($promotion['promotion_year']) ?></li>
-                <li> <?= htmlspecialchars($promotion['formation_name']) ?></li>
+                <li> <?= $formationpromotion['formation_name'] ?></li>
                 <div class="boutons-modif">
                     <form action="?controller=promotion&action=deletePromotion" method="post">
                         <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
                         <button class="bouton-suppression" type="submit" value="<?= $promotion['promotion_id'] ?>" name="promotion_id" id="deletePromotion"> Supprimer
                         </button>
                     </form>
-                    <a href="?controller=promotion&action=modifyPromotion&promotion_id=<?= $promotion['promotion_id'] ?>" class="bouton-modification">Modifier</a>
+                    <a href="?controller=promotion&action=modifyPromotion&promotion_id=<?= $formation['promotion_id'] ?>" class="bouton-modification">Modifier</a>
                 </div>
             </ul>
         <?php } ?>
@@ -32,7 +32,7 @@
                 <label for="promotion_formation_name">Formation de la promotion</label>
                 <select name="promotion_formation_id" id="promotion_formation_id">
                     <?php foreach ($formations as $formation) { ?>
-                        <option value="<?= $formation['formation_id'] ?>"><?= htmlspecialchars($formation['formation_name']) ?></option>
+                        <option value="<?= $formation['formation_id'] ?>"><?= $formation['formation_name'] ?></option>
                     <?php } ?>
                 </select>
             </div>
@@ -40,9 +40,12 @@
                 <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
                 <input class="bouton-enregistrer" type="submit" value="Enregistrer" />
             </div>
-        </form>
     </div>
+
+    </form>
 </div>
+</div>
+
 
 <div id="deleteModal" class="modal">
     <div class="modal-content">

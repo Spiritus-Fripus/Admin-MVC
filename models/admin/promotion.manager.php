@@ -5,10 +5,10 @@ require_once "../config/connect.php";
 function getAllPromotion(): array
 {
     $db = connectToDatabase();
-    $sql = 'SELECT p.*, f.formation_name FROM table_promotion p INNER JOIN table_formation f ON p.formation_id = f.formation_id';
+    $sql = 'SELECT * FROM table_promotion';
     $stmt = $db->prepare($sql);
     $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $stmt->fetchAll();
 }
 
 function getAllFormationType(): array
@@ -17,17 +17,16 @@ function getAllFormationType(): array
     $sql = 'SELECT * FROM table_formation_type';
     $stmt = $db->prepare($sql);
     $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $stmt->fetchAll();
 }
 
-function getFormationOfPromotion($promotion_id)
+function getFormationOfPromotion()
 {
     $db = connectToDatabase();
-    $sql = 'SELECT formation_name FROM table_formation INNER JOIN table_promotion ON table_formation.formation_id = table_promotion.formation_id WHERE table_promotion.promotion_id = :promotion_id';
+    $sql = 'SELECT formation_name FROM table_formation INNER JOIN table_promotion WHERE table_formation.formation_id = table_promotion.formation_id';
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':promotion_id', $promotion_id);
     $stmt->execute();
-    return $stmt->fetch(PDO::FETCH_ASSOC);
+    return $stmt->fetch();
 }
 
 function createPromotion(): void
@@ -41,14 +40,14 @@ function createPromotion(): void
     $stmt->execute();
 }
 
-function getPromotionById($promotion_id)
+function getPromotionById($formation_id)
 {
     $db = connectToDatabase();
-    $sql = 'SELECT * FROM table_promotion WHERE promotion_id = :promotion_id';
+    $sql = 'SELECT * FROM table_formation WHERE formation_id = :formation_id';
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':promotion_id', $promotion_id);
+    $stmt->bindValue(':formation_id', $formation_id);
     $stmt->execute();
-    return $stmt->fetch(PDO::FETCH_ASSOC);
+    return $stmt->fetch();
 }
 
 function deletePromotion(): void
@@ -67,13 +66,12 @@ function updatePromotion(): void
     SET 
         promotion_name = :promotion_name,
         promotion_year = :promotion_year,
-        formation_id = :formation_id
+        formation_id = :formation_id,
     WHERE promotion_id = :promotion_id";
 
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':promotion_id', $_POST['promotion_id']);
     $stmt->bindValue(':promotion_name', $_POST['promotion_name']);
-    $stmt->bindValue(':promotion_year', $_POST['promotion_year']);
-    $stmt->bindValue(':formation_id', $_POST['promotion_formation_id']);
+    $stmt->bindValue(':formation_id', $_POST['formation_id']);
     $stmt->execute();
 }

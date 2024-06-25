@@ -11,6 +11,7 @@ function viewPromotionAction(): void
     $promotions = getAllPromotion();
     $formations = getAllFormation();
     $formationstypes = getAllFormationType();
+    $formationpromotion = getFormationOfPromotion();
     $config = loadLayoutConfig();
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -40,7 +41,10 @@ function modifyPromotionAction(): void
 
     $promotionId = $_GET['promotion_id'];
     $promotion = getPromotionById($promotionId);
+    $promotions = getAllPromotion();
+    $formations = getAllFormation();
     $formationstypes = getAllFormationType();
+    $formationpromotion = getFormationOfPromotion();
     $config = loadLayoutConfig();
     $cssFile = '/css/admin/promotion-style.css';
     $template = "../views/admin-manager/promotion/promotion.html.php";
@@ -52,13 +56,15 @@ function deletePromotionAction(): void
     require_once '../models/admin/promotion.manager.php';
     checkAdminManagerRole();
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['promotion_id'])) {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         deletePromotion();
         // Redirection vers la liste des promotions
         header("Location: ?controller=promotion&action=viewpromotion");
         exit();
     }
     $promotions = getAllPromotion();
+    $formationpromotion = getFormationOfPromotion();
+    $formations = getAllFormation();
     $cssFile = '/css/admin/promotion-style.css';
     $jsFile = '/js/promotion.js';
     $config = loadLayoutConfig();
