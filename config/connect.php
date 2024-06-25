@@ -1,5 +1,5 @@
 <?php
-function connectToDatabase()
+function connectToDatabase(): PDO
 {
     $config = require '../config/connect.env.php';
 

@@ -1,7 +1,6 @@
 <div class="content-container">
     <ul class="formations">
-        <?php /** @var mixed $formations */
-        foreach ($formations as $formation) { ?>
+        <?php foreach ($formations as $formation) { ?>
             <ul class="formation">
                 <li> <?= htmlspecialchars($formation['formation_name']) ?></li>
                 <li> <?= htmlspecialchars($formation['formation_duration']) ?> </li>

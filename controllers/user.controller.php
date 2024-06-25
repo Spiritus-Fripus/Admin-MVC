@@ -8,10 +8,9 @@ function indexAction(): void
     require '../models/user/user.manager.php';
 
     $search = $_POST['search'] ?? '';
-    $orderBy = $_POST['sort-by'] ?? 'user_id';
+    $orderBy = $_POST['sort-by'] ?? 'created_at';
     $direction = $_POST['sort-direction'] ?? 'DESC';
     $type = $_POST['sort-type'] ?? 'ALL';
-
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!verifyCsrfToken()) {
@@ -20,10 +19,11 @@ function indexAction(): void
             disconnect();
         }
     }
-    $recordset = searchAndFilter($search, $type, $orderBy, $direction);
+
+    $recordset = searchAndFilterUsers($search, $type, $orderBy, $direction);
 
     $title = 'Liste des utilisateurs';
-    $cssFile = '/css/admin/user-style.css';
+    $cssFile = '/css/user/user-style.css';
     $config = loadLayoutConfig();
     $template = '../views/user/index.html.php';
     require '../views/layouts/layout.html.php';
@@ -41,7 +41,7 @@ function addUserAction(): void
             disconnect();
         }
         addUser();
-        header('Location : ?controller=user&action=index');
+        header('Location: ?controller=user&action=index');
     }
 
     $title = "Ajouts d'utilisateurs";
@@ -87,6 +87,7 @@ function updateUserAction(): void
 /**
  * @throws Exception
  */
+
 function archiveUserAction(): void
 {
     checkAdminRole();
@@ -97,6 +98,7 @@ function archiveUserAction(): void
     }
     header("Location: ?controller=user&action=index");
 }
+
 
 function userInfoAction(): void
 {

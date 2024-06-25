@@ -4,7 +4,7 @@ function loadLayoutConfig(): array
 {
     return [
         'icons' => '../views/icons/icon-header.html.php',
-        'sidebarTemplate' => '../views/burger-menu/burger-menu.html.php',
+        'burgerMenu' => '../views/burger-menu/burger-menu.html.php',
     ];
 }
 

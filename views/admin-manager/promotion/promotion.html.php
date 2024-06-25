@@ -1,8 +1,6 @@
 <div class="content-container">
     <div class="promotions">
-        <?php /** @var mixed $promotions */
-        /** @var mixed $formations */
-        foreach ($promotions as $promotion) { ?>
+        <?php foreach ($promotions as $promotion) { ?>
             <ul class="promotion">
                 <li> <?= htmlspecialchars($promotion['promotion_name']) ?></li>
                 <li> <?= "Année promotion: " . htmlspecialchars($promotion['promotion_year']) ?></li>

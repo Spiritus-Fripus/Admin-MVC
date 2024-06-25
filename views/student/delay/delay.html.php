@@ -1,4 +1,3 @@
-<?php /** @var string $title */ ?>
 <div class="index-main-container">
     <h1>
         <?= $title ?>

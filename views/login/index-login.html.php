@@ -1,4 +1,3 @@
-<?php /* @var string $cssFile */ ?>
 <!DOCTYPE html>
 <html lang="en">
 

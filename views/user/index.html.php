@@ -1,68 +1,68 @@
-<?php
-/**
- * @var bool|array $recordset
- */
-?>
-
 <div class="index-main-container">
     <div class="index-header">
 
         <form action="?controller=user&action=index" method="post" class="form-search">
 
-            <!-- SEARCHBAR -->
-            <label for="search"></label>
-            <input type="text" name=search class="search-bar" placeholder="Recherche">
-            <!-- END / SEARCHBAR -->
+            <div class="form-searchbar">
+                <!-- SEARCHBAR -->
+                <label for="search"></label>
+                <input type="text" name=search class="search-bar" placeholder="Recherche">
+                <!-- END / SEARCHBAR -->
+                <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
+                <button type="submit">Rechercher</button>
+            </div>
 
-            <!-- TRI PAR ID/NAME/FIRSTNAME -->
-            <select name="sort-by" id="">
-                <option value="user_id" <?= isset($_POST['sort-by']) && $_POST['sort-by'] == 'user_id' ? 'selected' : '' ?>>
-                    Id
-                </option>
-                <option value="user_name" <?= isset($_POST['sort-by']) && $_POST['sort-by'] == 'user_name' ? 'selected' : '' ?>>
-                    Nom
-                </option>
-                <option value="user_firstname" <?= isset($_POST['sort-by']) && $_POST['sort-by'] == 'user_firstname' ? 'selected' : '' ?>>
-                    Prénom
-                </option>
-            </select>
-            <!-- END / TRI PAR ID/NAME/FIRSTNAME-->
 
-            <!-- ORDER BY  -->
-            <select name="sort-direction" id="">
-                <option value="ASC" <?= isset($_POST['sort-direction']) && $_POST['sort-direction'] == 'ASC' ? 'selected' : '' ?>>
-                    ASC
-                </option>
-                <option value="DESC" <?= isset($_POST['sort-direction']) && $_POST['sort-direction'] == 'DESC' ? 'selected' : '' ?>>
-                    DESC
-                </option>
-            </select>
-            <!-- END / ORDER BY  -->
+            <div class="form-sort">
+                <!-- TRI PAR ID/NAME/FIRSTNAME -->
+                <select name="sort-by" id="">
+                    <option value="created_at" <?= isset($_POST['sort-by']) && $_POST['sort-by'] == 'created_at' ? 'selected' : '' ?>>
+                        Ajout
+                    </option>
+                    <option value="user_name" <?= isset($_POST['sort-by']) && $_POST['sort-by'] == 'user_name' ? 'selected' : '' ?>>
+                        Nom
+                    </option>
+                    <option value="user_firstname" <?= isset($_POST['sort-by']) && $_POST['sort-by'] == 'user_firstname' ? 'selected' : '' ?>>
+                        Prénom
+                    </option>
+                </select>
+                <!-- END / TRI PAR ID/NAME/FIRSTNAME-->
 
-            <!-- TRI PAR TYPE -->
-            <select name="sort-type" id="">
-                <option value="ALL" <?= isset($_POST['sort-type']) && $_POST['sort-type'] == 'ALL' ? 'selected' : '' ?>>
-                    Tous
-                </option>
-                <option value="1" <?= isset($_POST['sort-type']) && $_POST['sort-type'] == '1' ? 'selected' : '' ?>>
-                    Admin
-                </option>
-                <option value="2" <?= isset($_POST['sort-type']) && $_POST['sort-type'] == '2' ? 'selected' : '' ?>>
-                    Gestionnaire
-                </option>
-                <option value="3" <?= isset($_POST['sort-type']) && $_POST['sort-type'] == '3' ? 'selected' : '' ?>>
-                    Élève
-                </option>
-            </select>
-            <!-- END / TRI PAR TYPE -->
+                <!-- ORDER BY  -->
+                <select name="sort-direction" id="">
+                    <option value="ASC" <?= isset($_POST['sort-direction']) && $_POST['sort-direction'] == 'ASC' ? 'selected' : '' ?>>
+                        ASC
+                    </option>
+                    <option value="DESC" <?= isset($_POST['sort-direction']) && $_POST['sort-direction'] == 'DESC' ? 'selected' : '' ?>>
+                        DESC
+                    </option>
+                </select>
+                <!-- END / ORDER BY  -->
 
-            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
-            <button type="submit">Recherche</button>
+                <!-- TRI PAR TYPE -->
+                <select name="sort-type" id="">
+                    <option value="ALL" <?= isset($_POST['sort-type']) && $_POST['sort-type'] == 'ALL' ? 'selected' : '' ?>>
+                        Tous
+                    </option>
+                    <option value="1" <?= isset($_POST['sort-type']) && $_POST['sort-type'] == '1' ? 'selected' : '' ?>>
+                        Admin
+                    </option>
+                    <option value="2" <?= isset($_POST['sort-type']) && $_POST['sort-type'] == '2' ? 'selected' : '' ?>>
+                        Gestionnaire
+                    </option>
+                    <option value="3" <?= isset($_POST['sort-type']) && $_POST['sort-type'] == '3' ? 'selected' : '' ?>>
+                        Élève
+                    </option>
+                </select>
+                <!-- END / TRI PAR TYPE -->
+
+            </div>
         </form>
-
-        <a href="?controller=user&action=addUser" class="add">Ajouter un utilisateur</a>
     </div>
-
+    <div class="form-link">
+        <a href="?controller=user&action=addUser" class="link">Ajouter un utilisateur</a>
+        <a href="?controller=user-archive&action=index" class="link">Archives</a>
+    </div>
     <table class="table-container">
 
         <thead>
@@ -123,4 +123,5 @@
         <?php } ?>
         </tbody>
     </table>
+
 </div>

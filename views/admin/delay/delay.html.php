@@ -1,5 +1,3 @@
-<?php /* @var string $title */ ?>
-
 <div class="content-container">
     <h1><?= $title ?></h1>
 

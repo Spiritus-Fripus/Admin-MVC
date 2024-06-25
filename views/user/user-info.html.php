@@ -4,7 +4,6 @@
     <table class="user-card">
         <tbody>
         <?php
-        /** @var mixed $user */
         // Mise à jour de la date en version FR
         try {
             $date = new DateTime($user['user_birthday_date']);
@@ -37,8 +36,9 @@
             <td data-label="Date de naissance"><?= htmlspecialchars($user['user_birthday_date']) ?></td>
             <td data-label="Age"><?= htmlspecialchars($user['age']) ?></td>
             <td data-label="Genre"><?= htmlspecialchars($user['user_gender']) ?></td>
-            <td data-label=" Type
-        "><?= htmlspecialchars($type_user) ?></td>
+            <td data-label=" Type"><?= htmlspecialchars($type_user) ?></td>
+            <td data-label=" Créé le"><?= htmlspecialchars($user['created_at']) ?></td>
+            <td data-label=" Créé par"><?= htmlspecialchars($user['created_by']) ?></td>
         </tr>
 
         </tbody>

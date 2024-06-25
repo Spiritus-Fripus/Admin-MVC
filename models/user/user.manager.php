@@ -2,18 +2,8 @@
 
 require_once '../config/connect.php';
 
-function showAllUser(): bool|array
-{
-    $db = connectToDatabase();
-    // Ajout d'un alias pour calculer l'age de l'utilisateur avec TIMESTAMPDIFF()
-    $sql = "SELECT *, TIMESTAMPDIFF(YEAR, user_birthday_date, CURDATE()) AS age
-            FROM table_user ORDER BY user_id ";
-    $stmt = $db->prepare($sql);
-    $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
 
-function getUserById($user_id)
+function getUserById(string $user_id)
 {
     $db = connectToDatabase();
     $sql = 'SELECT *, TIMESTAMPDIFF(YEAR, user_birthday_date, CURDATE()) AS age  
@@ -23,11 +13,6 @@ function getUserById($user_id)
     $stmt->bindValue(':user_id', $user_id);
     $stmt->execute();
     return $stmt->fetch(PDO::FETCH_ASSOC);
-}
-
-function generatePassword($length = 12): string
-{
-    return bin2hex(random_bytes($length / 2));
 }
 
 function addUser(): void
@@ -48,6 +33,11 @@ function addUser(): void
     $stmt->bindValue(":user_password", $hashedPassword, PDO::PARAM_STR);
     $stmt->bindValue(":created_by", $_SESSION['user_mail'], PDO::PARAM_STR);
     $stmt->execute();
+}
+
+function generatePassword($length = 12): string
+{
+    return bin2hex(random_bytes($length / 2));
 }
 
 function updateUser(): void
@@ -77,10 +67,8 @@ function updateUser(): void
     $stmt->execute();
 }
 
-/**
- * @throws Exception
- */
-function archiveUser($user_id): void
+
+function archiveUser(string $user_id): void
 {
     $db = connectToDatabase();
 
@@ -126,31 +114,31 @@ function archiveUser($user_id): void
 }
 
 
-function searchAndFilter($search, $type = 'ALL', $orderBy = 'user_id', $direction = 'DESC'): bool|array
+function searchAndFilterUsers(string $search, string $type, string $orderBy, string $direction): bool|array
 {
     $db = connectToDatabase();
     $where = [];
     $params = [];
 
-    // WHERE pour filtrer par type
+
     if ($type !== 'ALL') {
         $where[] = "user_type_id = :type";
         $params[':type'] = (int)$type;
     }
 
-    // WHERE pour la recherche
+
     if (!empty($search)) {
         $where[] = "CONCAT(user_firstname, ' ', user_name, ' ', user_mail) LIKE :search";
         $params[':search'] = '%' . $search . '%';
     }
 
-    // Construction de la clause WHERE
+
     $whereClause = '';
     if (!empty($where)) {
         $whereClause = 'WHERE ' . implode(' AND ', $where);
     }
 
-    // Ordre de tri
+
     $direction = strtoupper($direction) === 'DESC' ? 'DESC' : 'ASC';
 
     $sql = "SELECT *, TIMESTAMPDIFF(YEAR, user_birthday_date, CURDATE()) AS age
@@ -160,7 +148,6 @@ function searchAndFilter($search, $type = 'ALL', $orderBy = 'user_id', $directio
 
     $stmt = $db->prepare($sql);
 
-    // Binding des valeurs
     foreach ($params as $key => $value) {
         $stmt->bindValue($key, $value, PDO::PARAM_STR);
     }
@@ -168,3 +155,4 @@ function searchAndFilter($search, $type = 'ALL', $orderBy = 'user_id', $directio
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
