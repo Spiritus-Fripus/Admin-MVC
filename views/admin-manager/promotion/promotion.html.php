@@ -8,7 +8,7 @@
                 <li> <?= "Année promotion: " . htmlspecialchars($promotion['promotion_year']) ?></li>
                 <li> <?= $formationpromotion['formation_name'] ?></li>
                 <div class="boutons-modif">
-                    <form action="?controller=promotion&action=deletePromotion" method="post">
+                    <form action="?controller=promotion&action=deletepromotion" method="post">
                         <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
                         <button class="bouton-suppression" type="submit" value="<?= $promotion['promotion_id'] ?>" name="promotion_id" id="deletePromotion"> Supprimer
                         </button>

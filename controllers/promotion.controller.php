@@ -54,9 +54,10 @@ function modifyPromotionAction(): void
 function deletePromotionAction(): void
 {
     require_once '../models/admin/promotion.manager.php';
+    require_once '../models/admin/formation.manager.php';
     checkAdminManagerRole();
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['promotion_id'])) {
         deletePromotion();
         // Redirection vers la liste des promotions
         header("Location: ?controller=promotion&action=viewpromotion");
