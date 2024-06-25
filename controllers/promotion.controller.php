@@ -38,12 +38,12 @@ function modifyPromotionAction(): void
         exit();
     }
 
-    $formationId = $_GET['formation_id'];
-    $formation = getFormationById($formationId);
+    $promotionId = $_GET['promotion_id'];
+    $promotion = getPromotionById($promotionId);
     $formationstypes = getAllFormationType();
     $config = loadLayoutConfig();
-    $cssFile = '/css/admin/formation-style.css';
-    $template = "../views/admin-manager/formation/modify-formation.html.php";
+    $cssFile = '/css/admin/promotion-style.css';
+    $template = "../views/admin-manager/promotion/promotion.html.php";
     require "../views/layouts/layout.html.php";
 }
 
@@ -52,14 +52,16 @@ function deletePromotionAction(): void
     require_once '../models/admin/promotion.manager.php';
     checkAdminManagerRole();
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['promotion_id'])) {
         deletePromotion();
-        //Redirection vers la liste des promotions
+        // Redirection vers la liste des promotions
         header("Location: ?controller=promotion&action=viewpromotion");
         exit();
     }
+    $promotions = getAllPromotion();
     $cssFile = '/css/admin/promotion-style.css';
     $jsFile = '/js/promotion.js';
+    $config = loadLayoutConfig();
     $template = "../views/admin-manager/promotion/promotion.html.php";
     require "../views/layouts/layout.html.php";
 }
