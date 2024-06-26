@@ -9,8 +9,8 @@
                 <div class="boutons-modif">
                     <form action="?controller=formation&action=deleteformation" method="post">
                         <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
-                        <button class="bouton-suppression" type="submit" value="<?= $formation['formation_id'] ?>" name="formation_id" id="deleteFormation"> Supprimer
-                        </button>
+                        <input type="hidden" name="formation_id" value="<?= $formation['formation_id'] ?>">
+                        <button class="bouton-suppression" type="button" data-formation-id="<?= $formation['formation_id'] ?>">Supprimer</button>
                     </form>
                     <a href="?controller=formation&action=modifyFormation&formation_id=<?= $formation['formation_id'] ?>" class="bouton-modification">Modifier</a>
                 </div>
@@ -51,7 +51,7 @@
                     <option value="1">Développement</option>
                     <option value="2">Cybersécurité</option>
                     <option value="3">Marketing</option>
-                    <option value="4">Réseau</option>
+                    <option value="4">Réseau et sécurité</option>
                 </select>
                 <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
                 <input class="bouton-enregistrer" type="submit" value="Enregistrer" />

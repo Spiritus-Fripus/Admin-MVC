@@ -36,7 +36,7 @@
                     <option value="2" <?= $formation['formation_type_id'] == 2 ? 'selected' : '' ?>>Cybersécurité
                     </option>
                     <option value="3" <?= $formation['formation_type_id'] == 3 ? 'selected' : '' ?>>Marketing</option>
-                    <option value="4" <?= $formation['formation_type_id'] == 4 ? 'selected' : '' ?>>Réseau</option>
+                    <option value="4" <?= $formation['formation_type_id'] == 4 ? 'selected' : '' ?>>Réseau et sécurité</option>
                 </select>
             </div>
             <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">

@@ -20,13 +20,23 @@ function getAllFormationType(): array
     return $stmt->fetchAll();
 }
 
-function getFormationOfPromotion()
+function getFormationOfPromotion(): array
 {
     $db = connectToDatabase();
-    $sql = 'SELECT formation_name FROM table_formation INNER JOIN table_promotion WHERE table_formation.formation_id = table_promotion.formation_id';
+    $sql = 'SELECT table_promotion.promotion_id, table_formation.formation_name 
+            FROM table_formation 
+            INNER JOIN table_promotion 
+            ON table_formation.formation_id = table_promotion.formation_id';
     $stmt = $db->prepare($sql);
     $stmt->execute();
-    return $stmt->fetch();
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $formationPromotion = [];
+    foreach ($results as $result) {
+        $formationPromotion[$result['promotion_id']] = $result['formation_name'];
+    }
+
+    return $formationPromotion;
 }
 
 function createPromotion(): void
