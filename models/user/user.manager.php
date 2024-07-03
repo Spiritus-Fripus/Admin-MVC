@@ -103,7 +103,6 @@ function archiveUser(string $user_id): void
 
         // Commit la transaction
         $db->commit();
-
     } catch (PDOException $e) {
         // Annule la transaction en cas d'erreur
         $db->rollBack();
@@ -155,4 +154,3 @@ function searchAndFilterUsers(string $search, string $type, string $orderBy, str
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
-
