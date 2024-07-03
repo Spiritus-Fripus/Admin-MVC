@@ -23,7 +23,15 @@ function indexAction(): void
     $recordset = searchAndFilterUsers($search, $type, $orderBy, $direction);
 
     $title = 'Liste des utilisateurs';
-    $cssFile = '/css/user/user-style.css';
+    $cssFiles =
+        [
+            '/css/user/user-style.css',
+            '/css/generic/main-container.css',
+            '/css/generic/table-responsive.css',
+            '/css/generic/filter.css',
+            '/css/generic/modal.css'
+        ];
+    $jsFile = '/js/modal-delete-verify.js';
     $config = loadLayoutConfig();
     $template = '../views/user/index.html.php';
     require '../views/layouts/layout.html.php';
@@ -45,7 +53,7 @@ function addUserAction(): void
     }
 
     $title = "Ajouts d'utilisateurs";
-    $cssFile = '/css/form-style.css';
+    $cssFile = '/css/generic/form.css';
     $config = loadLayoutConfig();
     $template = '../views/user/add-user.html.php';
     require '../views/layouts/layout.html.php';
@@ -78,7 +86,7 @@ function updateUserAction(): void
     }
 
     $config = loadLayoutConfig();
-    $cssFile = '/css/form-style.css';
+    $cssFile = '/css/generic/form.css';
     $template = "../views/user/update-user.html.php";
     require "../views/layouts/layout.html.php";
 }
@@ -108,7 +116,11 @@ function userInfoAction(): void
         $user = getUserById($_GET['user_id']);
     }
     $config = loadLayoutConfig();
-    $cssFile = '/css/user/user-info.css';
+    $cssFiles =
+        [
+            '/css/generic/main-container.css',
+            '/css/generic/table-card.css'
+        ];
     $template = "../views/user/user-info.html.php";
     require "../views/layouts/layout.html.php";
 }

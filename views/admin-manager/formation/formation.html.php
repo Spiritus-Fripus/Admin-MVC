@@ -1,3 +1,4 @@
+<?php /** @var array|bool $formations */ ?>
 <div class="content-container">
     <ul class="formations">
         <?php foreach ($formations as $formation) { ?>
@@ -13,7 +14,7 @@
                         </button>
                     </form>
                     <a href="?controller=formation&action=modifyFormation&formation_id=<?= $formation['formation_id'] ?>"
-                       class="bouton-modification">Modifier</a>
+                       class=bouton-modification>Modifier</a>
                 </div>
             </ul>
         <?php } ?>
@@ -23,23 +24,23 @@
         <form action="?controller=formation&action=viewformation" method="post">
             <div class="entree">
                 <label for="formation_name">Nom de la formation</label>
-                <input type="text" name="formation_name" required />
+                <input type="text" name="formation_name" required/>
             </div>
             <div class="entree">
                 <label for="formation_date_start">Date de début de la formation</label>
-                <input type="date" name="formation_date_start" required />
+                <input type="date" name="formation_date_start" required/>
             </div>
             <div class="entree">
                 <label for="formation_date_end">Date de fin de la formation</label>
-                <input type="date" name="formation_date_end" required />
+                <input type="date" name="formation_date_end" required/>
             </div>
             <div class="entree">
                 <label for="formation_duration">Durée de la formation</label>
-                <input type="text" name="formation_duration" required />
+                <input type="text" name="formation_duration" required/>
             </div>
             <div class="entree">
                 <label for="formation_max_student">Nombre maximal d'élèves</label>
-                <input type="number" name="formation_max_student" required />
+                <input type="number" name="formation_max_student" required/>
             </div>
             <div class="entree-select">
                 <select name="formation_qualification" required>

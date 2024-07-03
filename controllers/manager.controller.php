@@ -16,7 +16,11 @@ function profilAction(): void
     require '../models/manager.manager.php';
     $recordset = showInfo();
     $title = 'Manager Connected';
-    $cssFile = '/css/profil-style.css';
+    $cssFiles =
+        [
+            '/css/generic/profil-style.css',
+            '/css/generic/main-container.css'
+        ];
     $template = '../views/profil/profil.html.php';
     require '../views/layouts/layout.html.php';
 }

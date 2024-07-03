@@ -1,4 +1,6 @@
-<div class="index-main-container">
+<?php /** @var array|bool $recordset */ ?>
+
+<div class="main-container-center-column">
 
     <form action="?controller=user-archive&action=index" method="post" class="form-search">
 
@@ -65,46 +67,46 @@
     <table class="table-container">
 
         <thead>
-            <tr>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Mail</th>
-                <th>Tel</th>
-                <th>Type</th>
-                <th>Date archive</th>
-                <th>Archivé par</th>
-            </tr>
+        <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Mail</th>
+            <th>Tel</th>
+            <th>Type</th>
+            <th>Date archive</th>
+            <th>Archivé par</th>
+        </tr>
         </thead>
 
         <tbody>
 
-            <?php foreach ($recordset as $row) { ?>
-                <?php
-                // switch sur les types
-                switch ($row['user_archive_type_id']) {
-                    case 1:
-                        $type_user = 'Admin';
-                        break;
-                    case 2:
-                        $type_user = 'Gestionnaire';
-                        break;
-                    case 3:
-                        $type_user = 'Élève';
-                        break;
-                } ?>
+        <?php foreach ($recordset as $row) { ?>
+            <?php
+            // switch sur les types
+            switch ($row['user_archive_type_id']) {
+                case 1:
+                    $type_user = 'Admin';
+                    break;
+                case 2:
+                    $type_user = 'Gestionnaire';
+                    break;
+                case 3:
+                    $type_user = 'Élève';
+                    break;
+            } ?>
 
-                <tr class="card-tr">
-                    <input type="hidden" name="user_archive_id" value="<?= htmlspecialchars($row['user_archive_id']) ?>" />
-                    <td data-label="Nom"><?= htmlspecialchars($row['user_archive_name']) ?></td>
-                    <td data-label="Prénom"><?= htmlspecialchars($row['user_archive_firstname']) ?></td>
-                    <td data-label="Mail"><?= htmlspecialchars($row['user_archive_mail']) ?></td>
-                    <td data-label="Tel"><?= htmlspecialchars($row['user_archive_phonenumber']) ?></td>
-                    <td data-label="type"><?= htmlspecialchars($type_user) ?></td>
-                    <td data-label="Date archive"><?= htmlspecialchars($row['archived_at']) ?></td>
-                    <td data-label="Archivé par"><?= htmlspecialchars($row['archived_by']) ?></td>
-                </tr>
+            <tr class="card-tr">
+                <input type="hidden" name="user_archive_id" value="<?= htmlspecialchars($row['user_archive_id']) ?>"/>
+                <td data-label="Nom"><?= htmlspecialchars($row['user_archive_name']) ?></td>
+                <td data-label="Prénom"><?= htmlspecialchars($row['user_archive_firstname']) ?></td>
+                <td data-label="Mail"><?= htmlspecialchars($row['user_archive_mail']) ?></td>
+                <td data-label="Tel"><?= htmlspecialchars($row['user_archive_phonenumber']) ?></td>
+                <td data-label="type"><?= htmlspecialchars($type_user) ?></td>
+                <td data-label="Date archive"><?= htmlspecialchars($row['archived_at']) ?></td>
+                <td data-label="Archivé par"><?= htmlspecialchars($row['archived_by']) ?></td>
+            </tr>
 
-            <?php } ?>
+        <?php } ?>
         </tbody>
     </table>
 

@@ -1,3 +1,9 @@
+<?php
+/**
+ * @var mixed $cssFile
+ * @var string $config
+ *  */
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,7 +14,13 @@
     <!-- CSS LAYOUT -->
     <link rel="stylesheet" href="/css/layout-style.css">
     <!-- CSS TEMPLATES -->
-    <link rel="stylesheet" href="<?= $cssFile; ?>">
+    <?php if (isset($cssFiles) && is_array($cssFiles)) { ?>
+        <?php foreach ($cssFiles as $cssFile) { ?>
+            <link rel="stylesheet" href="<?= $cssFile; ?>">
+        <?php } ?>
+    <?php } else { ?>
+        <link rel="stylesheet" href="<?= $cssFile; ?>">
+    <?php } ?>
     <!-- Ubuntu font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

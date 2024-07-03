@@ -1,4 +1,6 @@
-<div class="index-main-container">
+<?php /** @var mixed $user */ ?>
+
+<div class="main-container-center-column">
 
     <h1>Information de l'utilisateur : </h1>
     <table class="user-card">

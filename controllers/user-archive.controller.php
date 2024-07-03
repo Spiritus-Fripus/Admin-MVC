@@ -23,7 +23,14 @@ function indexAction(): void
     $recordset = searchAndFilterUsersArchived($search, $type, $orderBy, $direction);
 
     $title = 'Liste des utilisateurs';
-    $cssFile = '/css/user/user-style.css';
+
+    $cssFiles =
+        [
+            '/css/user/user-style.css',
+            '/css/generic/main-container.css',
+            '/css/generic/table-responsive.css',
+            '/css/generic/filter.css'
+        ];
     $config = loadLayoutConfig();
     $template = '../views/user-archive/index.html.php';
     require '../views/layouts/layout.html.php';

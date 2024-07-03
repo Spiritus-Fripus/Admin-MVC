@@ -16,7 +16,11 @@ function profilAction(): void
     require '../models/student.manager.php';
     $recordset = showInfo();
     $title = 'Student Connected';
-    $cssFile = '/css/profil-style.css';
+    $cssFiles =
+        [
+            '/css/generic/profil-style.css',
+            '/css/generic/main-container.css'
+        ];
     $template = '../views/profil/profil.html.php';
     require '../views/layouts/layout.html.php';
 }

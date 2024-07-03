@@ -18,7 +18,11 @@ function profilAction(): void
     require '../models/admin/admin.manager.php';
     $recordset = showInfo();
     $title = 'Admin Connected';
-    $cssFile = '/css/profil-style.css';
+    $cssFiles =
+        [
+            '/css/profil-style.css',
+            '/css/generic/main-container.css'
+        ];
     $config = loadLayoutConfig();
     $template = '../views/profil/profil.html.php';
     require '../views/layouts/layout.html.php';
