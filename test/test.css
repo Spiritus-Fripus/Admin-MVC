@@ -3,26 +3,30 @@
     border-collapse: collapse;
     margin: 20px 0;
     text-align: left;
+    table-layout: fixed;
 }
 
 .table-container th,
 .table-container td {
     padding: 12px 15px;
     border: 1px solid #ddd;
-    text-overflow: ellipsis;
 }
 
 .table-container th {
     background-color: #f4f4f4;
 }
 
-.table-container td {
-    border-bottom: 1px solid #ddd;
-    padding: 12px 15px;
-    text-overflow: ellipsis;
-    white-space: nowrap; /* Empêche le texte de se retourner sur plusieurs lignes */
-    overflow: hidden; /* Cache le texte dépassant */
+
+.table-container-wrapper {
+    width: 100%;
+    overflow-x: auto;
 }
+
+.table-scroll {
+    display: inline-block;
+    min-width: 100%;
+}
+
 
 @media screen and (max-width: 1250px) {
     .index-header {
@@ -90,7 +94,6 @@
         background: none;
     }
 }
-
 
 @media screen and (max-width: 768px) {
     .card-tr {

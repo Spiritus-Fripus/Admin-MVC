@@ -1,4 +1,3 @@
-/* ===== Main ===== */
 
 .user-link {
     margin-top: 10px;
@@ -17,102 +16,42 @@
     color: #49701a;
 }
 
-/* ===== /Main ===== */
-
-/* ===== Button ===== */
-.button-crud {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.modify,
-.delete,
-.see {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    background-repeat: no-repeat;
-    cursor: pointer;
-    box-sizing: border-box;
-    width: 100%;
-    height: 25px;
-    color: #fff;
-    font-size: 0.8rem;
-    border: none;
-    transition: all 0.3s ease-in-out;
-    z-index: 1;
-    text-align: center;
-    overflow: hidden;
-}
-
-.modify::before,
-.delete::before,
-.see::before {
-    content: "";
-    width: 0;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    transition: width 700ms ease-in-out;
-    display: inline-block;
-}
-
-.delete:hover,
-.modify:hover,
-.see:hover {
-    color: #fff;
-}
-
-.delete:hover::before,
-.modify:hover::before,
-.see:hover::before {
-    width: 100%;
-}
-
 .link {
     color: black;
 }
 
-.see {
-    background-color: #649c25;
-    box-shadow: #49701a 0 4px 0 0;
+.button-crud {
+    display: flex;
+    justify-content: center; /* Centrage horizontal des boutons */
+    gap: 5px;
 }
 
-.see::before {
-    background-color: #8adc33;
+.button-crud a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    color: #333;
+    transition: background-color 0.3s ease;
 }
 
-.modify {
-    background-color: #283e58;
-    box-shadow: #243149 0 4px 0 0;
+.button-crud a:hover {
+    background-color: #e0e0e0;
 }
 
-.modify::before {
-    background-color: #4e6183ff;
-}
+@media screen and (max-width: 1250px) {
+    .button-crud {
+        display: flex;
+        justify-content: center; /* Centrer horizontalement les boutons */
+        gap: 5px;
+        width: 100%;
+    }
 
-.delete {
-    background-color: #93291e;
-    box-shadow: #6c1f17ff 0 4px 0 0;
+    .button-crud a {
+        margin: 0; /* Supprimer la marge ajoutée par défaut */
+    }
 }
-
-.delete::before {
-    background-color: #bc3b35;
-}
-
-.modify,
-.delete,
-.see {
-    width: 100%;
-}
-
-/* ===== /Button ===== */
 
 @media screen and (max-width: 650px) {
     .user-link {

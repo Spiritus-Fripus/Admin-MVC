@@ -7,7 +7,7 @@ function formLoginAction(): void
 
     // Définition du titre et inclusion du fichier de vue
     $title = "LOGIN MNS";
-    $cssFile = 'css/login-style.css';
+    $cssFile = 'css/generic/login-style.css';
     require '../views/login/index-login.html.php';
     require '../config/config.php';
     $type_user = '';
