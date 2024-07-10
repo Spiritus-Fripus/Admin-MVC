@@ -4,7 +4,7 @@ require '../config/config.php';
 
 function indexAction(): void
 {
-    checkAdminRole();
+    checkUserRole(['admin']);
     require '../models/user/user.manager.php';
 
     $search = $_POST['search'] ?? '';
@@ -39,7 +39,7 @@ function indexAction(): void
 
 function addUserAction(): void
 {
-    checkAdminRole();
+    checkUserRole(['admin']);
     require '../models/user/user.manager.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -53,7 +53,7 @@ function addUserAction(): void
     }
 
     $title = "Ajouts d'utilisateurs";
-    $cssFile = '/css/generic/form.css';
+    $cssFiles = ['/css/generic/form.css'];
     $config = loadLayoutConfig();
     $template = '../views/user/add-user.html.php';
     require '../views/layouts/layout.html.php';
@@ -61,7 +61,7 @@ function addUserAction(): void
 
 function updateUserAction(): void
 {
-    checkAdminRole();
+    checkUserRole(['admin']);
     require '../models/user/user.manager.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['user_id'])) {
@@ -86,7 +86,7 @@ function updateUserAction(): void
     }
 
     $config = loadLayoutConfig();
-    $cssFile = '/css/generic/form.css';
+    $cssFiles = ['/css/generic/form.css'];
     $template = "../views/user/update-user.html.php";
     require "../views/layouts/layout.html.php";
 }
@@ -98,7 +98,7 @@ function updateUserAction(): void
 
 function archiveUserAction(): void
 {
-    checkAdminRole();
+    checkUserRole(['admin']);
     require '../models/user/user.manager.php';
 
     if (isset($_GET['user_id'])) {
@@ -110,7 +110,7 @@ function archiveUserAction(): void
 
 function userInfoAction(): void
 {
-    checkAdminRole();
+    checkUserRole(['admin']);
     require '../models/user/user.manager.php';
     if (isset($_GET['user_id'])) {
         $user = getUserById($_GET['user_id']);

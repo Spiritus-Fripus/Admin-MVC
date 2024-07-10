@@ -6,8 +6,10 @@ require_once '../config/connect.php';
 function getUserById(string $user_id)
 {
     $db = connectToDatabase();
-    $sql = 'SELECT *, TIMESTAMPDIFF(YEAR, user_birthday_date, CURDATE()) AS age  
+    $sql = 'SELECT *, TIMESTAMPDIFF(YEAR, table_user.user_birthday_date, CURDATE()) AS age  
             FROM table_user 
+            JOIN table_user_type
+            ON table_user.user_type_id = table_user_type.user_type_id
             WHERE user_id = :user_id';
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':user_id', $user_id);
@@ -21,7 +23,31 @@ function addUser(): void
     $hashedPassword = password_hash($tempPassword, PASSWORD_DEFAULT);
 
     $db = connectToDatabase();
-    $sql = "INSERT INTO table_user (user_name, user_firstname, user_mail, user_phonenumber, user_birthday_date, user_gender, user_type_id, user_password, created_at, created_by) VALUES (:user_name,:user_firstname,:user_mail,:user_phonenumber,:user_birthday_date,:user_gender,:user_type_id,:user_password,NOW(),:created_by) ";
+    $sql = "INSERT INTO table_user 
+        (
+         table_user.user_name,
+         table_user.user_firstname,
+         table_user.user_mail,
+         table_user.user_phonenumber, 
+         table_user.user_birthday_date, 
+         table_user.user_gender,
+         table_user.user_type_id, 
+         table_user.user_password, 
+         table_user.created_at, 
+         table_user.created_by
+         ) 
+    VALUES 
+        (
+         :user_name,
+         :user_firstname,
+         :user_mail,
+         :user_phonenumber,
+         :user_birthday_date,
+         :user_gender,
+         :user_type_id,
+         :user_password,
+         NOW(),:created_by
+         ) ";
     $stmt = $db->prepare($sql);
     $stmt->bindValue(":user_name", $_POST['name'], PDO::PARAM_STR);
     $stmt->bindValue(":user_firstname", $_POST['firstname'], PDO::PARAM_STR);
@@ -46,14 +72,14 @@ function updateUser(): void
 
     $sql = "UPDATE table_user 
             SET 
-                user_name = :user_name, 
-                user_firstname = :user_firstname, 
-                user_mail = :user_mail, 
-                user_phonenumber = :user_phonenumber,
-                user_birthday_date = :user_birthday_date,
-                user_gender = :user_gender,
-                user_type_id = :user_type_id
-            WHERE user_id = :user_id";
+                table_user.user_name = :user_name, 
+                table_user.user_firstname = :user_firstname, 
+                table_user.user_mail = :user_mail, 
+                table_user.user_phonenumber = :user_phonenumber,
+                table_user.user_birthday_date = :user_birthday_date,
+                table_user.user_gender = :user_gender,
+                table_user.user_type_id = :user_type_id
+            WHERE table_user.user_id = :user_id";
 
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':user_name', $_POST['name'], PDO::PARAM_STR);
@@ -81,8 +107,29 @@ function archiveUser(string $user_id): void
 
         if ($userData) {
             // Insertion des données dans la table d'archive
-            $sql_insert = "INSERT INTO table_user_archive (user_archive_name, user_archive_firstname, user_archive_mail, user_archive_gender, user_archive_phonenumber, user_archive_type_id, user_archive_old_id,archived_at,archived_by) 
-                VALUES (:user_name, :user_firstname, :user_mail, :user_gender, :user_phonenumber, :user_archive_type_id, :user_archive_old_id, NOW(), :archived_by)";
+            $sql_insert =
+                "INSERT INTO table_user_archive 
+                    (
+                     table_user_archive.user_archive_name,
+                     table_user_archive.user_archive_firstname, 
+                     table_user_archive.user_archive_mail, 
+                     table_user_archive.user_archive_gender, 
+                     table_user_archive.user_archive_phonenumber, 
+                     table_user_archive.user_archive_type_id, table_user_archive.user_archive_old_id,
+                     table_user_archive.archived_at,
+                     table_user_archive.archived_by
+                     ) 
+                VALUES 
+                    (
+                     :user_name,
+                     :user_firstname, 
+                     :user_mail,
+                     :user_gender, 
+                     :user_phonenumber,
+                     :user_archive_type_id,
+                     :user_archive_old_id, 
+                     NOW(), :archived_by
+                     )";
             $stmt_insert = $db->prepare($sql_insert);
             $stmt_insert->bindValue(':user_name', $userData['user_name'], PDO::PARAM_STR);
             $stmt_insert->bindValue(':user_firstname', $userData['user_firstname'], PDO::PARAM_STR);
@@ -95,7 +142,7 @@ function archiveUser(string $user_id): void
             $stmt_insert->execute();
 
             // Suppression des données de la table user
-            $sql_delete = "DELETE FROM table_user WHERE user_id = :user_id";
+            $sql_delete = "DELETE FROM table_user WHERE table_user.user_id = :user_id";
             $stmt_delete = $db->prepare($sql_delete);
             $stmt_delete->bindValue(':user_id', $user_id, PDO::PARAM_INT);
             $stmt_delete->execute();
@@ -121,13 +168,13 @@ function searchAndFilterUsers(string $search, string $type, string $orderBy, str
 
 
     if ($type !== 'ALL') {
-        $where[] = "user_type_id = :type";
+        $where[] = "table_user.user_type_id = :type";
         $params[':type'] = (int)$type;
     }
 
 
     if (!empty($search)) {
-        $where[] = "CONCAT(user_firstname, ' ', user_name, ' ', user_mail) LIKE :search";
+        $where[] = "CONCAT(table_user.user_firstname, ' ', table_user.user_name, ' ', table_user.user_mail) LIKE :search";
         $params[':search'] = '%' . $search . '%';
     }
 
@@ -142,6 +189,8 @@ function searchAndFilterUsers(string $search, string $type, string $orderBy, str
 
     $sql = "SELECT *, TIMESTAMPDIFF(YEAR, user_birthday_date, CURDATE()) AS age
             FROM table_user
+            JOIN table_user_type
+            ON table_user.user_type_id = table_user_type.user_type_id
             $whereClause
             ORDER BY $orderBy $direction";
 

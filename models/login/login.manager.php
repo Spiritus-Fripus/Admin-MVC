@@ -5,9 +5,11 @@ require_once '../config/connect.php';
 function connect($email)
 {
     $db = connectToDatabase();
-    $sql = "SELECT user_password ,user_mail, user_type_id, user_id 
+    $sql = "SELECT table_user.user_password ,table_user.user_mail, table_user.user_type_id, user_id, table_user_type.user_type_id, table_user_type.user_type_name
     FROM table_user 
-    WHERE user_mail = :mail ";
+    JOIN table_user_type
+    ON table_user.user_type_id = table_user_type.user_type_id
+    WHERE table_user.user_mail = :mail ";
     $stmt = $db->prepare($sql);
     $stmt->bindValue("mail", $email);
     $stmt->execute();

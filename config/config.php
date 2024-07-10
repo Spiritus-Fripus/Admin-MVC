@@ -17,36 +17,9 @@ function verifyCsrfToken(): bool
     return true;
 }
 
-function checkAdminRole(): void
+function checkUserRole(array $roles): void
 {
-    if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'admin') {
-        require '../controllers/error.controller.php';
-        unauthorized();
-        exit;
-    }
-}
-
-function checkManagerRole(): void
-{
-    if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'manager') {
-        require '../controllers/error.controller.php';
-        unauthorized();
-        exit;
-    }
-}
-
-function checkAdminManagerRole(): void
-{
-    if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'manager' && $_SESSION['user_type'] !== 'admin') {
-        require '../controllers/error.controller.php';
-        unauthorized();
-        exit;
-    }
-}
-
-function checkStudentRole(): void
-{
-    if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'student') {
+    if (!isset($_SESSION['user_type']) || !in_array($_SESSION['user_type'], $roles)) {
         require '../controllers/error.controller.php';
         unauthorized();
         exit;
