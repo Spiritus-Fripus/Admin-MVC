@@ -14,7 +14,7 @@ function getAllAbsence(): bool|array
 function getAllAbsenceByUserId(): bool|array
 {
     $db = connectToDatabase();
-    $sql = 'SELECT * FROM table_absence WHERE user_id = :user_id';
+    $sql = 'SELECT * FROM table_absence JOIN adminmns.table_absence_type ON table_absence.absence_type_id = table_absence_type.absence_type_id WHERE user_id = :user_id';
     $stmt = $db->prepare($sql);
     $stmt->bindValue(':user_id', $_SESSION['user_id']);
     $stmt->execute();
