@@ -71,7 +71,7 @@ function archiveFormationAction(): void
     if (isset($_GET['formation_id'])) {
         archiveFormation($_GET['formation_id']);
     }
-    header("Location: ?controller=formation&action=viewFormation");
+    header("Location: ?controller=formation&action=index");
 }
 
 // Fonction pour modifier une formation
@@ -84,7 +84,7 @@ function modifyFormationAction(): void
         $config = loadLayoutConfig();
         updateFormation();
         // Redirection vers la liste des formations
-        header("Location: ?controller=formation&action=viewformation");
+        header("Location: ?controller=formation&action=index");
         exit();
     }
 
@@ -93,7 +93,7 @@ function modifyFormationAction(): void
         $formation = getFormationById($_GET['formation_id']);
     } else {
         // Redirection ou message d'erreur si l'ID de la formation n'est pas fourni
-        header("Location: ?controller=formation&action=viewformation");
+        header("Location: ?controller=formation&action=index");
         exit();
     }
 
