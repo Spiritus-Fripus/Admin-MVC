@@ -1,7 +1,8 @@
 <?php
 
 /** @var array|bool $formations */ ?>
-<div class="content-container">
+<div class="main-container-center-row">
+
     <table class="table-container">
         <thead>
         <tr>
@@ -14,7 +15,8 @@
         <tbody>
         <?php foreach ($formations as $formation) { ?>
             <tr class="card-tr">
-                <input type="hidden" name="formation_id" value="<?= htmlspecialchars($formation['formation_id']) ?>"/>
+                <input type="hidden" name="formation_id"
+                       value="<?= htmlspecialchars($formation['formation_id']) ?>"/>
                 <td data-label="Nom de la formation"><?= htmlspecialchars($formation['formation_name']) ?></td>
                 <td data-label="Durée"><?= htmlspecialchars($formation['formation_duration']) ?></td>
                 <td data-label="Qualification"><?= "Bac+" . htmlspecialchars($formation['formation_qualification']) ?></td>

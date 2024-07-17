@@ -70,6 +70,6 @@ function deletePromotionAction(): void
     $jsFiles = ['/js/modal-delete-verify.js'];
     $config = loadLayoutConfig();
     $cssFiles = ['/css/admin/formation-style.css'];
-    $template = "../views/admin-manager/formation/modify-formation.html.php";
+    $template = "../views/admin-manager/formation/modify-index.html.php";
     require "../views/layouts/layout.html.php";
 }
