@@ -3,45 +3,70 @@
 require_once "../config/config.php";
 
 // Fonction pour afficher et ajouter une formation
-function viewFormationAction(): void
+function indexAction(): void
 {
     require_once '../models/admin/formation.manager.php';
     checkUserRole(['admin', 'manager']);
 
     $formations = getAllFormation();
     $config = loadLayoutConfig();
+    $cssFiles =
+        [
+            '/css/generic/main-container.css',
+            '/css/generic/table-responsive.css',
+            '/css/generic/button-crud.css',
+            '/css/generic/modal.css'
+        ];
+    $jsFiles =
+        [
+            '/js/modal-delete-verify.js',
+            '/js/formation.js'
+        ];
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        createFormation();
-        // Redirection vers la liste des formations
-        header("Location: ?controller=formation&action=viewformation");
-        exit();
-    }
-    $cssFiles = ['/css/admin/formation-style.css'];
-    $jsFile = '/js/formation.js';
-    $template = "../views/admin-manager/formation/formation.html.php";
+    $template = "../views/admin-manager/formation/index.html.php";
     require "../views/layouts/layout.html.php";
 }
 
-// Fonction pour supprimer une formation
-function deleteFormationAction(): void
+function addFormationAction(): void
 {
-    require '../models/admin/formation.manager.php';
+    require_once '../models/admin/formation.manager.php';
     checkUserRole(['admin', 'manager']);
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['formation_id'])) {
-        $config = loadLayoutConfig();
-        deleteFormation();
-        // Redirection vers la liste des formations
-        header("Location: ?controller=formation&action=viewformation");
-        exit();
+    $config = loadLayoutConfig();
+    $cssFiles =
+        [
+            '/css/admin/formation-style.css',
+            '/css/generic/table-responsive.css',
+            '/css/generic/button-crud.css'
+        ];
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if (!verifyCsrfToken()) {
+            // Jeton CSRF invalide
+            require '../models/login/login.manager.php';
+            disconnect();
+        }
+        addFormation();
+        header('Location: ?controller=formation&action=index');
     }
 
-    $cssFiles = ['/css/admin-manager/formation-style.css'];
-    $formations = getAllFormation();
-    $config = loadLayoutConfig();
-    $template = "../views/admin-manager/formation/formation.html.php";
+    $template = "../views/admin-manager/formation/add-index.html.php";
     require "../views/layouts/layout.html.php";
+}
+
+
+/**
+ * @throws Exception
+ */
+function archiveFormationAction(): void
+{
+    checkUserRole(['admin']);
+    require '../models/admin/formation.manager.php';
+
+    if (isset($_GET['formation_id'])) {
+        archiveFormation($_GET['formation_id']);
+    }
+    header("Location: ?controller=formation&action=viewFormation");
 }
 
 // Fonction pour modifier une formation

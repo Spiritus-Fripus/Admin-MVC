@@ -6,8 +6,26 @@ require_once "../config/config.php";
 function viewOwnAbsenceAction(): void
 {
     require_once '../models/absence.manager.php';
-    $absences = getAllAbsenceByUserId();
+    $recordset = getAllAbsenceByUserId();
     $config = loadLayoutConfig();
+    $title = 'affichage des absences';
+
+    $cssFiles =
+        [
+            '/css/generic/main-container.css',
+            '/css/generic/table-responsive.css'
+        ];
+    $template = "../views/student/absence/absence.html.php";
+    require "../views/layouts/layout.html.php";
+}
+
+function addAbsenceAction(): void
+{
+
+    require_once '../models/absence.manager.php';
+
+    $config = loadLayoutConfig();
+    $title = 'affichage des absences';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         addAbsence();
@@ -16,10 +34,11 @@ function viewOwnAbsenceAction(): void
         exit();
     }
 
-    $cssFiles = [''];
+    $cssFiles = ['/css/generic/main-container.css'];
     $template = "../views/student/absence/absence.html.php";
     require "../views/layouts/layout.html.php";
 }
+
 
 function deleteAbsenceAction(): void
 {

@@ -29,9 +29,13 @@ function indexAction(): void
             '/css/generic/main-container.css',
             '/css/generic/table-responsive.css',
             '/css/generic/filter.css',
-            '/css/generic/modal.css'
+            '/css/generic/modal.css',
+            '/css/generic/button-crud.css'
         ];
-    $jsFile = '/js/modal-delete-verify.js';
+    $jsFiles =
+        [
+            '/js/modal-delete-verify.js',
+        ];
     $config = loadLayoutConfig();
     $template = '../views/user/index.html.php';
     require '../views/layouts/layout.html.php';
