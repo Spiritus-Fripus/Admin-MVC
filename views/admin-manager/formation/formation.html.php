@@ -2,35 +2,6 @@
 
 /** @var array|bool $formations */ ?>
 <div class="content-container">
-    <table class="table-container">
-        <thead>
-            <tr>
-                <th>Nom de la formation</th>
-                <th>Durée</th>
-                <th>Qualification</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($formations as $formation) { ?>
-                <tr class="card-tr">
-                    <input type="hidden" name="formation_id" value="<?= htmlspecialchars($formation['formation_id']) ?>" />
-                    <td data-label="Nom de la formation"><?= htmlspecialchars($formation['formation_name']) ?></td>
-                    <td data-label="Durée"><?= htmlspecialchars($formation['formation_duration']) ?></td>
-                    <td data-label="Qualification"><?= "Bac+" . htmlspecialchars($formation['formation_qualification']) ?></td>
-                    <td data-label="Actions">
-                        <div class="boutons-modif">
-                            <form action="?controller=formation&action=deleteformation" method="post">
-                                <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
-                                <button class="bouton-suppression" type="submit" value="<?= $formation['formation_id'] ?>" name="formation_id" id="deleteFormation">Supprimer</button>
-                            </form>
-                            <a href="?controller=formation&action=modifyFormation&formation_id=<?= $formation['formation_id'] ?>" class="bouton-modification">Modifier</a>
-                        </div>
-                    </td>
-                </tr>
-            <?php } ?>
-        </tbody>
-    </table>
     <div class="formation-container">
         <form action="?controller=formation&action=viewformation" method="post">
             <div class="entree">
@@ -71,6 +42,35 @@
             </div>
         </form>
     </div>
+    <table class="table-container">
+        <thead>
+            <tr>
+                <th>Nom de la formation</th>
+                <th>Durée</th>
+                <th>Qualification</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($formations as $formation) { ?>
+                <tr class="card-tr">
+                    <input type="hidden" name="formation_id" value="<?= htmlspecialchars($formation['formation_id']) ?>" />
+                    <td data-label="Nom de la formation"><?= htmlspecialchars($formation['formation_name']) ?></td>
+                    <td data-label="Durée"><?= htmlspecialchars($formation['formation_duration']) ?></td>
+                    <td data-label="Qualification"><?= "Bac+" . htmlspecialchars($formation['formation_qualification']) ?></td>
+                    <td data-label="Actions">
+                        <div class="boutons-modif">
+                            <form action="?controller=formation&action=deleteformation" method="post">
+                                <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
+                                <button class="bouton-suppression" type="submit" value="<?= $formation['formation_id'] ?>" name="formation_id" id="deleteFormation">Supprimer</button>
+                            </form>
+                            <a href="?controller=formation&action=modifyFormation&formation_id=<?= $formation['formation_id'] ?>" class="bouton-modification">Modifier</a>
+                        </div>
+                    </td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
 </div>
 
 <div id="deleteModal" class="modal">
