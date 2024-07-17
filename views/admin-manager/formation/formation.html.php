@@ -31,7 +31,6 @@
             <?php } ?>
         </tbody>
     </table>
-
     <div class="formation-container">
         <form action="?controller=formation&action=viewformation" method="post">
             <div class="entree">
@@ -40,15 +39,15 @@
             </div>
             <div class="entree">
                 <label for="formation_date_start">Date de début de la formation</label>
-                <input type="date" name="formation_date_start" required />
+                <input type="date" name="formation_date_start" id="formation_date_start" required />
             </div>
             <div class="entree">
                 <label for="formation_date_end">Date de fin de la formation</label>
-                <input type="date" name="formation_date_end" required />
+                <input type="date" name="formation_date_end" id="formation_date_end" required />
             </div>
             <div class="entree">
                 <label for="formation_duration">Durée de la formation</label>
-                <input type="text" name="formation_duration" required />
+                <input type="text" name="formation_duration" id="formation_duration" readonly />
             </div>
             <div class="entree">
                 <label for="formation_max_student">Nombre maximal d'élèves</label>

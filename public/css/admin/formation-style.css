@@ -1,295 +1,293 @@
 .content-container {
-    display: flex;
-    flex-direction: column-reverse;
-    height: 100%;
-    width: 100%;
-    align-items: center;
-    overflow: hidden;
+  display: flex;
+  flex-direction: column-reverse;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  overflow: hidden;
 }
 
 .formations {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    padding: 15px;
-    border-top: 1px solid #184999;
-    width: 100%;
-    height: 60%;
-    box-sizing: border-box;
-    text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  padding: 15px;
+  border-top: 1px solid #184999;
+  width: 100%;
+  height: 60%;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 .formations ul {
-    padding: 0;
-    list-style: none;
+  padding: 0;
+  list-style: none;
 }
 
 .formation {
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 23%;
-    margin: 1%;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    padding: 10px;
-    box-sizing: border-box;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 23%;
+  margin: 1%;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .formation li {
-    height: auto;
-    width: 100%;
+  height: auto;
+  width: 100%;
 }
 
 .formation form {
-    margin-top: auto;
-    width: 100%;
+  margin-top: auto;
+  width: 100%;
 }
 
 .boutons-modif {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    font-family: "rubik";
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  font-family: "rubik";
+  gap: 10px; /* Ajout d'un espace entre les boutons */
+}
+
+.bouton-suppression,
+.bouton-modification {
+  border: 1px solid white;
+  border-radius: 5px;
+  width: 100%;
+  height: 30px;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px; /* Réduction de la taille de la police */
 }
 
 .bouton-suppression {
-    background: #ed213a; /* fallback for old browsers */
-    background: -webkit-linear-gradient(
-            to left,
-            #93291e,
-            #ed213a
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-            to left,
-            #93291e,
-            #ed213a
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    color: white;
-    border: 1px solid white;
-    border-radius: 5px;
-    width: 100%;
-    height: 30px;
-    margin-top: auto;
+  background: #ed213a; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    #93291e,
+    #ed213a
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #93291e,
+    #ed213a
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white;
 }
 
 .bouton-modification {
-    background: #56ab2f; /* fallback for old browsers */
-    background: -webkit-linear-gradient(
-            to right,
-            #a8e063,
-            #56ab2f
-    ); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(
-            to right,
-            #a8e063,
-            #56ab2f
-    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    color: white;
-    border: 1px solid white;
-    border-radius: 5px;
-    width: 100%;
-    height: 30px;
-    margin-top: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  background: #56ab2f; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #a8e063,
+    #56ab2f
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #a8e063,
+    #56ab2f
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white;
 }
 
-.bouton-modification a {
-    text-align: center;
-}
-
-.bouton-suppression:hover {
-    cursor: pointer;
+.bouton-suppression:hover,
+.bouton-modification:hover {
+  cursor: pointer;
 }
 
 .formation-container {
-    width: 100%;
-    height: 100%;
-    max-width: 800px;
-    display: flex;
-    align-items: center;
+  width: 100%;
+  height: 100%;
+  max-width: 800px;
+  display: flex;
+  align-items: center;
 }
 
 .formation-container form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-    margin: 2%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin: 2%;
 }
 
 .entree {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .formation-container label {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    text-align: center;
-    margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 5px;
 }
 
 .formation-container input,
 select {
-    padding: 10px;
-    width: 100%;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
 .entree-select {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    padding-bottom: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 15px;
 }
 
 .entree-select select {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .bouton-enregistrer {
-    border: 1px solid white;
-    border-radius: 5px;
-    width: 100%;
-    background-color: #184999;
-    color: white;
-    padding: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  border: 1px solid white;
+  border-radius: 5px;
+  width: 100%;
+  background-color: #184999;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .bouton-enregistrer:hover {
-    background-color: #163a7d;
+  background-color: #163a7d;
 }
 
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
-    text-align: center;
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  text-align: center;
 }
 
 .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .modal button {
-    margin: 10px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
+  margin: 10px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 #confirmDelete {
-    background-color: #d9534f;
-    color: white;
-    border: none;
+  background-color: #d9534f;
+  color: white;
+  border: none;
 }
 
 #cancelDelete {
-    background-color: #5bc0de;
-    color: white;
-    border: none;
+  background-color: #5bc0de;
+  color: white;
+  border: none;
 }
 
 @media (max-width: 1200px) {
-    .formation {
-        width: 30%; /* 3 formations */
-    }
+  .formation {
+    width: 30%; /* 3 formations */
+  }
 }
 
 @media (max-width: 992px) {
-    .formation {
-        width: 45%; /* 2 formations */
-    }
+  .formation {
+    width: 45%; /* 2 formations */
+  }
 }
 
 @media (max-width: 768px) {
-    .formation {
-        width: 100%; /* 1 formation */
-    }
+  .formation {
+    width: 100%; /* 1 formation */
+  }
 
-    .formations {
-        padding: 10px;
-    }
+  .formations {
+    padding: 10px;
+  }
 
-    .formation-container {
-        max-width: 100%;
-        padding: 0 10px;
-    }
+  .formation-container {
+    max-width: 100%;
+    padding: 0 10px;
+  }
 
-    .formation-container form {
-        gap: 5px;
-    }
+  .formation-container form {
+    gap: 5px;
+  }
 
-    .entree-select {
-        flex-direction: column;
-        gap: 5px;
-    }
+  .entree-select {
+    flex-direction: column;
+    gap: 5px;
+  }
 
-    .bouton-enregistrer {
-        padding: 8px;
-    }
+  .bouton-enregistrer {
+    padding: 8px;
+  }
 
-    .modal-content {
-        width: 90%;
-        margin: 30% auto;
-    }
+  .modal-content {
+    width: 90%;
+    margin: 30% auto;
+  }
 
-    .modal button {
-        width: 100%;
-        margin: 10px 0;
-    }
+  .modal button {
+    width: 100%;
+    margin: 10px 0;
+  }
 }
 
 @media (max-width: 576px) {
-    .formation {
-        padding: 8px;
-    }
+  .formation {
+    padding: 8px;
+  }
 
-    .formation-container input,
-    select {
-        padding: 8px;
-    }
+  .formation-container input,
+  select {
+    padding: 8px;
+  }
 
-    .bouton-enregistrer {
-        padding: 8px;
-    }
+  .bouton-enregistrer {
+    padding: 8px;
+  }
 }
