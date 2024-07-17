@@ -4,7 +4,7 @@ require_once "../config/config.php";
 
 function viewDelayAction(): void
 {
-    checkUserRole(['admin']);
+    checkUserRole(['admin', 'student', 'manager']);
     $config = loadLayoutConfig();
     $title = "Page de gestions des retards";
     $cssFiles =

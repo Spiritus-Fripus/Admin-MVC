@@ -18,6 +18,7 @@ function indexAction(): void
 function profilAction(): void
 {
     checkUserRole(['student']);
+    $config = loadLayoutConfig();
     require '../models/student.manager.php';
     $recordset = showInfo();
     $title = 'Student Connected';

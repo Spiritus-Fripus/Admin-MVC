@@ -80,8 +80,10 @@
     </main>
 </div>
 
-<?php if (isset($jsFile)) { ?>
-    <script src="<?= $jsFile ?>"></script>
+<?php if (isset($jsFiles) && is_array($jsFiles)) { ?>
+    <?php foreach ($jsFiles as $jsFile) { ?>
+        <script src="<?= $jsFile ?>"></script>
+    <?php } ?>
 <?php } ?>
 <script src="/js/burger-menu.js"></script>
 </body>

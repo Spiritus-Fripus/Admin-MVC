@@ -21,7 +21,7 @@ function viewPromotionAction(): void
         exit();
     }
     $cssFiles = ['/css/admin/promotion-style.css'];
-    $jsFile = '/js/promotion.js';
+    $jsFiles = ['/js/modal-delete-verify.js'];
     $template = "../views/admin-manager/promotion/promotion.html.php";
     require "../views/layouts/layout.html.php";
 }
@@ -55,7 +55,7 @@ function deletePromotionAction(): void
 {
     require_once '../models/admin/promotion.manager.php';
     require_once '../models/admin/formation.manager.php';
-    checkAdminManagerRole();
+    checkUserRole(['admin', 'manager']);
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['promotion_id'])) {
         deletePromotion();
@@ -67,7 +67,7 @@ function deletePromotionAction(): void
     $formationpromotion = getFormationOfPromotion();
     $formations = getAllFormation();
     $cssFile = '/css/admin/promotion-style.css';
-    $jsFile = '/js/promotion.js';
+    $jsFiles = ['/js/modal-delete-verify.js'];
     $config = loadLayoutConfig();
     $cssFiles = ['/css/admin/formation-style.css'];
     $template = "../views/admin-manager/formation/modify-formation.html.php";
