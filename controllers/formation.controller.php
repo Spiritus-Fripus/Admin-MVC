@@ -40,7 +40,7 @@ function deleteFormationAction(): void
     $cssFiles = ['/css/admin-manager/formation-style.css'];
     $formations = getAllFormation();
     $config = loadLayoutConfig();
-    $template = "../views/admin/formation/formation.html.php";
+    $template = "../views/admin-manager/formation/formation.html.php";
     require "../views/layouts/layout.html.php";
 }
 

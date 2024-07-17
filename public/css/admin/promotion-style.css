@@ -46,13 +46,35 @@
 .promotion form {
   margin-top: auto;
   width: 100%;
+  margin: 0px;
+  padding: 0px;
 }
+
 .boutons-modif {
   width: 100%;
+  height: calc(20px + 1vh);
   display: flex;
   flex-direction: row;
   font-family: "rubik";
 }
+
+.bouton-suppression,
+.bouton-modification {
+  padding: 0px;
+  margin: 0px;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(2px + 1vw);
+  box-sizing: border-box;
+}
+
 .bouton-suppression {
   background: #ed213a; /* fallback for old browsers */
   background: -webkit-linear-gradient(
@@ -60,18 +82,10 @@
     #93291e,
     #ed213a
   ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to left,
-    #93291e,
-    #ed213a
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  color: white;
-  border: 1px solid white;
-  border-radius: 5px;
-  width: 100%;
-  height: 30px;
-  margin-top: auto;
+  background: linear-gradient(to left, #93291e, #ed213a);
+  transition: color 0.5s ease;
 }
+
 .bouton-modification {
   background: #56ab2f; /* fallback for old browsers */
   background: -webkit-linear-gradient(
@@ -84,24 +98,22 @@
     #a8e063,
     #56ab2f
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  color: white;
-  border: 1px solid white;
-  border-radius: 5px;
-  width: 100%;
-  height: 30px;
-  margin-top: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.bouton-modification a {
-  text-align: center;
 }
 
-.bouton-suppression:hover {
+.bouton-suppression a,
+.bouton-modification a {
+  text-align: center;
+  font-size: calc(2px + 1vw);
+}
+
+.bouton-suppression:hover,
+.bouton-modification:hover {
   cursor: pointer;
 }
 
+.bouton-suppression:hover {
+  color: #ffba08;
+}
 .promotion-container {
   width: 100%;
   height: 100%;
@@ -168,6 +180,7 @@ select {
 .bouton-enregistrer:hover {
   background-color: #163a7d;
 }
+
 .modal {
   display: none;
   position: fixed;
@@ -267,7 +280,7 @@ select {
     margin: 30% auto;
   }
 
-  modal button {
+  .modal button {
     width: 100%;
     margin: 10px 0;
   }
