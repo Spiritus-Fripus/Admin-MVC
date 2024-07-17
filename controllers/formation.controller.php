@@ -35,6 +35,7 @@ function addFormationAction(): void
     $config = loadLayoutConfig();
     $cssFiles =
         [
+            '/css/generic/main-container.css',
             '/css/admin/formation-style.css',
             '/css/generic/table-responsive.css',
             '/css/generic/button-crud.css'
@@ -50,7 +51,7 @@ function addFormationAction(): void
         header('Location: ?controller=formation&action=index');
     }
 
-    $template = "../views/admin-manager/formation/add-index.html.php";
+    $template = "../views/admin-manager/formation/add-formation.html.php";
     require "../views/layouts/layout.html.php";
 }
 
