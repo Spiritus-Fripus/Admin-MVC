@@ -4,23 +4,27 @@ require_once "../config/config.php";
 
 function indexAction(): void
 {
-    checkAdminRole();
+    checkUserRole(['admin']);
     $title = "Bienvenue sur admin MNS , vous êtes connecté en tant qu'administrateur";
-    $config = loadLayoutConfig();
-    $cssFile = '/css/accueil-style.css';
+    $cssFiles = ['/css/accueil-style.css'];
     $template = '../views/admin/index.html.php';
+    $config = loadLayoutConfig();
     require '../views/layouts/layout.html.php';
 }
 
 function profilAction(): void
 {
-    checkAdminRole();
+    checkUserRole(['admin']);
     require '../models/admin/admin.manager.php';
     $recordset = showInfo();
     $title = 'Admin Connected';
-    $cssFile = '/css/profil-style.css';
-    $config = loadLayoutConfig();
+    $cssFiles =
+        [
+            '/css/profil-style.css',
+            '/css/generic/main-container.css'
+        ];
     $template = '../views/profil/profil.html.php';
+    $config = loadLayoutConfig();
     require '../views/layouts/layout.html.php';
 }
 

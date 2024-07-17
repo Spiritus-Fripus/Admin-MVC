@@ -1,10 +1,3 @@
-<?php
-
-/**
- * @var array|bool $recordset
- * @var string $title
- */
-?>
 <div class="card-container">
 
     <a href="?controller=absence&action=viewownabsence" class="card student">

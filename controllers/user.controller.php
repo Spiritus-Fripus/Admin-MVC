@@ -4,14 +4,13 @@ require '../config/config.php';
 
 function indexAction(): void
 {
-    checkAdminRole();
+    checkUserRole(['admin']);
     require '../models/user/user.manager.php';
 
     $search = $_POST['search'] ?? '';
-    $sortColumn = $_POST['sort'] ?? 'user_id';
-    $sortDirection = $_POST['sort-by'] ?? 'ASC';
-    $sortType = $_POST['sort-type'] ?? 'ALL';
-
+    $orderBy = $_POST['sort-by'] ?? 'created_at';
+    $direction = $_POST['sort-direction'] ?? 'DESC';
+    $type = $_POST['sort-type'] ?? 'ALL';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (!verifyCsrfToken()) {
@@ -19,13 +18,20 @@ function indexAction(): void
             require '../models/login/login.manager.php';
             disconnect();
         }
-        $recordset = $search ? search($search) : orderUsers($sortColumn, $sortDirection, $sortType);
-    } else {
-        $recordset = orderUsers($sortColumn, $sortDirection, $sortType);
     }
 
+    $recordset = searchAndFilterUsers($search, $type, $orderBy, $direction);
+
     $title = 'Liste des utilisateurs';
-    $cssFile = '/css/admin/user-style.css';
+    $cssFiles =
+        [
+            '/css/user/user-style.css',
+            '/css/generic/main-container.css',
+            '/css/generic/table-responsive.css',
+            '/css/generic/filter.css',
+            '/css/generic/modal.css'
+        ];
+    $jsFile = '/js/modal-delete-verify.js';
     $config = loadLayoutConfig();
     $template = '../views/user/index.html.php';
     require '../views/layouts/layout.html.php';
@@ -33,7 +39,7 @@ function indexAction(): void
 
 function addUserAction(): void
 {
-    checkAdminRole();
+    checkUserRole(['admin']);
     require '../models/user/user.manager.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -43,11 +49,11 @@ function addUserAction(): void
             disconnect();
         }
         addUser();
-        header('Location : ?controller=user&action=index');
+        header('Location: ?controller=user&action=index');
     }
 
     $title = "Ajouts d'utilisateurs";
-    $cssFile = '/css/form-style.css';
+    $cssFiles = ['/css/generic/form.css'];
     $config = loadLayoutConfig();
     $template = '../views/user/add-user.html.php';
     require '../views/layouts/layout.html.php';
@@ -55,7 +61,7 @@ function addUserAction(): void
 
 function updateUserAction(): void
 {
-    checkAdminRole();
+    checkUserRole(['admin']);
     require '../models/user/user.manager.php';
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['user_id'])) {
@@ -80,7 +86,7 @@ function updateUserAction(): void
     }
 
     $config = loadLayoutConfig();
-    $cssFile = '/css/form-style.css';
+    $cssFiles = ['/css/generic/form.css'];
     $template = "../views/user/update-user.html.php";
     require "../views/layouts/layout.html.php";
 }
@@ -89,9 +95,10 @@ function updateUserAction(): void
 /**
  * @throws Exception
  */
+
 function archiveUserAction(): void
 {
-    checkAdminRole();
+    checkUserRole(['admin']);
     require '../models/user/user.manager.php';
 
     if (isset($_GET['user_id'])) {
@@ -100,15 +107,20 @@ function archiveUserAction(): void
     header("Location: ?controller=user&action=index");
 }
 
+
 function userInfoAction(): void
 {
-    checkAdminRole();
+    checkUserRole(['admin']);
     require '../models/user/user.manager.php';
     if (isset($_GET['user_id'])) {
         $user = getUserById($_GET['user_id']);
     }
     $config = loadLayoutConfig();
-    $cssFile = '/css/user/user-info.css';
+    $cssFiles =
+        [
+            '/css/generic/main-container.css',
+            '/css/generic/table-card.css'
+        ];
     $template = "../views/user/user-info.html.php";
     require "../views/layouts/layout.html.php";
 }

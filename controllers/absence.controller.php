@@ -16,7 +16,7 @@ function viewOwnAbsenceAction(): void
         exit();
     }
 
-    $cssFile = '/css/student/absence-style.css';
+    $cssFiles = [''];
     $template = "../views/student/absence/absence.html.php";
     require "../views/layouts/layout.html.php";
 }
@@ -34,7 +34,7 @@ function deleteAbsenceAction(): void
         exit();
     }
 
-    $cssFile = '/css/student/absence-style.css';
+    $cssFiles = [''];
     $template = "../views/student/absence/absence.html.php";
     require "../views/layouts/layout.html.php";
 }

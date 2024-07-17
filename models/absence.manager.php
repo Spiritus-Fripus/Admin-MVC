@@ -1,6 +1,7 @@
 <?php
 
 require_once '../config/connect.php';
+
 function getAllAbsence(): bool|array
 {
     $db = connectToDatabase();

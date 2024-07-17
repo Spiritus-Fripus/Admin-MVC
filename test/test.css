@@ -1,0 +1,120 @@
+.table-container {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    text-align: left;
+    table-layout: fixed;
+}
+
+.table-container th,
+.table-container td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+.table-container th {
+    background-color: #f4f4f4;
+}
+
+
+.table-container-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.table-scroll {
+    display: inline-block;
+    min-width: 100%;
+}
+
+
+@media screen and (max-width: 1250px) {
+    .index-header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    table {
+        display: flex;
+        flex-direction: column;
+        box-sizing: content-box;
+        width: 100%;
+        gap: 10px;
+    }
+
+    table thead {
+        display: none;
+    }
+
+    tbody {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    table tr {
+        background-color: #f8f8f8;
+        border: 1px solid #ddd;
+        border-bottom: 3px solid #ddd;
+        display: block;
+        margin-bottom: 0.6rem;
+        width: 45%;
+    }
+
+    table td {
+        border-bottom: 1px solid #ddd;
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8rem;
+    }
+
+    table th,
+    table td {
+        padding: 0.6rem;
+        text-align: center;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    table td:hover {
+        background: #ffba08;
+    }
+
+    table td:last-child {
+        border-bottom: 0;
+    }
+
+    table td:last-child:hover {
+        background: none;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .card-tr {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    table tr {
+        width: 100%;
+    }
+
+    .table-container td::before {
+        left: 5px;
+    }
+
+    .main-container-center-column {
+        box-sizing: content-box;
+    }
+
+    .main-container {
+        padding: 20px;
+    }
+}

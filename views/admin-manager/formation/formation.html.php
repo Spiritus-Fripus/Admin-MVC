@@ -1,7 +1,9 @@
+<?php
+
+/** @var array|bool $formations */ ?>
 <div class="content-container">
     <ul class="formations">
-        <?php /** @var mixed $formations */
-        foreach ($formations as $formation) { ?>
+        <?php foreach ($formations as $formation) { ?>
             <ul class="formation">
                 <li> <?= htmlspecialchars($formation['formation_name']) ?></li>
                 <li> <?= htmlspecialchars($formation['formation_duration']) ?> </li>
@@ -9,10 +11,10 @@
                 <div class="boutons-modif">
                     <form action="?controller=formation&action=deleteformation" method="post">
                         <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
-                        <input type="hidden" name="formation_id" value="<?= $formation['formation_id'] ?>">
-                        <button class="bouton-suppression" type="button" data-formation-id="<?= $formation['formation_id'] ?>">Supprimer</button>
+                        <button class="bouton-suppression" type="submit" value="<?= $formation['formation_id'] ?>" name="formation_id" id="deleteFormation"> Supprimer
+                        </button>
                     </form>
-                    <a href="?controller=formation&action=modifyFormation&formation_id=<?= $formation['formation_id'] ?>" class="bouton-modification">Modifier</a>
+                    <a href="?controller=formation&action=modifyFormation&formation_id=<?= $formation['formation_id'] ?>" class=bouton-modification>Modifier</a>
                 </div>
             </ul>
         <?php } ?>

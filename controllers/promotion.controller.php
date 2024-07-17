@@ -7,7 +7,7 @@ function viewPromotionAction(): void
 {
     require_once '../models/admin/promotion.manager.php';
     require_once '../models/admin/formation.manager.php';
-    checkAdminManagerRole();
+    checkUserRole(['admin', 'manager']);
     $promotions = getAllPromotion();
     $formations = getAllFormation();
     $formationstypes = getAllFormationType();
@@ -20,7 +20,7 @@ function viewPromotionAction(): void
         header("Location: ?controller=promotion&action=viewpromotion");
         exit();
     }
-    $cssFile = '/css/admin/promotion-style.css';
+    $cssFiles = ['/css/admin/promotion-style.css'];
     $jsFile = '/js/promotion.js';
     $template = "../views/admin-manager/promotion/promotion.html.php";
     require "../views/layouts/layout.html.php";
@@ -29,8 +29,8 @@ function viewPromotionAction(): void
 // Fonction pour modifier une formation
 function modifyPromotionAction(): void
 {
-    require_once '../models/admin/promotion.manager.php';
-    checkAdminManagerRole();
+    require_once '../models/admin/formation.manager.php';
+    checkUserRole(['admin', 'manager']);
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         updatePromotion();
@@ -69,6 +69,7 @@ function deletePromotionAction(): void
     $cssFile = '/css/admin/promotion-style.css';
     $jsFile = '/js/promotion.js';
     $config = loadLayoutConfig();
-    $template = "../views/admin-manager/promotion/promotion.html.php";
+    $cssFiles = ['/css/admin/formation-style.css'];
+    $template = "../views/admin-manager/formation/modify-formation.html.php";
     require "../views/layouts/layout.html.php";
 }

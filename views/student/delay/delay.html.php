@@ -1,5 +1,6 @@
 <?php /** @var string $title */ ?>
-<div class="index-main-container">
+
+<div class="main-container-center-column">
     <h1>
         <?= $title ?>
     </h1>

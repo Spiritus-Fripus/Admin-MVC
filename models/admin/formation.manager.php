@@ -5,7 +5,8 @@ require_once '../config/connect.php';
 function getAllFormation(): bool|array
 {
     $db = connectToDatabase();
-    $sql = 'SELECT * FROM table_formation';
+    $sql = 'SELECT formation_name, formation_duration, formation_qualification, formation_id 
+    FROM table_formation';
     $stmt = $db->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll();

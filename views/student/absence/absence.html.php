@@ -1,8 +1,3 @@
-<?php
-/**
- * @var mixed $absences
- */
-?>
 <div class="content-container">
     <table>
         <?php foreach ($absences as $absence) { ?>
