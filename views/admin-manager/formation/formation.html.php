@@ -1,4 +1,6 @@
-<?php /** @var array|bool $formations */ ?>
+<?php
+
+/** @var array|bool $formations */ ?>
 <div class="content-container">
     <ul class="formations">
         <?php foreach ($formations as $formation) { ?>
@@ -9,12 +11,10 @@
                 <div class="boutons-modif">
                     <form action="?controller=formation&action=deleteformation" method="post">
                         <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
-                        <button class="bouton-suppression" type="submit" value="<?= $formation['formation_id'] ?>"
-                                name="formation_id" id="deleteFormation"> Supprimer
+                        <button class="bouton-suppression" type="submit" value="<?= $formation['formation_id'] ?>" name="formation_id" id="deleteFormation"> Supprimer
                         </button>
                     </form>
-                    <a href="?controller=formation&action=modifyFormation&formation_id=<?= $formation['formation_id'] ?>"
-                       class=bouton-modification>Modifier</a>
+                    <a href="?controller=formation&action=modifyFormation&formation_id=<?= $formation['formation_id'] ?>" class=bouton-modification>Modifier</a>
                 </div>
             </ul>
         <?php } ?>
@@ -24,23 +24,23 @@
         <form action="?controller=formation&action=viewformation" method="post">
             <div class="entree">
                 <label for="formation_name">Nom de la formation</label>
-                <input type="text" name="formation_name" required/>
+                <input type="text" name="formation_name" required />
             </div>
             <div class="entree">
                 <label for="formation_date_start">Date de début de la formation</label>
-                <input type="date" name="formation_date_start" required/>
+                <input type="date" name="formation_date_start" required />
             </div>
             <div class="entree">
                 <label for="formation_date_end">Date de fin de la formation</label>
-                <input type="date" name="formation_date_end" required/>
+                <input type="date" name="formation_date_end" required />
             </div>
             <div class="entree">
                 <label for="formation_duration">Durée de la formation</label>
-                <input type="text" name="formation_duration" required/>
+                <input type="text" name="formation_duration" required />
             </div>
             <div class="entree">
                 <label for="formation_max_student">Nombre maximal d'élèves</label>
-                <input type="number" name="formation_max_student" required/>
+                <input type="number" name="formation_max_student" required />
             </div>
             <div class="entree-select">
                 <select name="formation_qualification" required>
@@ -56,7 +56,7 @@
                     <option value="4">Réseau</option>
                 </select>
                 <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
-                <input class="bouton-enregistrer" type="submit" value="Enregistrer"/>
+                <input class="bouton-enregistrer" type="submit" value="Enregistrer" />
             </div>
         </form>
     </div>
