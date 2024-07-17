@@ -51,6 +51,10 @@ function addFormationAction(): void
         header('Location: ?controller=formation&action=index');
     }
 
+    $jsFiles =
+        [
+            '/js/formation.js'
+        ];
     $template = "../views/admin-manager/formation/add-formation.html.php";
     require "../views/layouts/layout.html.php";
 }
