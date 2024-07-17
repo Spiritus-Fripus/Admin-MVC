@@ -1,0 +1,45 @@
+.button-crud {
+    display: flex;
+    justify-content: center; /* Centrage horizontal des boutons */
+    gap: 5px;
+}
+
+.button-crud a {
+    display: inline-block;
+    text-decoration: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.button-crud a:hover {
+    background-color: #e0e0e0;
+}
+
+@media screen and (max-width: 1250px) {
+    .button-crud {
+        display: flex;
+        justify-content: center; /* Centrer horizontalement les boutons */
+        gap: 5px;
+        width: 100%;
+    }
+
+    .button-crud a {
+        margin: 0; /* Supprimer la marge ajoutée par défaut */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .button-crud {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .button-crud a {
+        padding: 8px;
+        font-size: 16px;
+    }
+}

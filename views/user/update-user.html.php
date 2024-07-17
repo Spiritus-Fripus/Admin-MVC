@@ -1,4 +1,6 @@
 <?php
+/** @var mixed $user */
+
 switch ($user['user_type_id']) {
     case 1:
         $type_user = 'admin';
