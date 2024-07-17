@@ -1,7 +1,9 @@
 <?php
+
 /**
  * @var mixed $cssFile
  * @var string $config
+ * @var string $template
  *  */
 ?>
 <!DOCTYPE html>
@@ -18,8 +20,6 @@
         <?php foreach ($cssFiles as $cssFile) { ?>
             <link rel="stylesheet" href="<?= $cssFile; ?>">
         <?php } ?>
-    <?php } else { ?>
-        <link rel="stylesheet" href="<?= $cssFile; ?>">
     <?php } ?>
     <!-- Ubuntu font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +36,12 @@
 <body>
 <!-- Burger-menu (hidden par defaut) -->
 <div class="burger-menu">
-    <?php require_once $config['burgerMenu'] ?>
+    <?php if (!empty($config['burgerMenu'])) {
+        require_once $config['burgerMenu'];
+    } else {
+        echo "Erreur : le menu burger n'est pas défini.";
+    }
+    ?>
 </div>
 
 <div class="grid-container">
@@ -53,14 +58,24 @@
             </a>
         </div>
         <div class="header-icons">
-            <?php require_once $config['icons'] ?>
+            <?php if (!empty($config['icons'])) {
+                require_once $config['icons'];
+            } else {
+                echo "Erreur : les icônes d'en-tête ne sont pas définies.";
+            }
+            ?>
         </div>
     </header>
 
     <!-- Main -->
     <main class="main-container">
         <div class="main-body">
-            <?php require_once $template; ?>
+            <?php if (!empty($template)) {
+                require_once $template;
+            } else {
+                echo "Erreur : le template principal n'est pas défini.";
+            }
+            ?>
         </div>
     </main>
 </div>

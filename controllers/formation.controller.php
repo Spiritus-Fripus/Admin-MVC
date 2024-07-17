@@ -6,7 +6,7 @@ require_once "../config/config.php";
 function viewFormationAction(): void
 {
     require_once '../models/admin/formation.manager.php';
-    checkAdminManagerRole();
+    checkUserRole(['admin', 'manager']);
 
     $formations = getAllFormation();
     $config = loadLayoutConfig();
@@ -17,7 +17,7 @@ function viewFormationAction(): void
         header("Location: ?controller=formation&action=viewformation");
         exit();
     }
-    $cssFile = '/css/admin/formation-style.css';
+    $cssFiles = ['/css/admin/formation-style.css'];
     $jsFile = '/js/formation.js';
     $template = "../views/admin-manager/formation/formation.html.php";
     require "../views/layouts/layout.html.php";
@@ -27,7 +27,7 @@ function viewFormationAction(): void
 function deleteFormationAction(): void
 {
     require '../models/admin/formation.manager.php';
-    checkAdminManagerRole();
+    checkUserRole(['admin', 'manager']);
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['formation_id'])) {
         $config = loadLayoutConfig();
@@ -37,7 +37,7 @@ function deleteFormationAction(): void
         exit();
     }
 
-    $cssFile = '/css/admin-manager/formation-style.css';
+    $cssFiles = ['/css/admin-manager/formation-style.css'];
     $formations = getAllFormation();
     $config = loadLayoutConfig();
     $template = "../views/admin/formation/formation.html.php";
@@ -48,7 +48,7 @@ function deleteFormationAction(): void
 function modifyFormationAction(): void
 {
     require '../models/admin/formation.manager.php';
-    checkAdminManagerRole();
+    checkUserRole(['admin', 'manager']);
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['formation_id'])) {
         $config = loadLayoutConfig();
@@ -67,7 +67,7 @@ function modifyFormationAction(): void
         exit();
     }
 
-    $cssFile = '/css/admin/formation-style.css';
+    $cssFiles = ['/css/admin/formation-style.css'];
     $config = loadLayoutConfig();
     $template = "../views/admin-manager/formation/modifyformation.html.php";
     require "../views/layouts/layout.html.php";

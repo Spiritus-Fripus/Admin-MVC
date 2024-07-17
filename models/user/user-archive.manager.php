@@ -31,6 +31,8 @@ function searchAndFilterUsersArchived(string $search, string $type, string $orde
 
     $sql = "SELECT *
             FROM table_user_archive
+            JOIN table_user_type
+            ON table_user_archive.user_archive_type_id = table_user_type.user_type_id
             $whereClause
             ORDER BY $orderBy $direction";
 

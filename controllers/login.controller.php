@@ -7,7 +7,7 @@ function formLoginAction(): void
 
     // Définition du titre et inclusion du fichier de vue
     $title = "LOGIN MNS";
-    $cssFile = 'css/login-style.css';
+    $cssFile = 'css/generic/login-style.css';
     require '../views/login/index-login.html.php';
     require '../config/config.php';
     $type_user = '';
@@ -18,17 +18,7 @@ function formLoginAction(): void
             $response = connect($_POST['email']);
             if ($response) {
                 if (password_verify($_POST['password'], $response['user_password'])) {
-                    switch ($response['user_type_id']) {
-                        case 1:
-                            $type_user = 'admin';
-                            break;
-                        case 2:
-                            $type_user = 'manager';
-                            break;
-                        case 3:
-                            $type_user = 'student';
-                            break;
-                    }
+                    $type_user = $response['user_type_name'];
                     // Stocke le type d'utilisateur, son id et l'email dans la session
                     $_SESSION['user_type'] = $type_user;
                     $_SESSION['user_mail'] = $_POST['email'];
@@ -41,6 +31,21 @@ function formLoginAction(): void
 
                     // Redirige vers l'index de l'utilisateur connecté
                     header("Location: ?controller=$type_user&action=index");
+//                    switch ($type_user) {
+//                        case 'admin':
+//                            header("Location: /admin/index");
+//                            break;
+//                        case 'manager':
+//                            header("Location: /manager/index");
+//                            break;
+//                        case 'student':
+//                            header("Location: /student/index");
+//                            break;
+//                        default:
+//                            // Redirection par défaut ou gestion de l'erreur
+//                            header("Location: /");
+//                            break;
+//                    }
                     exit();
                 }
             }

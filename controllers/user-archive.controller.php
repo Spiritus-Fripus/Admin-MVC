@@ -4,7 +4,7 @@ require_once '../config/config.php';
 
 function indexAction(): void
 {
-    checkAdminRole();
+    checkUserRole(['admin']);
     require '../models/user/user-archive.manager.php';
 
     $search = $_POST['search'] ?? '';

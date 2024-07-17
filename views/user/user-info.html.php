@@ -15,19 +15,7 @@
             $formattedDate = 'Date invalide'; // Valeur par défaut en cas d'erreur
         } ?>
 
-        <?php
-        // switch sur les types
-        switch ($user['user_type_id']) {
-            case 1:
-                $type_user = 'Admin';
-                break;
-            case 2:
-                $type_user = 'Gestionnaire';
-                break;
-            case 3:
-                $type_user = 'Élève';
-                break;
-        } ?>
+
         <tr>
             <input type="hidden" name="user_id" value="<?= htmlspecialchars($user['user_id']) ?>"/>
             <td data-label="Id"> <?= htmlspecialchars($user['user_id']) ?></td>
@@ -38,7 +26,7 @@
             <td data-label="Date de naissance"><?= htmlspecialchars($user['user_birthday_date']) ?></td>
             <td data-label="Age"><?= htmlspecialchars($user['age']) ?></td>
             <td data-label="Genre"><?= htmlspecialchars($user['user_gender']) ?></td>
-            <td data-label=" Type"><?= htmlspecialchars($type_user) ?></td>
+            <td data-label=" Type"><?= htmlspecialchars($user['user_type_name']) ?></td>
             <td data-label=" Créé le"><?= htmlspecialchars($user['created_at']) ?></td>
             <td data-label=" Créé par"><?= htmlspecialchars($user['created_by']) ?></td>
         </tr>
