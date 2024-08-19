@@ -5,7 +5,8 @@
  */
 ?>
 <div class="main-container-center-column">
-    <h1><?= $title ?></h1>
+    <h2><?= $title ?></h2>
+    <a href="?controller=absence&action=addAbsence">Déclarer une absence</a>
 
     <table class="table-container">
 
@@ -30,6 +31,7 @@
             </tr>
 
         <?php } ?>
+        
         </tbody>
     </table>
 </div>
