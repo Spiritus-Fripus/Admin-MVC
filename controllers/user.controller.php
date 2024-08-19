@@ -7,7 +7,7 @@ function indexAction(): void
     checkUserRole(['admin']);
     require '../models/user/user.manager.php';
 
-    $search = $_POST['search'] ?? '';
+    $search = $_POST['search'] ?? ' ';
     $orderBy = $_POST['sort-by'] ?? 'created_at';
     $direction = $_POST['sort-direction'] ?? 'DESC';
     $type = $_POST['sort-type'] ?? 'ALL';

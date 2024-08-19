@@ -1,6 +1,11 @@
 <?php /** @var array|bool $recordset */ ?>
 <div class="main-container-center-column">
-    <form action="?controller=user&action=index" method="post" class="form-search">
+    <form action="?controller=user&action=index"
+          method="post"
+          class="form-search">
+
+        <input type="hidden" name="controller" value="user">
+        <input type="hidden" name="action" value="index">
 
         <div class="form-searchbar">
             <!-- SEARCHBAR -->
@@ -69,7 +74,7 @@
             <th>Nom</th>
             <th>Prénom</th>
             <th>Type</th>
-            <th>Voir/Modifier/Supprimer</th>
+            <th>Actions</th>
 
         </tr>
         </thead>
@@ -92,8 +97,8 @@
                 <input type="hidden" name="user_id" value="<?= htmlspecialchars($row['user_id']) ?>"/>
                 <td data-label="Nom"><?= htmlspecialchars($row['user_name']) ?></td>
                 <td data-label="Prénom"> <?= htmlspecialchars($row['user_firstname']) ?></td>
-                <td data-label=" Type"><?= htmlspecialchars($row['user_type_name']) ?></td>
-                <td>
+                <td data-label="Type"><?= htmlspecialchars($row['user_type_name']) ?></td>
+                <td data-label="Actions">
                     <div class="button-crud">
                         <a
                                 href="?controller=user&action=userInfo&user_id=<?= $row['user_id'] ?>"
