@@ -1,0 +1,44 @@
+/* Conteneur de la pagination */
+.paging {
+    display: flex;
+    flex-wrap: wrap; /* Permet aux éléments de se déplacer à la ligne suivante si nécessaire */
+    justify-content: center; /* Centre les liens de pagination */
+    margin: 20px 0; /* Espacement en haut et en bas */
+}
+
+/* Liens de pagination */
+.paging a {
+    display: inline-block;
+    padding: 8px 12px;
+    margin: 0 4px;
+    text-decoration: none;
+    color: #007bff; /* Couleur du texte des liens */
+    border: 1px solid #ddd; /* Bordure légère */
+    border-radius: 4px; /* Coins arrondis */
+    font-size: 14px; /* Taille de la police */
+    background-color: #f8f9fa; /* Couleur de fond */
+    transition: background-color 0.3s, color 0.3s; /* Effet de transition */
+}
+
+/* État des liens au survol */
+.paging a:hover {
+    background-color: #e2e6ea; /* Couleur de fond au survol */
+    color: #0056b3; /* Couleur du texte au survol */
+    border-color: #cddcde; /* Bordure au survol */
+}
+
+/* Lien actif */
+.paging a.active {
+    background-color: #007bff; /* Couleur de fond du lien actif */
+    color: #fff; /* Couleur du texte du lien actif */
+    border-color: #007bff; /* Bordure du lien actif */
+    pointer-events: none; /* Désactive les clics sur le lien actif */
+}
+
+/* État désactivé des liens (Précédent/ Suivant) */
+.paging a.disabled {
+    color: #6c757d; /* Couleur du texte des liens désactivés */
+    border-color: #ddd; /* Bordure des liens désactivés */
+    background-color: #f8f9fa; /* Couleur de fond des liens désactivés */
+    cursor: not-allowed; /* Curseur pour les liens désactivés */
+}
