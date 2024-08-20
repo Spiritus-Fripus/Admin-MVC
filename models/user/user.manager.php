@@ -177,7 +177,14 @@ function whereClause(array &$params, string $search, string $type): string
     return !empty($where) ? 'WHERE ' . implode(' AND ', $where) : '';
 }
 
-function searchAndFilterUsers(string $search, string $type, string $orderBy, string $direction, int $offset, int $limit): array
+function searchAndFilterUsers(
+    string $search,
+    string $type,
+    string $orderBy,
+    string $direction,
+    int    $offset,
+    int    $limit
+): array
 {
     $db = connectToDatabase();
     $params = [];
