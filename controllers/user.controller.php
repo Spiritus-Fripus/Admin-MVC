@@ -117,11 +117,9 @@ function updateUserAction(): void
     require "../views/layouts/layout.html.php";
 }
 
-
 /**
  * @throws Exception
  */
-
 function archiveUserAction(): void
 {
     checkUserRole(['admin']);

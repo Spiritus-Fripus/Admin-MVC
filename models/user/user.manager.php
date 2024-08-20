@@ -93,7 +93,9 @@ function updateUser(): void
     $stmt->execute();
 }
 
-
+/**
+ * @throws Exception
+ */
 function archiveUser(string $user_id): void
 {
     $db = connectToDatabase();
