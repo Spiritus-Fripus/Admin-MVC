@@ -4,23 +4,28 @@ require '../config/config.php';
 
 function indexAction(): void
 {
+    require_once '../models/user/user.manager.php';
     checkUserRole(['admin']);
-    require '../models/user/user.manager.php';
 
-    $search = $_POST['search'] ?? '';
-    $orderBy = $_POST['sort-by'] ?? 'created_at';
-    $direction = $_POST['sort-direction'] ?? 'DESC';
-    $type = $_POST['sort-type'] ?? 'ALL';
+    // Récupérer les filtres de l'utilisateur
+    $filters = getUserFilters();
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        if (!verifyCsrfToken()) {
-            // Jeton CSRF invalide
-            require '../models/login/login.manager.php';
-            disconnect();
-        }
-    }
+    // Nombre d'enregistrements par page
+    $recordsPerPage = 10;
 
-    $recordset = searchAndFilterUsers($search, $type, $orderBy, $direction);
+    // Récupérer le numéro de page depuis les paramètres GET, ou utiliser la page 1 par défaut
+    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+    // Calculer l'offset
+    $offset = ($page - 1) * $recordsPerPage;
+
+    // Récupérer les données avec limite et offset
+    $recordset = searchAndFilterUsers($filters['search'], $filters['type'], $filters['orderBy'], $filters['direction'], $offset, $recordsPerPage);
+
+    // Récupérer le nombre total d'enregistrements pour calculer le nombre de pages
+    $totalRecords = getTotalUserCount($filters['search'], $filters['type']);
+    $totalPages = ceil($totalRecords / $recordsPerPage);
+
 
     $title = 'Liste des utilisateurs';
     $cssFiles =
@@ -30,15 +35,32 @@ function indexAction(): void
             '/css/generic/table-responsive.css',
             '/css/generic/filter.css',
             '/css/generic/modal.css',
-            '/css/generic/button-crud.css'
+            '/css/generic/button-crud.css',
+            '/css/generic/paging.css'
         ];
     $jsFiles =
         [
             '/js/modal-delete-verify.js',
+            "/js/submit-form.js"
         ];
     $config = loadLayoutConfig();
     $template = '../views/user/index.html.php';
     require '../views/layouts/layout.html.php';
+}
+
+function getUserFilters(): array
+{
+    $search = $_GET['search'] ?? ' ';
+    $orderBy = $_GET['sort-by'] ?? 'created_at';
+    $direction = $_GET['sort-direction'] ?? 'DESC';
+    $type = $_GET['sort-type'] ?? 'ALL';
+
+    return [
+        'search' => $search,
+        'orderBy' => $orderBy,
+        'direction' => $direction,
+        'type' => $type,
+    ];
 }
 
 function addUserAction(): void
@@ -95,11 +117,9 @@ function updateUserAction(): void
     require "../views/layouts/layout.html.php";
 }
 
-
 /**
  * @throws Exception
  */
-
 function archiveUserAction(): void
 {
     checkUserRole(['admin']);

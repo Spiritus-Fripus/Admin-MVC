@@ -93,7 +93,9 @@ function updateUser(): void
     $stmt->execute();
 }
 
-
+/**
+ * @throws Exception
+ */
 function archiveUser(string $user_id): void
 {
     $db = connectToDatabase();
@@ -160,30 +162,36 @@ function archiveUser(string $user_id): void
 }
 
 
-function searchAndFilterUsers(string $search, string $type, string $orderBy, string $direction): bool|array
+function whereClause(array &$params, string $search, string $type): string
 {
-    $db = connectToDatabase();
     $where = [];
-    $params = [];
-
 
     if ($type !== 'ALL') {
         $where[] = "table_user.user_type_id = :type";
         $params[':type'] = (int)$type;
     }
 
-
     if (!empty($search)) {
         $where[] = "CONCAT(table_user.user_firstname, ' ', table_user.user_name, ' ', table_user.user_mail) LIKE :search";
         $params[':search'] = '%' . $search . '%';
     }
 
+    return !empty($where) ? 'WHERE ' . implode(' AND ', $where) : '';
+}
 
-    $whereClause = '';
-    if (!empty($where)) {
-        $whereClause = 'WHERE ' . implode(' AND ', $where);
-    }
+function searchAndFilterUsers(
+    string $search,
+    string $type,
+    string $orderBy,
+    string $direction,
+    int    $offset,
+    int    $limit
+): array
+{
+    $db = connectToDatabase();
+    $params = [];
 
+    $whereClause = whereClause($params, $search, $type);
 
     $direction = strtoupper($direction) === 'DESC' ? 'DESC' : 'ASC';
 
@@ -192,7 +200,34 @@ function searchAndFilterUsers(string $search, string $type, string $orderBy, str
             JOIN table_user_type
             ON table_user.user_type_id = table_user_type.user_type_id
             $whereClause
-            ORDER BY $orderBy $direction";
+            ORDER BY $orderBy $direction
+            LIMIT :offset, :limit";
+
+    $stmt = $db->prepare($sql);
+
+    foreach ($params as $key => $value) {
+        $stmt->bindValue($key, $value, PDO::PARAM_STR);
+    }
+
+    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+    $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function getTotalUserCount(string $search, string $type): int
+{
+    $db = connectToDatabase();
+    $params = [];
+
+    $whereClause = whereClause($params, $search, $type);
+
+    $sql = "SELECT COUNT(*) AS total
+            FROM table_user
+            JOIN table_user_type
+            ON table_user.user_type_id = table_user_type.user_type_id
+            $whereClause";
 
     $stmt = $db->prepare($sql);
 
@@ -201,5 +236,5 @@ function searchAndFilterUsers(string $search, string $type, string $orderBy, str
     }
 
     $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return (int)$stmt->fetchColumn();
 }

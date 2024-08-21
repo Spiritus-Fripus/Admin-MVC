@@ -20,7 +20,7 @@ function profilAction(): void
     $title = 'Admin Connected';
     $cssFiles =
         [
-            '/css/profil-style.css',
+            '/css/generic/profil-style.css',
             '/css/generic/main-container.css'
         ];
     $template = '../views/profil/profil.html.php';

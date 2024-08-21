@@ -8,7 +8,7 @@ function viewOwnAbsenceAction(): void
     require_once '../models/absence.manager.php';
     $recordset = getAllAbsenceByUserId();
     $config = loadLayoutConfig();
-    $title = 'affichage des absences';
+    $title = 'Affichage des absences';
 
     $cssFiles =
         [
@@ -25,7 +25,7 @@ function addAbsenceAction(): void
     require_once '../models/absence.manager.php';
 
     $config = loadLayoutConfig();
-    $title = 'affichage des absences';
+    $title = "Déclaration d'une absence";
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         addAbsence();
@@ -34,8 +34,8 @@ function addAbsenceAction(): void
         exit();
     }
 
-    $cssFiles = ['/css/generic/main-container.css'];
-    $template = "../views/student/absence/absence.html.php";
+    $cssFiles = ['/css/generic/form.css'];
+    $template = "../views/student/absence/add-absence.html.php";
     require "../views/layouts/layout.html.php";
 }
 

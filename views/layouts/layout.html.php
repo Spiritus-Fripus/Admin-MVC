@@ -1,11 +1,11 @@
 <?php
-
 /**
  * @var mixed $cssFile
  * @var string $config
  * @var string $template
- *  */
+ */
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 

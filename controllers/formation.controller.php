@@ -8,17 +8,40 @@ function indexAction(): void
     require_once '../models/admin/formation.manager.php';
     checkUserRole(['admin', 'manager']);
 
-    $formations = getAllFormation();
+    // Récupérer les filtres des formations
+    $filters = getFormationFilters();
+
+    // Nombre d'enregistrements par page
+    $recordsPerPage = 10;
+
+    // Récupérer le numéro de page depuis les paramètres GET, ou utiliser la page 1 par défaut
+    $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+    // Calculer l'offset
+    $offset = ($page - 1) * $recordsPerPage;
+
+    // Récupérer les données avec limite et offset
+    $recordset = searchAndFilterFormation($filters['search'], $filters['orderBy'], $filters['direction'], $offset, $recordsPerPage);
+
+    // Récupérer le nombre total d'enregistrements pour calculer le nombre de pages
+    $totalRecords = getTotalFormationCount($filters['search']);
+    $totalPages = ceil($totalRecords / $recordsPerPage);
+
+
     $config = loadLayoutConfig();
     $cssFiles =
         [
+            '/css/user/user-style.css',
             '/css/generic/main-container.css',
             '/css/generic/table-responsive.css',
+            '/css/generic/filter.css',
+            '/css/generic/modal.css',
             '/css/generic/button-crud.css',
-            '/css/generic/modal.css'
+            '/css/generic/paging.css'
         ];
     $jsFiles =
         [
+            '/js/submit-form.js',
             '/js/modal-delete-verify.js',
             '/js/formation.js'
         ];
@@ -26,7 +49,18 @@ function indexAction(): void
     $template = "../views/admin-manager/formation/index.html.php";
     require "../views/layouts/layout.html.php";
 }
+function getFormationFilters(): array
+{
+    $search = $_GET['search'] ?? ' ';
+    $orderBy = $_GET['sort-by'] ?? 'formation_id';
+    $direction = $_GET['sort-direction'] ?? 'DESC';
 
+    return [
+        'search' => $search,
+        'orderBy' => $orderBy,
+        'direction' => $direction,
+    ];
+}
 function addFormationAction(): void
 {
     require_once '../models/admin/formation.manager.php';

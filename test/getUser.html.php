@@ -4,7 +4,7 @@
  * @var int $page
  * @var int $totalPages
  * @var array $filters
- */
+ * */
 ?>
 <div class="main-container-center-column">
     <form action="?controller=user&action=index"
@@ -23,7 +23,7 @@
         </div>
         <div class="form-sort">
             <!-- TRI PAR ID/NAME/FIRSTNAME -->
-            <select name="sort-by" onchange="submitForm()">
+            <select name="sort-by" id="">
                 <option value="created_at" <?= isset($_GET['sort-by']) && $_GET['sort-by'] == 'created_at' ? 'selected' : '' ?>>
                     Ajout
                 </option>
@@ -37,7 +37,7 @@
             <!-- END / TRI PAR ID/NAME/FIRSTNAME-->
 
             <!-- ORDER BY  -->
-            <select name="sort-direction" onchange="submitForm()">
+            <select name="sort-direction" id="">
                 <option value="ASC" <?= isset($_GET['sort-direction']) && $_GET['sort-direction'] == 'ASC' ? 'selected' : '' ?>>
                     ASC
                 </option>
@@ -48,7 +48,7 @@
             <!-- END / ORDER BY  -->
 
             <!-- TRI PAR TYPE -->
-            <select name="sort-type" onchange="submitForm()">
+            <select name="sort-type" id="">
                 <option value="ALL" <?= isset($_GET['sort-type']) && $_GET['sort-type'] == 'ALL' ? 'selected' : '' ?>>
                     Tous
                 </option>
@@ -125,7 +125,7 @@
                             </svg>
                         </a>
 
-                        <?php if ($row['user_mail'] !== $_SESSION['user_mail']) : ?>
+                        <?php if ($row['user_mail'] !== $_SESSION['user_mail']) { ?>
                             <a
                                     href="?controller=user&action=archiveUser&user_id=<?= $row['user_id'] ?>"
                                     class="delete"
@@ -138,7 +138,7 @@
                                 </svg>
                             </a>
 
-                        <?php endif; ?>
+                        <?php } ?>
                     </div>
                 </td>
             </tr>
@@ -146,7 +146,7 @@
         </tbody>
     </table>
     <!-- Pagination -->
-    <div class="paging">
+    <div class="pagination">
         <?php if ($page > 1): ?>
             <a href="?controller=user&action=index&page=<?= $page - 1 ?>&search=<?= urlencode($filters['search']) ?>&sort-by=<?= urlencode($filters['orderBy']) ?>&sort-direction=<?= urlencode($filters['direction']) ?>&sort-type=<?= urlencode($filters['type']) ?>">Précédent</a>
         <?php endif; ?>
