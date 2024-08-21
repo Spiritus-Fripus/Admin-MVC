@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * @throws \Random\RandomException
+ */
 function formLoginAction(): void
 {
     // Commence la mise en mémoire tampon de sortie

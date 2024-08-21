@@ -4,8 +4,8 @@ require '../config/config.php';
 
 function indexAction(): void
 {
+    require_once '../models/user/user.manager.php';
     checkUserRole(['admin']);
-    require '../models/user/user.manager.php';
 
     // Récupérer les filtres de l'utilisateur
     $filters = getUserFilters();
