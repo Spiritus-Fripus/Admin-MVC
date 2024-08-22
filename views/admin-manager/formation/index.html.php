@@ -1,8 +1,60 @@
 <?php
+/**
+ * @var array|bool $recordset
+ * @var int $page
+ * @var int $totalPages
+ * @var array $filters
+ * @var array|bool $recordset
+ */
 
-/** @var array|bool $formations */ ?>
-<div class="main-container-center-row">
+?>
+<div class="main-container-center-column">
+    <form action="?controller=formation&action=index"
+          method="get"
+          class="form-search">
 
+        <input type="hidden" name="controller" value="formation">
+        <input type="hidden" name="action" value="index">
+
+        <div class="form-searchbar">
+            <!-- SEARCHBAR -->
+            <label for="search"></label>
+            <input type="text" name=search class="search-bar" placeholder="Recherche">
+            <!-- END / SEARCHBAR -->
+            <button class="submit-button" type="submit">Rechercher</button>
+        </div>
+        <div class="form-sort">
+            <!-- TRI PAR ID/NAME/FIRSTNAME -->
+            <select name="sort-by" onchange="submitForm()">
+                <option value="formation_id" <?= isset($_GET['sort-by']) && $_GET['sort-by'] == 'formation_id' ? 'selected' : '' ?>>
+                    Ajout
+                </option>
+                <option value="formation_name" <?= isset($_GET['sort-by']) && $_GET['sort-by'] == 'formation_name' ? 'selected' : '' ?>>
+                    Nom
+                </option>
+                <option value="formation_duration" <?= isset($_GET['sort-by']) && $_GET['sort-by'] == 'formation_duration' ? 'selected' : '' ?>>
+                    Durée
+                </option>
+            </select>
+            <!-- END / TRI PAR ID/NAME/FIRSTNAME-->
+
+            <!-- ORDER BY  -->
+            <select name="sort-direction" onchange="submitForm()">
+                <option value="ASC" <?= isset($_GET['sort-direction']) && $_GET['sort-direction'] == 'ASC' ? 'selected' : '' ?>>
+                    ASC
+                </option>
+                <option value="DESC" <?= isset($_GET['sort-direction']) && $_GET['sort-direction'] == 'DESC' ? 'selected' : '' ?>>
+                    DESC
+                </option>
+            </select>
+            <!-- END / ORDER BY  -->
+
+        </div>
+    </form>
+    <div class="user-link">
+        <a href="?controller=formation&action=addFormation" class="link">Ajouter une formation</a>
+        <a href="?controller=formation-archive&action=index" class="link">Archives</a>
+    </div>
     <table class="table-container">
         <thead>
         <tr>
@@ -13,7 +65,7 @@
         </tr>
         </thead>
         <tbody>
-        <?php foreach ($formations as $formation) { ?>
+        <?php foreach ($recordset as $formation) { ?>
             <tr class="card-tr">
                 <input type="hidden" name="formation_id"
                        value="<?= htmlspecialchars($formation['formation_id']) ?>"/>
@@ -43,6 +95,20 @@
         <?php } ?>
         </tbody>
     </table>
+    <!-- Pagination -->
+    <div class="paging">
+        <?php if ($page > 1): ?>
+            <a href="?controller=formation&action=index&page=<?= $page - 1 ?>&search=<?= urlencode($filters['search']) ?>&sort-by=<?= urlencode($filters['orderBy']) ?>&sort-direction=<?= urlencode($filters['direction']) ?>">Précédent</a>
+        <?php endif; ?>
+
+        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+            <a href="?controller=formation&action=index&page=<?= $i ?>&search=<?= urlencode($filters['search']) ?>&sort-by=<?= urlencode($filters['orderBy']) ?>&sort-direction=<?= urlencode($filters['direction']) ?>" <?= $i == $page ? 'class="active"' : '' ?>><?= $i ?></a>
+        <?php endfor; ?>
+
+        <?php if ($page < $totalPages): ?>
+            <a href="?controller=formation&action=index&page=<?= $page + 1 ?>&search=<?= urlencode($filters['search']) ?>&sort-by=<?= urlencode($filters['orderBy']) ?>&sort-direction=<?= urlencode($filters['direction']) ?>">Suivant</a>
+        <?php endif; ?>
+    </div>
 </div>
 
 <div id="deleteModal" class="modal">

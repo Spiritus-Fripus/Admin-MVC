@@ -6,7 +6,7 @@ function getAllFormation(): bool|array
 {
     $db = connectToDatabase();
     $sql = 'SELECT formation_name, formation_duration, formation_qualification, formation_id 
-    FROM table_formation';
+            FROM table_formation';
     $stmt = $db->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll();
@@ -129,4 +129,75 @@ function updateFormation(): void
     $stmt->bindValue(':formation_duration', $_POST['formation_duration']);
     $stmt->bindValue(':formation_type_id', $_POST['formation_type_id']);
     $stmt->execute();
+}
+
+function whereClause(array &$params, string $search, ): string
+{
+    $where = [];
+
+    if (!empty($search)) {
+        $where[] = "CONCAT(table_formation.formation_id, ' ', table_formation.formation_name, ' ', table_formation.formation_duration) LIKE :search";
+        $params[':search'] = '%' . $search . '%';
+    }
+
+    return !empty($where) ? 'WHERE ' . implode(' AND ', $where) : '';
+}
+
+function searchAndFilterFormation(
+    string $search,
+    string $orderBy,
+    string $direction,
+    int    $offset,
+    int    $limit
+): array
+{
+    $db = connectToDatabase();
+    $params = [];
+
+    $whereClause = whereClause($params, $search, );
+
+    $direction = strtoupper($direction) === 'DESC' ? 'DESC' : 'ASC';
+
+    $sql = "SELECT *
+            FROM table_formation
+            JOIN table_formation_type
+            ON table_formation.formation_type_id = table_formation_type.formation_type_id
+            $whereClause
+            ORDER BY $orderBy $direction
+            LIMIT :offset, :limit";
+
+    $stmt = $db->prepare($sql);
+
+    foreach ($params as $key => $value) {
+        $stmt->bindValue($key, $value, PDO::PARAM_STR);
+    }
+
+    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+    $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
+
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function getTotalFormationCount(string $search): int
+{
+    $db = connectToDatabase();
+    $params = [];
+
+    $whereClause = whereClause($params, $search);
+
+    $sql = "SELECT COUNT(*) AS total
+            FROM table_formation
+            JOIN table_formation_type
+            ON table_formation.formation_type_id = table_formation_type.formation_type_id
+            $whereClause";
+
+    $stmt = $db->prepare($sql);
+
+    foreach ($params as $key => $value) {
+        $stmt->bindValue($key, $value, PDO::PARAM_STR);
+    }
+
+    $stmt->execute();
+    return (int)$stmt->fetchColumn();
 }
