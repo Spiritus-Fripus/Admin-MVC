@@ -227,23 +227,7 @@ select {
   border: none;
 }
 
-@media (max-width: 1200px) {
-  .formation {
-    width: 30%; /* 3 formations */
-  }
-}
-
-@media (max-width: 992px) {
-  .formation {
-    width: 45%; /* 2 formations */
-  }
-}
-
 @media (max-width: 768px) {
-  .formation {
-    width: 100%; /* 1 formation */
-  }
-
   .formations {
     padding: 10px;
   }
