@@ -186,8 +186,7 @@ function searchAndFilterUsers(
     string $direction,
     int    $offset,
     int    $limit
-): array
-{
+): array {
     $db = connectToDatabase();
     $params = [];
 

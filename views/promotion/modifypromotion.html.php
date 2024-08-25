@@ -1,6 +1,6 @@
 <div class="content-container">
     <div class="promotion-container">
-        <form action="?controller=promotion&action=modifyPromotion" method="post">
+        <form action="/modifyPromotion" method="post">
             <input type="hidden" name="promotion_id" value="<?= $promotion['promotion_id'] ?>" />
             <div class="entree">
                 <label for="promotion_name">Nom de la promotion :</label>

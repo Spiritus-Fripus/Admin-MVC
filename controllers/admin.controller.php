@@ -27,4 +27,3 @@ function profilAction(): void
     $config = loadLayoutConfig();
     require '../views/layouts/layout.html.php';
 }
-

@@ -1,5 +1,10 @@
-<?php /** @var mixed $recordset */ ?>
+<?php
 
+/** 
+ * PHP DOC
+ * @var mixed $recordset 
+ */
+?>
 
 <?php foreach ($recordset as $row) { ?>
     <div class="profil-container">
@@ -32,5 +37,3 @@
         </div>
     </div>
 <?php } ?>
-
-

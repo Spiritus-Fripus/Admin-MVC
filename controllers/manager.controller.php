@@ -13,7 +13,7 @@ function indexAction(): void
 function profilAction(): void
 {
     checkUserRole(['manager']);
-    require '../models/manager.manager.php';
+    require '../models/manager/manager.manager.php';
     $recordset = showInfo();
     $title = 'Manager Connected';
     $cssFiles =

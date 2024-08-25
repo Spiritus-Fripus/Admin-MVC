@@ -5,7 +5,7 @@ require_once "../config/config.php";
 // Fonction pour afficher et ajouter une formation
 function indexAction(): void
 {
-    require_once '../models/admin/formation.manager.php';
+    require_once '../models/formation/formation.manager.php';
     checkUserRole(['admin', 'manager']);
 
     // Récupérer les filtres des formations
@@ -46,7 +46,7 @@ function indexAction(): void
             '/js/formation.js'
         ];
 
-    $template = "../views/admin-manager/formation/index.html.php";
+    $template = "../views/formation/index.html.php";
     require "../views/layouts/layout.html.php";
 }
 function getFormationFilters(): array
@@ -63,7 +63,7 @@ function getFormationFilters(): array
 }
 function addFormationAction(): void
 {
-    require_once '../models/admin/formation.manager.php';
+    require_once '../models/formation/formation.manager.php';
     checkUserRole(['admin', 'manager']);
 
     $config = loadLayoutConfig();
@@ -82,39 +82,40 @@ function addFormationAction(): void
             disconnect();
         }
         addFormation();
-        header('Location: ?controller=formation&action=index');
+        // Regenère CSRF token
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+
+        header('Location: /formation');
     }
 
-    $template = "../views/admin-manager/formation/add-formation.html.php";
+    $template = "../views/formation/add-formation.html.php";
     require "../views/layouts/layout.html.php";
 }
 
-
-/**
- * @throws Exception
- */
 function archiveFormationAction(): void
 {
     checkUserRole(['admin']);
-    require '../models/admin/formation.manager.php';
+    require '../models/formation/formation.manager.php';
 
     if (isset($_GET['formation_id'])) {
         archiveFormation($_GET['formation_id']);
     }
-    header("Location: ?controller=formation&action=index");
+    header("Location: /archiveFormation");
 }
 
-// Fonction pour modifier une formation
+
 function modifyFormationAction(): void
 {
-    require '../models/admin/formation.manager.php';
+    require '../models/formation/formation.manager.php';
     checkUserRole(['admin', 'manager']);
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['formation_id'])) {
         $config = loadLayoutConfig();
         updateFormation();
+        // Regenère CSRF token
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
         // Redirection vers la liste des formations
-        header("Location: ?controller=formation&action=index");
+        header("Location: /formation");
         exit();
     }
 
@@ -123,12 +124,12 @@ function modifyFormationAction(): void
         $formation = getFormationById($_GET['formation_id']);
     } else {
         // Redirection ou message d'erreur si l'ID de la formation n'est pas fourni
-        header("Location: ?controller=formation&action=index");
+        header("Location: /formation");
         exit();
     }
 
     $cssFiles = ['/css/admin/formation-style.css'];
     $config = loadLayoutConfig();
-    $template = "../views/admin-manager/formation/modifyformation.html.php";
+    $template = "../views/formation/modifyformation.html.php";
     require "../views/layouts/layout.html.php";
 }

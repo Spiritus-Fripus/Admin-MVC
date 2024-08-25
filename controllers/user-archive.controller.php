@@ -35,4 +35,3 @@ function indexAction(): void
     $template = '../views/user-archive/index.html.php';
     require '../views/layouts/layout.html.php';
 }
-

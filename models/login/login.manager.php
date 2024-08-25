@@ -2,7 +2,7 @@
 
 require_once '../config/connect.php';
 
-function connect($email)
+function connect($email): mixed
 {
     $db = connectToDatabase();
     $sql = "SELECT table_user.user_password ,table_user.user_mail, table_user.user_type_id, user_id, table_user_type.user_type_id, table_user_type.user_type_name
