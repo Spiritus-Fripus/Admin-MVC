@@ -5,7 +5,11 @@ require_once '../config/connect.php';
 function getAllAbsence(): bool|array
 {
     $db = connectToDatabase();
-    $sql = "SELECT * FROM table_absence WHERE user_id = :user_id";
+    $sql = "SELECT * 
+            FROM table_absence
+            JOIN table_user
+            ON table_absence.user_id = table_user.user_id
+            ORDER BY `table_absence`.`absence_date_declaration` DESC";
     $stmt = $db->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll();

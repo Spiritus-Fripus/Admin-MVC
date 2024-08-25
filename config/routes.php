@@ -6,6 +6,7 @@ return [
     'logout' => ['controller' => 'login', 'action' => 'logoutAction'],
     //absence
     'absence' => ['controller' => 'absence', 'action' => 'viewOwnAbsenceAction'],
+    'absenceUser' => ['controller' => 'absence', 'action' => 'viewAllUserAbsence'],
     'addAbsence' => ['controller' => 'absence', 'action' => 'addAbsenceAction'],
     'deleteAbsence' => ['controller' => 'absence', 'action' => 'deleteAbsenceAction'],
     // admin

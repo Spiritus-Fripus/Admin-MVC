@@ -19,6 +19,21 @@ function viewOwnAbsenceAction(): void
     require "../views/layouts/layout.html.php";
 }
 
+function viewAllUserAbsence()
+{
+    require_once '../models/absence/absence.manager.php';
+    $recordset = getAllAbsence();
+    $config = loadLayoutConfig();
+    $title = 'Affichage des absences';
+    $cssFiles =
+        [
+            '/css/generic/main-container.css',
+            '/css/generic/table-responsive.css'
+        ];
+    $template = "../views/absence/absence.html.php";
+    require "../views/layouts/layout.html.php";
+}
+
 function addAbsenceAction(): void
 {
 
