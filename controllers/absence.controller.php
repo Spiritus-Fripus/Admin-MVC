@@ -13,7 +13,8 @@ function viewOwnAbsenceAction(): void
     $cssFiles =
         [
             '/css/generic/main-container.css',
-            '/css/generic/table-responsive.css'
+            '/css/generic/table-responsive.css',
+            '/css/generic/button-crud.css',
         ];
     $template = "../views/absence/absence.html.php";
     require "../views/layouts/layout.html.php";
@@ -21,6 +22,7 @@ function viewOwnAbsenceAction(): void
 
 function viewAllUserAbsence()
 {
+    checkUserRole(['admin', 'manager']);
     require_once '../models/absence/absence.manager.php';
     $recordset = getAllAbsence();
     $config = loadLayoutConfig();
@@ -28,7 +30,13 @@ function viewAllUserAbsence()
     $cssFiles =
         [
             '/css/generic/main-container.css',
-            '/css/generic/table-responsive.css'
+            '/css/generic/table-responsive.css',
+            '/css/generic/button-crud.css',
+            '/css/generic/modal.css',
+        ];
+    $jsFiles =
+        [
+            '/js/modal-delete-verify.js',
         ];
     $template = "../views/absence/absence.html.php";
     require "../views/layouts/layout.html.php";
@@ -59,20 +67,14 @@ function addAbsenceAction(): void
 
 function deleteAbsenceAction(): void
 {
+    checkUserRole(['admin', 'manager']);
     require_once '../models/absence/absence.manager.php';
     $absences = getAllAbsenceByUserId();
     $config = loadLayoutConfig();
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['absence_id'] != "") {
-        deleteAbsence();
-        // Regenère CSRF token
-        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-        //redirection vers la liste des absences
-        header("Location: /absence");
-        exit();
+    if (isset($_GET['absence_id'])) {
+        deleteAbsence($_GET['absence_id']);
     }
-
-    $cssFiles = [''];
-    $template = "../views/absence/absence.html.php";
-    require "../views/layouts/layout.html.php";
+    //redirection vers la liste des absences
+    header("Location: /absenceUser");
 }

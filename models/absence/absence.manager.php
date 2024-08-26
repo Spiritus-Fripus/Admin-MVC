@@ -66,12 +66,11 @@ function updateAbsence(): void
     $stmt->execute();
 }
 
-function deleteAbsence(): void
+function deleteAbsence($id): void
 {
     $db = connectToDatabase();
-    $sql = "DELETE FROM table_absence WHERE absence_id = :absence_id AND user_id = :user_id";
+    $sql = "DELETE FROM table_absence WHERE absence_id = :absence_id";
     $stmt = $db->prepare($sql);
-    $stmt->bindValue(':absence_id', $_POST['absence_id']);
-    $stmt->bindValue(':user_id', $_SESSION['user_id']);
+    $stmt->bindValue(':absence_id', $id);
     $stmt->execute();
 }
