@@ -1,26 +1,25 @@
 <div class="main-container-center-column">
 
-    <form action="/userArchive" method="post" class="form-search">
+    <form action="/userArchive" method="get" class="form-search">
 
         <div class="form-searchbar">
             <!-- SEARCHBAR -->
             <label for="search"></label>
             <input type="text" name=search class="search-bar" placeholder="Recherche">
-            <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token']) ?>">
             <button class="submit-button" type="submit">Recherche</button>
             <!-- END / SEARCHBAR -->
         </div>
 
         <div class="form-sort ">
             <!-- TRI PAR ID/NAME/FIRSTNAME -->
-            <select name="sort-by" id="">
-                <option value="archived_at" <?= isset($_POST['sort-by']) && $_POST['sort-by'] == 'archived_at' ? 'selected' : '' ?>>
+            <select name="sort-by" id="" onchange="submitForm()">
+                <option value=" archived_at" <?= isset($_GET['sort-by']) && $_GET['sort-by'] == 'archived_at' ? 'selected' : '' ?>>
                     Date
                 </option>
-                <option value="user_archive_name" <?= isset($_POST['sort-by']) && $_POST['sort-by'] == 'user_archive_name' ? 'selected' : '' ?>>
+                <option value="user_archive_name" <?= isset($_GET['sort-by']) && $_GET['sort-by'] == 'user_archive_name' ? 'selected' : '' ?>>
                     Nom
                 </option>
-                <option value="user_archive_firstname" <?= isset($_POST['sort-by']) && $_POST['sort-by'] == 'user_archive_firstname' ? 'selected' : '' ?>>
+                <option value="user_archive_firstname" <?= isset($_GET['sort-by']) && $_GET['sort-by'] == 'user_archive_firstname' ? 'selected' : '' ?>>
                     Prénom
                 </option>
             </select>
@@ -28,11 +27,11 @@
 
 
             <!-- ORDER BY  -->
-            <select name="sort-direction" id="">
-                <option value="ASC" <?= isset($_POST['sort-direction']) && $_POST['sort-direction'] == 'ASC' ? 'selected' : '' ?>>
+            <select name="sort-direction" id="" onchange="submitForm()">
+                <option value="ASC" <?= isset($_GET['sort-direction']) && $_GET['sort-direction'] == 'ASC' ? 'selected' : '' ?>>
                     ASC
                 </option>
-                <option value="DESC" <?= isset($_POST['sort-direction']) && $_POST['sort-direction'] == 'DESC' ? 'selected' : '' ?>>
+                <option value="DESC" <?= isset($_GET['sort-direction']) && $_GET['sort-direction'] == 'DESC' ? 'selected' : '' ?>>
                     DESC
                 </option>
             </select>
@@ -41,17 +40,17 @@
 
 
             <!-- TRI PAR TYPE -->
-            <select name="sort-type" id="">
-                <option value="ALL" <?= isset($_POST['sort-type']) && $_POST['sort-type'] == 'ALL' ? 'selected' : '' ?>>
+            <select name="sort-type" id="" onchange="submitForm()">
+                <option value="ALL" <?= isset($_GET['sort-type']) && $_GET['sort-type'] == 'ALL' ? 'selected' : '' ?>>
                     Tous
                 </option>
-                <option value="1" <?= isset($_POST['sort-type']) && $_POST['sort-type'] == '1' ? 'selected' : '' ?>>
+                <option value="1" <?= isset($_GET['sort-type']) && $_GET['sort-type'] == '1' ? 'selected' : '' ?>>
                     Admin
                 </option>
-                <option value="2" <?= isset($_POST['sort-type']) && $_POST['sort-type'] == '2' ? 'selected' : '' ?>>
+                <option value="2" <?= isset($_GET['sort-type']) && $_GET['sort-type'] == '2' ? 'selected' : '' ?>>
                     Gestionnaire
                 </option>
-                <option value="3" <?= isset($_POST['sort-type']) && $_POST['sort-type'] == '3' ? 'selected' : '' ?>>
+                <option value="3" <?= isset($_GET['sort-type']) && $_GET['sort-type'] == '3' ? 'selected' : '' ?>>
                     Élève
                 </option>
             </select>
@@ -94,5 +93,19 @@
             <?php } ?>
         </tbody>
     </table>
+    <!-- Pagination -->
+    <div class="paging">
+        <?php if ($page > 1): ?>
+            <a href="/userArchive?page=<?= $page - 1 ?>&search=<?= urlencode($filters['search']) ?>&sort-by=<?= urlencode($filters['orderBy']) ?>&sort-direction=<?= urlencode($filters['direction']) ?>&sort-type=<?= urlencode($filters['type']) ?>">Précédent</a>
+        <?php endif; ?>
+
+        <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+            <a href="/userArchive?page=<?= $i ?>&search=<?= urlencode($filters['search']) ?>&sort-by=<?= urlencode($filters['orderBy']) ?>&sort-direction=<?= urlencode($filters['direction']) ?>&sort-type=<?= urlencode($filters['type']) ?>" <?= $i == $page ? 'class="active"' : '' ?>><?= $i ?></a>
+        <?php endfor; ?>
+
+        <?php if ($page < $totalPages): ?>
+            <a href="/userArchive?page=<?= $page + 1 ?>&search=<?= urlencode($filters['search']) ?>&sort-by=<?= urlencode($filters['orderBy']) ?>&sort-direction=<?= urlencode($filters['direction']) ?>&sort-type=<?= urlencode($filters['type']) ?>">Suivant</a>
+        <?php endif; ?>
+    </div>
 
 </div>

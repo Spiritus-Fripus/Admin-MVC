@@ -103,11 +103,13 @@
     </table>
 </div>
 
-<div id="deleteModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <p>Êtes-vous sûr de vouloir supprimer l'absence ?</p>
-        <button id="confirmDelete">Oui</button>
-        <button id="cancelDelete">Non</button>
+<?php if ($_SESSION['user_type'] == 'admin' || $_SESSION['user_type'] == 'manager'): ?>
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Êtes-vous sûr de vouloir supprimer l'absence ?</p>
+            <button id="confirmDelete">Oui</button>
+            <button id="cancelDelete">Non</button>
+        </div>
     </div>
-</div>
+<?php endif ?>
