@@ -12,6 +12,6 @@ function viewDelayAction(): void
             '/css/table-responsive.css',
             '/css/generic/main-container.css',
         ];
-    $template = '../views/admin/delay/delay.html.php';
+    $template = '../views/delay/delay.html.php';
     require '../views/layouts/layout.html.php';
 }

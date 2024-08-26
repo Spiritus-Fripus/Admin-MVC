@@ -1,26 +1,33 @@
+<?php
+
+/**
+ * PHP DOC
+ *  @var mixed $promotions 
+ * @var mixed $formations 
+ *  @var mixed $formationpromotion 
+ */
+?>
+
 <div class="content-container">
     <div class="promotions">
-        <?php /** @var mixed $promotions */
-        /** @var mixed $formations */
-        /** @var mixed $formationpromotion */
-        foreach ($promotions as $promotion) { ?>
+        <?php foreach ($promotions as $promotion) { ?>
             <ul class="promotion">
                 <li> <?= htmlspecialchars($promotion['promotion_name'] ?? '') ?></li>
                 <li> <?= "Année promotion: " . htmlspecialchars($promotion['promotion_year'] ?? '') ?></li>
                 <li> <?= htmlspecialchars($formationpromotion[$promotion['promotion_id']] ?? '') ?></li>
                 <div class="boutons-modif">
-                    <form id="deleteForm" action="?controller=promotion&action=deletepromotion" method="post">
+                    <form id="deleteForm" action="/deletePromotion" method="post">
                         <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($_SESSION['csrf_token'] ?? '') ?>">
                         <input type="hidden" name="promotion_id" id="promotionIdToDelete">
                         <button class="bouton-suppression" type="button" onclick="openDeleteModal(<?= $promotion['promotion_id'] ?>)">Supprimer</button>
                     </form>
-                    <a href="?controller=promotion&action=modifyPromotion&promotion_id=<?= $promotion['promotion_id'] ?>" class="bouton-modification">Modifier</a>
+                    <a href="/modifyPromotion&promotion_id=<?= $promotion['promotion_id'] ?>" class="bouton-modification">Modifier</a>
                 </div>
             </ul>
         <?php } ?>
     </div>
     <div class="promotion-container">
-        <form action="?controller=promotion&action=viewpromotion" method="post">
+        <form action="/promotion" method="post">
             <div class="entree">
                 <label for="promotion_name">Nom de la promotion</label>
                 <input type="text" name="promotion_name" required />

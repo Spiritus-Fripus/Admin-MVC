@@ -1,7 +1,7 @@
 <div class="main-container-center-column">
 
     <div class="formation-container">
-        <form action="?controller=formation&action=addFormation" method="post">
+        <form action="/formation" method="post">
             <div class="entree">
                 <label for="formation_name">Nom de la formation</label>
                 <input type="text" name="formation_name" required />
