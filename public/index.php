@@ -2,12 +2,13 @@
 
 session_start();
 
-// Fonction pour obtenir la route
+// Obtenir la route
 function getRouteFromRequest()
 {
     $uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
     if (empty($uri)) {
-        return 'login'; // Route par défaut si aucune route n'est spécifiée
+        // Route par défaut 
+        return 'login';
     }
     return $uri;
 }
@@ -17,7 +18,8 @@ $routeMap = require '../config/routes.php';
 
 // Récupérer la route depuis l'URL
 $route = getRouteFromRequest();
-$route = preg_replace('/[^a-zA-Z0-9_-]/', '', $route); // Nettoyer la route
+// Nettoyer la route
+$route = preg_replace('/[^a-zA-Z0-9_-]/', '', $route);
 
 // Vérifier si la route existe dans le tableau
 if (isset($routeMap[$route])) {
