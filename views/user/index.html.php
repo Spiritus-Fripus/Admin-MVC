@@ -86,7 +86,7 @@
 
         <tbody>
 
-            <?php foreach ($recordset as $row) { ?>
+            <?php foreach ($recordset as $row) : ?>
                 <?php
                 // Mise à jour de la date en version FR
                 try {
@@ -140,7 +140,7 @@
                         </div>
                     </td>
                 </tr>
-            <?php } ?>
+            <?php endforeach ?>
         </tbody>
     </table>
     <!-- Pagination -->

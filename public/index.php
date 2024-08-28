@@ -9,6 +9,8 @@ function getRouteFromRequest()
     if (empty($uri)) {
         // Route par défaut 
         return 'login';
+        // Route par défaut 
+        return 'login';
     }
     return $uri;
 }
