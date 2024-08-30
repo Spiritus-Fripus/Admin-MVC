@@ -3,11 +3,13 @@
         account_circle
     </span>
 </a>
-<span class="material-symbols-rounded">
-    notifications
-</span>
-<span class="material-symbols-rounded">
-    <a href="/logout">
+<a href="">
+    <span class="material-symbols-rounded">
+        notifications
+    </span>
+</a>
+<a href="/logout">
+    <span class="material-symbols-rounded">
         logout
-    </a>
-</span>
+    </span>
+</a>
