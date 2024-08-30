@@ -26,7 +26,7 @@ return [
     'manager' => ['controller' => 'manager', 'action' => 'indexAction'],
     'managerProfil' => ['controller' => 'manager', 'action' => 'profilAction'],
     // promotion
-    'promotion' => ['controller' => 'promotion', 'action' => 'indexAction'],
+    'promotion' => ['controller' => 'promotion', 'action' => 'viewPromotionAction'],
     'modifyPromotion' => ['controller' => 'promotion', 'action' => 'modifyPromotionAction'],
     'deletePromotion' => ['controller' => 'promotion', 'action' => 'deletePromotionAction'],
     // student
