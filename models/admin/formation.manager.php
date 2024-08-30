@@ -1,7 +1,7 @@
 <?php
 
 require_once '../config/connect.php';
-
+/*
 function getAllFormation(): bool|array
 {
     $db = connectToDatabase();
@@ -10,7 +10,7 @@ function getAllFormation(): bool|array
     $stmt = $db->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll();
-}
+}*/
 
 function getFormationById($formation_id)
 {
@@ -131,7 +131,7 @@ function updateFormation(): void
     $stmt->execute();
 }
 
-function whereClause(array &$params, string $search, ): string
+function whereClause(array &$params, string $search,): string
 {
     $where = [];
 
@@ -149,12 +149,11 @@ function searchAndFilterFormation(
     string $direction,
     int    $offset,
     int    $limit
-): array
-{
+): array {
     $db = connectToDatabase();
     $params = [];
 
-    $whereClause = whereClause($params, $search, );
+    $whereClause = whereClause($params, $search,);
 
     $direction = strtoupper($direction) === 'DESC' ? 'DESC' : 'ASC';
 

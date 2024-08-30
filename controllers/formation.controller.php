@@ -131,8 +131,18 @@ function modifyFormationAction(): void
         exit();
     }
 
-    $cssFiles = ['/css/admin/formation-style.css'];
+    $cssFiles =
+        [
+            '/css/generic/main-container.css',
+            '/css/admin/formation-style.css',
+            '/css/generic/table-responsive.css',
+            '/css/generic/button-crud.css'
+        ];
     $config = loadLayoutConfig();
+    $jsFiles =
+        [
+            '/js/formation.js'
+        ];
     $template = "../views/admin-manager/formation/modifyformation.html.php";
     require "../views/layouts/layout.html.php";
 }
