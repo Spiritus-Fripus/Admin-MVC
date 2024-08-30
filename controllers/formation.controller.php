@@ -12,7 +12,7 @@ function indexAction(): void
     $filters = getFormationFilters();
 
     // Nombre d'enregistrements par page
-    $recordsPerPage = 10;
+    $recordsPerPage = 8;
 
     // Récupérer le numéro de page depuis les paramètres GET, ou utiliser la page 1 par défaut
     $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
