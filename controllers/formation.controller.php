@@ -140,6 +140,6 @@ function modifyFormationAction(): void
         [
             '/js/formation.js'
         ];
-    $template = "../views/admin-manager/formation/modifyformation.html.php";
+    $template = "../views/formation/modifyformation.html.php";
     require "../views/layouts/layout.html.php";
 }
