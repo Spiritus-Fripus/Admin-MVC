@@ -100,7 +100,7 @@ function archiveFormationAction(): void
     if (isset($_GET['formation_id'])) {
         archiveFormation($_GET['formation_id']);
     }
-    header("Location: /archiveFormation");
+    header("Location: /formation");
 }
 
 

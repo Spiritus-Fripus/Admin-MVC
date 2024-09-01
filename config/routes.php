@@ -22,6 +22,8 @@ return [
     'addFormation' => ['controller' => 'formation', 'action' => 'addFormationAction'],
     'archiveFormation' => ['controller' => 'formation', 'action' => 'archiveFormationAction'],
     'modifyFormation' => ['controller' => 'formation', 'action' => 'modifyFormationAction'],
+    //formation Archive
+    'formationArchive' => ['controller' => 'formation-archive', 'action' => 'indexAction'],
     // manager
     'manager' => ['controller' => 'manager', 'action' => 'indexAction'],
     'managerProfil' => ['controller' => 'manager', 'action' => 'profilAction'],

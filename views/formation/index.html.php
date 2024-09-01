@@ -55,7 +55,7 @@
     </form>
     <div class="user-link">
         <a href="/addFormation" class="link">Ajouter une formation</a>
-        <a href="/archiveFormation" class="link">Archives</a>
+        <a href="/formationArchive" class="link">Archives</a>
     </div>
     <table class="table-container">
         <thead>
