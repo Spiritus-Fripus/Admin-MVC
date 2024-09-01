@@ -2,7 +2,6 @@
 
 require_once '../config/connect.php';
 
-
 function getUserById(string $user_id)
 {
     $db = connectToDatabase();
@@ -93,9 +92,6 @@ function updateUser(): void
     $stmt->execute();
 }
 
-/**
- * @throws Exception
- */
 function archiveUser(string $user_id): void
 {
     $db = connectToDatabase();
@@ -186,8 +182,7 @@ function searchAndFilterUsers(
     string $direction,
     int    $offset,
     int    $limit
-): array
-{
+): array {
     $db = connectToDatabase();
     $params = [];
 

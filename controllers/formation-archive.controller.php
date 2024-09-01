@@ -5,11 +5,11 @@ require_once '../config/config.php';
 function indexAction(): void
 {
     checkUserRole(['admin']);
-    require '../models/user/user-archive.manager.php';
+    require '../models/formation/formation-archive.manager.php';
 
-    $filters = getUserArchivedFilters();
+    $filters = getFormationArchivedFilters();
     // Nombre d'enregistrements par page
-    $recordsPerPage = 8;
+    $recordsPerPage = 6;
 
     // Récupérer le numéro de page depuis les paramètres GET, ou utiliser la page 1 par défaut
     $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
@@ -17,16 +17,11 @@ function indexAction(): void
     // Calculer l'offset
     $offset = ($page - 1) * $recordsPerPage;
 
-    // Récupérer les données avec limite et offset
-    $recordset = searchAndFilterUsersArchived($filters['search'], $filters['type'], $filters['orderBy'], $filters['direction'], $offset, $recordsPerPage);
-
-    // Récupérer le nombre total d'enregistrements pour calculer le nombre de pages
-    $totalRecords = getTotalUserArchivedCount($filters['search'], $filters['type']);
+    $recordset = getAllFormationArchived($offset, $recordsPerPage);
+    $totalRecords = getTotalFormationCount();
     $totalPages = ceil($totalRecords / $recordsPerPage);
 
-
-
-    $title = 'Liste des utilisateurs';
+    $title = 'Liste des formations archivées';
 
     $cssFiles =
         [
@@ -43,11 +38,11 @@ function indexAction(): void
         "/js/submit-form.js"
     ];
     $config = loadLayoutConfig();
-    $template = '../views/user-archive/index.html.php';
+    $template = '../views/formation-archive/index.html.php';
     require '../views/layouts/layout.html.php';
 }
 
-function getUserArchivedFilters(): array
+function getFormationArchivedFilters(): array
 {
     $search = $_GET['search'] ?? '';
     $orderBy = $_GET['sort-by'] ?? 'user_archive_id';

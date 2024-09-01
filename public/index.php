@@ -1,59 +1,47 @@
 <?php
 
 session_start();
-// On inclut dynamiquement le fichier de contrôleur
-$controllerName = !empty($_GET['controller']) ? $_GET['controller'] : 'login';
 
-if (file_exists("../controllers/$controllerName.controller.php")) {
-
-    require "../controllers/$controllerName.controller.php";
-
-    $action = !empty($_GET['action']) ? $_GET['action'] . 'Action' : 'formLoginAction';
-
-    if (function_exists($action)) {
-        $action(); // Index par défaut
-    } else {
-        require '../controllers/error.controller.php';
-        notFound(); // Action 404
+// Obtenir la route
+function getRouteFromRequest()
+{
+    $uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+    if (empty($uri)) {
+        // Route par défaut 
+        return 'login';
     }
-} else {
-    require '../controllers/error.controller.php';
-    notFound(); // Action 404
+    return $uri;
 }
 
+// Inclure le fichier de routes
+$routeMap = require '../config/routes.php';
 
-//// index.php
-//
-//session_start();
-//
-//// Inclusion du fichier de configuration des routes
-//$routes = require '../config/routes.php';
-//
-//// Récupération de l'URL demandée
-//$path = $_SERVER['REQUEST_URI'];
-//
-//// Vérification si la route existe dans notre configuration
-//if (isset($routes[$path])) {
-//    $route = $routes[$path];
-//    $controllerName = $route['controller'];
-//    $action = $route['action'] . 'Action';
-//
-//    // Inclusion du contrôleur correspondant
-//    if (file_exists("../controllers/$controllerName.controller.php")) {
-//        require "../controllers/$controllerName.controller.php";
-//
-//        // Vérification de l'existence de l'action dans le contrôleur
-//        if (function_exists($action)) {
-//            $action();
-//        } else {
-//            require '../controllers/error.controller.php';
-//            notFound(); // Action 404 si l'action n'existe pas
-//        }
-//    } else {
-//        require '../controllers/error.controller.php';
-//        notFound(); // Action 404 si le contrôleur n'existe pas
-//    }
-//} else {
-//    require '../controllers/error.controller.php';
-//    notFound(); // Action 404 si la route n'existe pas dans notre configuration
-//}
+// Récupérer la route depuis l'URL
+$route = getRouteFromRequest();
+// Nettoyer la route
+$route = preg_replace('/[^a-zA-Z0-9_-]/', '', $route);
+
+// Vérifier si la route existe dans le tableau
+if (isset($routeMap[$route])) {
+    $controllerName = $routeMap[$route]['controller'];
+    $action = $routeMap[$route]['action'];
+} else {
+    // 404
+    $controllerName = 'error';
+    $action = 'notFoundAction';
+}
+
+// Inclure le contrôleur et exécuter l'action
+$controllerPath = "../controllers/$controllerName.controller.php";
+if (file_exists($controllerPath)) {
+    require $controllerPath;
+    if (function_exists($action)) {
+        $action();
+    } else {
+        require_once '../controllers/error.controller.php';
+        notFound();
+    }
+} else {
+    require_once '../controllers/error.controller.php';
+    notFound();
+}

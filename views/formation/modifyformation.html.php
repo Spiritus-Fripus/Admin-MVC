@@ -1,6 +1,14 @@
+<?php
+
+/**
+ * PHP DOC
+ * @var array $formation
+ */
+?>
+
 <div class="content-container">
     <div class="formation-container">
-        <form action="?controller=formation&action=modifyFormation" method="post">
+        <form action="/modifyFormation" method="post">
             <input type="hidden" name="formation_id" value="<?= $formation['formation_id'] ?>" />
             <div class="entree">
                 <label for="formation_name">Nom de la formation :</label>
@@ -9,13 +17,13 @@
             </div>
             <div class="entree">
                 <label for="formation_date_start">Date de début de la formation :</label>
-                <input type="date" id="formation_date_start" name="formation_date_start" placeholder="<?= $formation['formation_date_start'] ?>"
-                    value="<?= $formation['formation_date_start'] ?>" required />
+                <input type="date" name="formation_date_start" placeholder="<?= $formation['formation_date_start'] ?>"
+                    value="<?= $formation['formation_date_start'] ?>" />
             </div>
             <div class="entree">
                 <label for="formation_date_end">Date de fin de la formation :</label>
-                <input type="date" id="formation_date_end" name="formation_date_end" placeholder="<?= $formation['formation_date_end'] ?>"
-                    value="<?= $formation['formation_date_end'] ?>" required />
+                <input type="date" name="formation_date_end" placeholder="<?= $formation['formation_date_end'] ?>"
+                    value="<?= $formation['formation_date_end'] ?>" />
             </div>
             <div class="entree">
                 <label for="formation_duration">Durée de la formation :</label>

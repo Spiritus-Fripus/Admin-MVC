@@ -11,7 +11,7 @@ function indexAction(): void
     $filters = getUserFilters();
 
     // Nombre d'enregistrements par page
-    $recordsPerPage = 10;
+    $recordsPerPage = 8;
 
     // Récupérer le numéro de page depuis les paramètres GET, ou utiliser la page 1 par défaut
     $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
@@ -75,7 +75,9 @@ function addUserAction(): void
             disconnect();
         }
         addUser();
-        header('Location: ?controller=user&action=index');
+        // Regenère CSRF token
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+        header('Location: /user');
     }
 
     $title = "Ajouts d'utilisateurs";
@@ -97,8 +99,10 @@ function updateUserAction(): void
             disconnect();
         }
         updateUser();
+        // Regenère CSRF token
+        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
         // Redirection vers la liste des utilisateurs
-        header("Location: ?controller=user&action=index");
+        header("Location: /user");
         exit();
     }
 
@@ -107,7 +111,7 @@ function updateUserAction(): void
         $user = getUserById($_GET['user_id']);
     } else {
         // Redirection ou message d'erreur si l'ID de l'user n'est pas fourni
-        header("Location: ?controller=user&action=index");
+        header("Location: /user");
         exit();
     }
 
@@ -117,9 +121,6 @@ function updateUserAction(): void
     require "../views/layouts/layout.html.php";
 }
 
-/**
- * @throws Exception
- */
 function archiveUserAction(): void
 {
     checkUserRole(['admin']);
@@ -128,7 +129,7 @@ function archiveUserAction(): void
     if (isset($_GET['user_id'])) {
         archiveUser($_GET['user_id']);
     }
-    header("Location: ?controller=user&action=index");
+    header("Location: /user");
 }
 
 

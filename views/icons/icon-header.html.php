@@ -1,13 +1,15 @@
-<a href='?controller=<?= $_SESSION['user_type'] ?>&action=profil'>
+<a href='/<?= $_SESSION['user_type'] ?>Profil'>
     <span class="material-symbols-rounded">
         account_circle
     </span>
 </a>
-<span class="material-symbols-rounded">
-    notifications
-</span>
-<span class="material-symbols-rounded">
-    <a href="?controller=login&action=logout">
+<a href="">
+    <span class="material-symbols-rounded">
+        notifications
+    </span>
+</a>
+<a href="/logout">
+    <span class="material-symbols-rounded">
         logout
-    </a>
-</span>
+    </span>
+</a>
