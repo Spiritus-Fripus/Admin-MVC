@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   deleteButtons.forEach((button) => {
     button.addEventListener("click", function (event) {
-      event.preventDefault(); // Prevent the default navigation
+      event.preventDefault();
       hrefToNavigate = this.getAttribute("href");
       modal.style.display = "block";
     });

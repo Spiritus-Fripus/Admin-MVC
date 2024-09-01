@@ -151,9 +151,8 @@ function archiveUser(string $user_id): void
     } catch (PDOException $e) {
         // Annule la transaction en cas d'erreur
         $db->rollBack();
-
         // Envoie l'erreur
-        throw new Exception("Erreur lors de l'archivage de l'utilisateur : " . $e->getMessage());
+        throw new PDOException("Erreur lors de l'archivage de l'utilisateur : " . $e->getMessage());
     }
 }
 

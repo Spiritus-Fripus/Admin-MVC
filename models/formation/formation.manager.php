@@ -1,7 +1,7 @@
 <?php
 
 require_once '../config/connect.php';
-/*
+
 function getAllFormation(): bool|array
 {
     $db = connectToDatabase();
@@ -10,7 +10,7 @@ function getAllFormation(): bool|array
     $stmt = $db->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll();
-}*/
+}
 
 function getFormationById($formation_id)
 {

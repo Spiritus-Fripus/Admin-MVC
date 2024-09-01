@@ -5,5 +5,3 @@ config/connect.env.php
 **/.DS_Store
 # Ignore .idea PhpStorm config
 .idea
-
-public/.htaccess
