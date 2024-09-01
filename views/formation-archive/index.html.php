@@ -5,7 +5,6 @@
             <th>Formation</th>
             <th>Qualification</th>
             <th>Durée</th>
-            <th>Type</th>
             <th>Date archive</th>
             <th>Archivé par</th>
         </tr>
@@ -18,8 +17,8 @@
             <tr class="card-tr">
                 <input type="hidden" name="user_archive_id" value="<?= htmlspecialchars($row['formation_archive_id']) ?>" />
                 <td data-label="Nom de la formation"><?= htmlspecialchars($row['formation_archive_name']) ?></td>
-                <td data-label="Prénom"><?= htmlspecialchars($row['formation_archive_qualification']) ?></td>
-                <td data-label="Mail"><?= htmlspecialchars($row['formation_archive_duration']) ?></td>
+                <td data-label="Qualification de la formation"><?= htmlspecialchars($row['formation_archive_qualification']) ?></td>
+                <td data-label="Durée de la formation"><?= htmlspecialchars($row['formation_archive_duration']) ?></td>
                 <td data-label="Date archive"><?= htmlspecialchars($row['archived_at']) ?></td>
                 <td data-label="Archivé par"><?= htmlspecialchars($row['archived_by']) ?></td>
             </tr>
