@@ -20,8 +20,8 @@
             <!-- SEARCHBAR -->
             <label for="search"></label>
             <input type="text" name=search class="search-bar" placeholder="Recherche">
-            <!-- END / SEARCHBAR -->
             <button class="submit-button" type="submit">Rechercher</button>
+            <!-- END / SEARCHBAR -->
         </div>
         <div class="form-sort">
             <!-- TRI PAR ID/NAME/FIRSTNAME -->
