@@ -28,6 +28,7 @@
 </table>
 <!-- Pagination -->
 <div class="paging">
+    <?php /** PHP DOC : @var int $page */ ?>
     <?php if ($page > 1): ?>
         <a href="/formationArchive?page=<?= $page - 1 ?>">Précédent</a>
     <?php endif; ?>

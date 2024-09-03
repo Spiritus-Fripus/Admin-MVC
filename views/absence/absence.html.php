@@ -1,13 +1,5 @@
-<?php
-
-/**
- *  PHP DOC
- * @var string $title
- * @var array|bool $recordset
- */
-?>
-
 <div class="main-container-center-column">
+    <?php /** PHP DOC @var string $tile */ ?>
     <h2><?= $title ?></h2>
 
     <?php if ($_SESSION['user_type'] == 'student'): ?>
@@ -40,7 +32,7 @@
         </thead>
 
         <tbody>
-
+            <?php /** PHP DOC @var array|bool $recordset */ ?>
             <?php foreach ($recordset as $row) { ?>
 
                 <?php if ($_SESSION['user_type'] == 'student'): ?>

@@ -1,15 +1,3 @@
-<?php
-
-/**
- * PHP DOC
- * @var array|bool $recordset
- * @var int $page
- * @var int $totalPages
- * @var array $filters
- * @var array|bool $recordset
- */
-
-?>
 <div class="main-container-center-column">
     <form action="/formation"
         method="get"
@@ -67,6 +55,7 @@
             </tr>
         </thead>
         <tbody>
+            <?php /** PHP DOC: @var array|bool $recordset */ ?>
             <?php foreach ($recordset as $formation) { ?>
                 <tr class="card-tr">
                     <input type="hidden" name="formation_id"
@@ -99,6 +88,7 @@
     </table>
     <!-- Pagination -->
     <div class="paging">
+        <?php /** PHP DOC : @var int $page, @var int $totalPages , @var array $filters */ ?>
         <?php if ($page > 1): ?>
             <a href="/formation?page=<?= $page - 1 ?>&search=<?= urlencode($filters['search']) ?>&sort-by=<?= urlencode($filters['orderBy']) ?>&sort-direction=<?= urlencode($filters['direction']) ?>">Précédent</a>
         <?php endif; ?>

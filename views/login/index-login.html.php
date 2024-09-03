@@ -1,11 +1,3 @@
-<?php
-
-/**
- * PHP DOC
- *  @var string $cssFile 
- */
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- css -->
+    <?php /** @var string $cssFile */ ?>
     <link rel="stylesheet" href="<?= $cssFile; ?>">
     <!-- Ubuntu font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -59,7 +52,7 @@
                         </p>
                         <div class="lien">
                             <button class="button" role="button">
-                                <a href="?controller=candidate&action=viewcandidate">Par ici</a>
+                                <a href="">Par ici</a>
                             </button>
                         </div>
                     </div>

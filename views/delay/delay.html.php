@@ -1,8 +1,4 @@
 <?php
 
-/**
- * PHP DOC
- *  @var string $title 
- */
-?>
+/** PHP DOC : @var string $title */ ?>
 <h1><?= $title ?></h1>

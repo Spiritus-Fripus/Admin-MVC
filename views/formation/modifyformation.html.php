@@ -1,14 +1,7 @@
-<?php
-
-/**
- * PHP DOC
- * @var array $formation
- */
-?>
-
 <div class="content-container">
     <div class="formation-container">
         <form action="/modifyFormation" method="post">
+            <?php /** @var array $formation */ ?>
             <input type="hidden" name="formation_id" value="<?= $formation['formation_id'] ?>" />
             <div class="entree">
                 <label for="formation_name">Nom de la formation :</label>

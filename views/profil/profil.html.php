@@ -1,12 +1,7 @@
 <?php
 
-/** 
- * PHP DOC
- * @var mixed $recordset 
- */
-?>
-
-<?php foreach ($recordset as $row) { ?>
+/** PHP DOC : @var mixed $recordset  */
+foreach ($recordset as $row) : ?>
     <div class="profil-container">
         <div class="profil-header-container">
             <div class="index-header">
@@ -34,4 +29,4 @@
             </ul>
         </div>
     </div>
-<?php } ?>
+<?php endforeach ?>

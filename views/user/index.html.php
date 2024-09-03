@@ -2,7 +2,7 @@
 
 /**
  * PHP DOC
- * @var array|bool $recordset
+ * 
  * @var int $page
  * @var int $totalPages
  * @var array $filters
@@ -85,7 +85,7 @@
         </thead>
 
         <tbody>
-
+            <?php /**  PHP DOC : @var array|bool $recordset */ ?>
             <?php foreach ($recordset as $row) : ?>
                 <?php
                 // Mise à jour de la date en version FR
@@ -145,32 +145,17 @@
     </table>
     <!-- Pagination -->
     <div class="paging">
+        <?php /** PHP DOC : @var int $page, @var int $totalPages, @var array $filters */ ?>
         <?php if ($page > 1): ?>
-            <a href=" /user?page=<?= $page - 1 ?>
-                &search=<?= urlencode($filters['search']) ?>
-                &sort-by=<?= urlencode($filters['orderBy']) ?>
-                &sort-direction=<?= urlencode($filters['direction']) ?>
-                &sort-type=<?= urlencode($filters['type']) ?>">Précédent
-            </a>
+            <a href="/user?page=<?= $page - 1 ?>&search=<?= urlencode($filters['search']) ?>&sort-by=<?= urlencode($filters['orderBy']) ?>&sort-direction=<?= urlencode($filters['direction']) ?>&sort-type=<?= urlencode($filters['type']) ?>">Précédent</a>
         <?php endif; ?>
 
         <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-            <a href="/user?page=<?= $i ?>
-                &search=<?= urlencode($filters['search']) ?>
-                &sort-by=<?= urlencode($filters['orderBy']) ?>
-                &sort-direction=<?= urlencode($filters['direction']) ?>
-                &sort-type=<?= urlencode($filters['type']) ?>"
-                <?= $i == $page ? 'class="active"' : '' ?>><?= $i ?>
-            </a>
+            <a href="/user?page=<?= $i ?>&search=<?= urlencode($filters['search']) ?>&sort-by=<?= urlencode($filters['orderBy']) ?>&sort-direction=<?= urlencode($filters['direction']) ?>&sort-type=<?= urlencode($filters['type']) ?>" <?= $i == $page ? 'class="active"' : '' ?>><?= $i ?></a>
         <?php endfor; ?>
 
         <?php if ($page < $totalPages): ?>
-            <a href="/user?page=<?= $page + 1 ?>
-                &search=<?= urlencode($filters['search']) ?>
-                &sort-by=<?= urlencode($filters['orderBy']) ?>
-                &sort-direction=<?= urlencode($filters['direction']) ?>
-                &sort-type=<?= urlencode($filters['type']) ?>">Suivant
-            </a>
+            <a href="/user?page=<?= $page + 1 ?>&search=<?= urlencode($filters['search']) ?>&sort-by=<?= urlencode($filters['orderBy']) ?>&sort-direction=<?= urlencode($filters['direction']) ?>&sort-type=<?= urlencode($filters['type']) ?>">Suivant</a>
         <?php endif; ?>
     </div>
 

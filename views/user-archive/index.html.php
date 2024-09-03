@@ -76,8 +76,8 @@
         </thead>
 
         <tbody>
-
-            <?php foreach ($recordset as $row) { ?>
+            <?php /** @var array|bool $recordset */ ?>
+            <?php foreach ($recordset as $row) : ?>
 
                 <tr class="card-tr">
                     <input type="hidden" name="user_archive_id" value="<?= htmlspecialchars($row['user_archive_id']) ?>" />
@@ -90,11 +90,12 @@
                     <td data-label="Archivé par"><?= htmlspecialchars($row['archived_by']) ?></td>
                 </tr>
 
-            <?php } ?>
+            <?php endforeach ?>
         </tbody>
     </table>
     <!-- Pagination -->
     <div class="paging">
+        <?php /** PHP DOC : @var int $page, @var int $totalPages, @var array $filters */ ?>
         <?php if ($page > 1): ?>
             <a href="/userArchive?page=<?= $page - 1 ?>&search=<?= urlencode($filters['search']) ?>&sort-by=<?= urlencode($filters['orderBy']) ?>&sort-direction=<?= urlencode($filters['direction']) ?>&sort-type=<?= urlencode($filters['type']) ?>">Précédent</a>
         <?php endif; ?>

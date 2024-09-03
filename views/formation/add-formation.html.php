@@ -1,5 +1,4 @@
 <div class="main-container-center-column">
-
     <div class="formation-container">
         <form action="/formation" method="post">
             <div class="entree">

@@ -1,11 +1,8 @@
 <?php
 
-/**
- * PHP DOC
- *  @var mixed $user 
- */
+/** PHP DOC : @var mixed $user */
 
-switch ($user['user_type_id']) {
+switch ($user['user_type_id']):
     case 1:
         $type_user = 'admin';
         break;
@@ -15,7 +12,7 @@ switch ($user['user_type_id']) {
     case 3:
         $type_user = 'student';
         break;
-}
+endswitch
 
 ?>
 
