@@ -27,9 +27,9 @@ function searchAndFilterUsersArchived(
 
 	$stmt = $db->prepare($sql);
 
-	foreach ($params as $key => $value) {
+	foreach ($params as $key => $value) :
 		$stmt->bindValue($key, $value, PDO::PARAM_STR);
-	}
+	endforeach;
 
 	$stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
 	$stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
@@ -42,15 +42,15 @@ function whereClause(array &$params, string $search, string $type): string
 {
 	$where = [];
 
-	if ($type !== 'ALL') {
+	if ($type !== 'ALL') :
 		$where[] = "table_user_archive.user_archive_type_id = :type";
 		$params[':type'] = (int)$type;
-	}
+	endif;
 
-	if (!empty($search)) {
+	if (!empty($search)) :
 		$where[] = "CONCAT(table_user_archive.user_archive_firstname, ' ', table_user_archive.user_archive_name, ' ', table_user_archive.user_archive_mail) LIKE :search";
 		$params[':search'] = '%' . $search . '%';
-	}
+	endif;
 
 	return !empty($where) ? 'WHERE ' . implode(' AND ', $where) : '';
 }
@@ -70,9 +70,9 @@ function getTotalUserArchivedCount(string $search, string $type)
 
 	$stmt = $db->prepare($sql);
 
-	foreach ($params as $key => $value) {
+	foreach ($params as $key => $value) :
 		$stmt->bindValue($key, $value, PDO::PARAM_STR);
-	}
+	endforeach;
 
 	$stmt->execute();
 	return (int)$stmt->fetchColumn();

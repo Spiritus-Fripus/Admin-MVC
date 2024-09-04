@@ -33,7 +33,7 @@
 
         <tbody>
             <?php /** PHP DOC @var array|bool $recordset */ ?>
-            <?php foreach ($recordset as $row) { ?>
+            <?php foreach ($recordset as $row) : ?>
 
                 <?php if ($_SESSION['user_type'] == 'student'): ?>
                     <tr class="card-tr">
@@ -89,7 +89,7 @@
                     </tr>
                 <?php endif ?>
 
-            <?php } ?>
+            <?php endforeach ?>
 
         </tbody>
     </table>

@@ -12,11 +12,11 @@
     <!-- CSS TEMPLATES -->
 
     <?php /** PHPDOC : @var mixed $cssFile */ ?>
-    <?php if (isset($cssFiles) && is_array($cssFiles)) { ?>
-        <?php foreach ($cssFiles as $cssFile) { ?>
-            <link rel="stylesheet" href="<?= $cssFile; ?>">
-        <?php } ?>
-    <?php } ?>
+    <?php if (isset($cssFiles) && is_array($cssFiles)) : ?>
+        <?php foreach ($cssFiles as $cssFile) : ?>
+            <link rel="stylesheet" href="<?= htmlspecialchars($cssFile); ?>">
+        <?php endforeach ?>
+    <?php endif ?>
 
     <!-- Ubuntu font -->
 
@@ -37,12 +37,12 @@
     <!-- Burger-menu (hidden par defaut) -->
 
     <div class="burger-menu">
-        <?php /** PHP DOC : @var string $config */ ?>
-        <?php if (!empty($config['burgerMenu'])) {
+        <?php /** PHP DOC : @var string $config */
+        if (!empty($config['burgerMenu'])) :
             require_once $config['burgerMenu'];
-        } else {
+        else :
             echo "Erreur : le menu burger n'est pas défini.";
-        }
+        endif
         ?>
     </div>
 
@@ -55,42 +55,41 @@
                 </span>
             </div>
             <div class="logo">
-                <a href=/<?= $_SESSION['user_type'] ?>>
+                <a href=/<?= htmlspecialchars($_SESSION['user_type']) ?>>
                     <h1>ADMIN MNS</h1>
                 </a>
             </div>
             <div class="header-icons">
-                <?php if (!empty($config['icons'])) {
+                <?php /** PHP DOC : @var string $config */
+                if (!empty($config['icons'])) :
                     require_once $config['icons'];
-                } else {
+                else :
                     echo "Erreur : les icônes d'en-tête ne sont pas définies.";
-                }
+                endif
                 ?>
             </div>
         </header>
 
         <!-- Main -->
-
         <main class="main-container">
             <div class="main-body">
-                <?php /** PHP DOC : @var string $template */ ?>
-                <?php if (!empty($template)) {
+                <?php /** PHP DOC : @var string $template */
+                if (!empty($template)) :
                     require_once $template;
-                } else {
+                else :
                     echo "Erreur : le template principal n'est pas défini.";
-                }
+                endif
                 ?>
             </div>
         </main>
     </div>
 
     <?php /** PHP DOC : @var string $jsFiles */ ?>
-    <?php if (isset($jsFiles) && is_array($jsFiles)) { ?>
-        <?php foreach ($jsFiles as $jsFile) { ?>
-            <script src="<?= $jsFile ?>"></script>
-        <?php } ?>
-    <?php } ?>
-
+    <?php if (isset($jsFiles) && is_array($jsFiles)) : ?>
+        <?php foreach ($jsFiles as $jsFile) : ?>
+            <script src="<?= htmlspecialchars($jsFile) ?>"></script>
+        <?php endforeach ?>
+    <?php endif ?>
     <script src="/js/burger-menu.js"></script>
 </body>
 

@@ -41,7 +41,7 @@ function indexAction(): void
 	$jsFiles =
 		[
 			'/js/modal-delete-verify.js',
-			"/js/submit-form.js"
+			'/js/submit-form.js'
 		];
 	$config = loadLayoutConfig();
 	$template = '../views/user/index.html.php';
@@ -50,7 +50,8 @@ function indexAction(): void
 
 function getUserFilters(): array
 {
-	$search = $_GET['search'] ?? ' ';
+	// Définition des variables si non null
+	$search = $_GET['search'] ?? '';
 	$orderBy = $_GET['sort-by'] ?? 'created_at';
 	$direction = $_GET['sort-direction'] ?? 'DESC';
 	$type = $_GET['sort-type'] ?? 'ALL';
@@ -68,17 +69,19 @@ function addUserAction(): void
 	checkUserRole(['admin']);
 	require '../models/user/user.manager.php';
 
-	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-		if (!verifyCsrfToken()) {
+	if ($_SERVER['REQUEST_METHOD'] === 'POST') :
+		if (!verifyCsrfToken()) :
 			// Jeton CSRF invalide
 			require '../models/login/login.manager.php';
 			disconnect();
-		}
+		endif;
+
 		addUser();
 		// Regenère CSRF token
 		$_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 		header('Location: /user');
-	}
+		exit();
+	endif;
 
 	$title = "Ajouts d'utilisateurs";
 	$cssFiles = ['/css/generic/form.css'];
@@ -92,28 +95,27 @@ function updateUserAction(): void
 	checkUserRole(['admin']);
 	require '../models/user/user.manager.php';
 
-	if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['user_id'])) {
-		if (!verifyCsrfToken()) {
+	if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['user_id'])) :
+		if (!verifyCsrfToken()) :
 			// Jeton CSRF invalide
 			require '../models/login/login.manager.php';
 			disconnect();
-		}
+		endif;
+
 		updateUser();
 		// Regenère CSRF token
 		$_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-		// Redirection vers la liste des utilisateurs
 		header("Location: /user");
 		exit();
-	}
+	endif;
 
-	if (isset($_GET['user_id'])) {
+	if (isset($_GET['user_id'])) :
 		// Récupérer l'user spécifique
 		$user = getUserById($_GET['user_id']);
-	} else {
-		// Redirection ou message d'erreur si l'ID de l'user n'est pas fourni
+	else :
 		header("Location: /user");
 		exit();
-	}
+	endif;
 
 	$config = loadLayoutConfig();
 	$cssFiles = ['/css/generic/form.css'];
@@ -126,10 +128,11 @@ function archiveUserAction(): void
 	checkUserRole(['admin']);
 	require '../models/user/user.manager.php';
 
-	if (isset($_GET['user_id'])) {
+	if (isset($_GET['user_id'])) :
 		archiveUser($_GET['user_id']);
-	}
-	header("Location: /user");
+		header("Location: /user");
+		exit();
+	endif;
 }
 
 
@@ -137,9 +140,10 @@ function userInfoAction(): void
 {
 	checkUserRole(['admin']);
 	require '../models/user/user.manager.php';
-	if (isset($_GET['user_id'])) {
-		$user = getUserById($_GET['user_id']);
-	}
+
+	// Inline if récupération par ID
+	if (isset($_GET['user_id'])) $user = getUserById($_GET['user_id']);
+
 	$config = loadLayoutConfig();
 	$cssFiles =
 		[
