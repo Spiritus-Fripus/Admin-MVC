@@ -17,10 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
     modal.style.display = "none";
   });
 
-  confirmDelete.addEventListener("click", function () {
-    window.location.href = hrefToNavigate;
-  });
-
   window.addEventListener("click", function (event) {
     if (event.target === modal) {
       modal.style.display = "none";
@@ -32,4 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
     .addEventListener("click", function () {
       modal.style.display = "none";
     });
+
+  confirmDelete.addEventListener("click", function () {
+    window.location.href = hrefToNavigate;
+  });
 });

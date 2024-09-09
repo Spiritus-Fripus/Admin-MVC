@@ -1,13 +1,3 @@
-<?php
-
-/**
- * PHP DOC
- * 
- * @var int $page
- * @var int $totalPages
- * @var array $filters
- */
-?>
 <div class="main-container-center-column">
     <form action="/user"
         method="get"

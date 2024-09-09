@@ -7,8 +7,7 @@ function getUserById(string $user_id)
 	$db = connectToDatabase();
 	$sql = 'SELECT *, TIMESTAMPDIFF(YEAR, table_user.user_birthday_date, CURDATE()) AS age  
 			FROM table_user 
-			JOIN table_user_type
-			ON table_user.user_type_id = table_user_type.user_type_id
+			JOIN table_user_type ON table_user.user_type_id = table_user_type.user_type_id
 			WHERE user_id = :user_id';
 	$stmt = $db->prepare($sql);
 	$stmt->bindValue(':user_id', $user_id);

@@ -13,13 +13,13 @@ function indexAction(): void
 	// Nombre d'enregistrements par page
 	$recordsPerPage = 8;
 
-	// Récupérer le numéro de page depuis les paramètres GET, ou utiliser la page 1 par défaut
+	// Récupérer le numéro de page en GET, ou utiliser la page 1 par défaut
 	$page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 
-	// Calculer l'offset
+	// Calcule de l'offset
 	$offset = ($page - 1) * $recordsPerPage;
 
-	// Récupérer les données avec limite et offset
+	// Récupéreration des données avec limite et offset
 	$recordset = searchAndFilterUsers($filters['search'], $filters['type'], $filters['orderBy'], $filters['direction'], $offset, $recordsPerPage);
 
 	// Récupérer le nombre total d'enregistrements pour calculer le nombre de pages
@@ -43,6 +43,7 @@ function indexAction(): void
 			'/js/modal-delete-verify.js',
 			'/js/submit-form.js'
 		];
+
 	$config = loadLayoutConfig();
 	$template = '../views/user/index.html.php';
 	require '../views/layouts/layout.html.php';
@@ -95,6 +96,14 @@ function updateUserAction(): void
 	checkUserRole(['admin']);
 	require '../models/user/user.manager.php';
 
+	if (isset($_GET['user_id'])) :
+		// Récupérer l'user spécifique
+		$user = getUserById($_GET['user_id']);
+	else :
+		header("Location: /user");
+		exit();
+	endif;
+
 	if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['user_id'])) :
 		if (!verifyCsrfToken()) :
 			// Jeton CSRF invalide
@@ -109,13 +118,6 @@ function updateUserAction(): void
 		exit();
 	endif;
 
-	if (isset($_GET['user_id'])) :
-		// Récupérer l'user spécifique
-		$user = getUserById($_GET['user_id']);
-	else :
-		header("Location: /user");
-		exit();
-	endif;
 
 	$config = loadLayoutConfig();
 	$cssFiles = ['/css/generic/form.css'];
@@ -141,7 +143,7 @@ function userInfoAction(): void
 	checkUserRole(['admin']);
 	require '../models/user/user.manager.php';
 
-	// Inline if récupération par ID
+	// Inline if de récupération par ID
 	if (isset($_GET['user_id'])) $user = getUserById($_GET['user_id']);
 
 	$config = loadLayoutConfig();

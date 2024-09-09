@@ -41,6 +41,7 @@ return [
 	'addUser' => ['controller' => 'user', 'action' => 'addUserAction'],
 	'updateUser' => ['controller' => 'user', 'action' => 'updateUserAction'],
 	'archiveUser' => ['controller' => 'user', 'action' => 'archiveUserAction'],
-	'userInfo' => ['controller' => 'user', 'action' => 'userInfoAction']
+	'userInfo' => ['controller' => 'user', 'action' => 'userInfoAction'],
+
 
 ];

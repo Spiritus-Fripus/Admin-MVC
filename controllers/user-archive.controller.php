@@ -40,7 +40,7 @@ function indexAction(): void
 		];
 	$jsFiles = [
 		'/js/modal-delete-verify.js',
-		"/js/submit-form.js"
+		'/js/submit-form.js',
 	];
 	$config = loadLayoutConfig();
 	$template = '../views/user-archive/index.html.php';
