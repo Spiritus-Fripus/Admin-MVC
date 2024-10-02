@@ -6,9 +6,6 @@ function formLoginAction(): void
 		$_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 	endif;
 
-	// Commence la mise en mémoire tampon de sortie
-	ob_start();
-
 	$title = "LOGIN MNS";
 	$cssFile = 'css/generic/login-style.css';
 	require '../views/login/index-login.html.php';
@@ -24,6 +21,9 @@ function formLoginAction(): void
 				$response = connect($_POST['email']);
 				if ($response) :
 					if (password_verify($_POST['password'], $response['user_password'])):
+
+						session_regenerate_id(true);
+
 						$type_user = $response['user_type_name'];
 
 						// Stocke le type d'utilisateur, son id et l'email dans la session
@@ -33,9 +33,6 @@ function formLoginAction(): void
 
 						// Regénère le jeton CSRF
 						$_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-
-						// Termine la mise en mémoire tampon de sortie et nettoie le tampon
-						ob_end_clean();
 
 						// Redirige vers l'index de l'utilisateur connecté
 						header("Location: /$type_user");
@@ -50,8 +47,7 @@ function formLoginAction(): void
 			// Jeton CSRF invalide, gérer l'erreur
 			die('Jeton CSRF invalide.');
 		endif;
-		// Termine la mise en mémoire tampon de sortie et envoie le contenu du tampon
-		ob_end_flush();
+
 	endif;
 }
 
