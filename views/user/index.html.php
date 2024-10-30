@@ -70,7 +70,6 @@
                 <th>Prénom</th>
                 <th>Type</th>
                 <th>Actions</th>
-
             </tr>
         </thead>
 
@@ -84,7 +83,7 @@
                     $formattedDate = $date->format('d-m-Y');
                 } catch (Exception $e) {
                     error_log('Erreur lors de la création de l\'objet DateTime : ' . $e->getMessage());
-                    $formattedDate = 'Date invalide'; // Valeur par défaut en cas d'erreur
+                    $formattedDate = 'Date invalide';
                 } ?>
 
 
